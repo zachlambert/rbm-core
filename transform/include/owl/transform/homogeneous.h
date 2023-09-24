@@ -1,9 +1,9 @@
 #pragma once
 
-#include "math/types/matrix.h"
+#include "owl/types/matrix.h"
 
 
-namespace math {
+namespace owl {
 
 template <typename T, int Dim>
 Matrix<T, Dim+1, Dim+1> make_homogeneous_translation(const Vector<T, Dim>& translation) {
@@ -29,4 +29,4 @@ Matrix<T, Dim+1, Dim+1> make_homogeneous_scaling(T scaling) {
     return result;
 }
 
-} // namespace math
+} // namespace owl

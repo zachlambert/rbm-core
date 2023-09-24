@@ -1,10 +1,10 @@
 #pragma once
 
 #include <cmath>
-#include "math/types/matrix.h"
+#include "owl/types/matrix.h"
 
 
-namespace math {
+namespace owl {
 
 template <typename T>
 T sinc(T x)
@@ -20,7 +20,7 @@ T sinc(T x)
 
 template <typename Scalar, int Dim>
 Matrix<Scalar, Dim, Dim> screw_displacement_matrix(
-    const Eigen::Matrix<Scalar, dim_so<Dim>(), 1>& rot_coords)
+    const Matrix<Scalar, dim_so<Dim>(), 1>& rot_coords)
 {
     Scalar angle = rot_coords.norm();
     auto S = cross_product_matrix(rot_coords);
@@ -43,4 +43,4 @@ Matrix<Scalar, Dim, Dim> screw_displacement_matrix(
     return decltype(S)::Identity() + cos_comp * S + sin_comp * S * S;
 }
 
-} // namespace math
+} // namespace owl

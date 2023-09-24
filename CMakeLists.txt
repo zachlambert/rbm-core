@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.14)
-project(parrot)
+project(owl)
 
 # Setup
 
@@ -25,6 +25,8 @@ endif()
 
 # Dependencies
 
+find_package(Eigen3 3.4 REQUIRED NO_MODULE)
+
 FetchContent_Declare(cpp-utils
     GIT_REPOSITORY https://github.com/zachlambert/cpp-utils.git
     GIT_TAG master
@@ -48,19 +50,19 @@ FetchContent_MakeAvailable(sentinel)
 
 add_subdirectory(types)
 add_subdirectory(transform)
-add_subdirectory(algebra)
-add_subdirectory(geometry)
-add_subdirectory(opt)
-add_subdirectory(probability)
-add_subdirectory(mechanics)
+# add_subdirectory(algebra)
+# add_subdirectory(geometry)
+# add_subdirectory(opt)
+# add_subdirectory(probability)
+# add_subdirectory(mechanics)
 
 add_library(owl INTERFACE)
 target_link_libraries(owl INTERFACE
     owl_types
-    owl_algebra
     owl_transform
-    owl_geometry
-    owl_opt
-    owl_probability
-    owl_mechanics
+    # owl_algebra
+    # owl_geometry
+    # owl_opt
+    # owl_probability
+    # owl_mechanics
 )

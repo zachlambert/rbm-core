@@ -1,16 +1,7 @@
-
-find_package(Eigen3 3.4 REQUIRED NO_MODULE)
-
-add_library(math_types INTERFACE)
-target_include_directories(math_types
+add_library(owl_types INTERFACE)
+target_include_directories(owl_types
     INTERFACE include
 )
-target_link_libraries(math_types
-    INTERFACE Eigen3::Eigen core_std core_serialize
+target_link_libraries(owl_types
+    INTERFACE Eigen3::Eigen cpp-utils parrot
 )
-
-if(BUILD_ADDITIONAL_TARGETS)
-    add_executable(test_types_json test/json.cpp)
-    target_link_libraries(test_json parrot GTest::gtest_main)
-    gtest_discover_tests(test_json)
-endif()

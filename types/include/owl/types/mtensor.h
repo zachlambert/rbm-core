@@ -1,10 +1,10 @@
 #pragma once
 
-#include "math/types/matrix.h"
-#include "core/std/darray.h"
+#include "owl/types/matrix.h"
+#include "cpp-utils/darray.h"
 
 
-namespace math {
+namespace owl {
 
 // MTensor = Matrix tensor
 // ie: Uses eigen matrix types
@@ -141,4 +141,4 @@ using MTensorf = MTensor<float, Rows, Cols, Depth>;
 template <int Rows, int Cols, int Depth>
 using MTensord = MTensor<double, Rows, Cols, Depth>;
 
-} // namespace math
+} // namespace owl
