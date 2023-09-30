@@ -1,9 +1,9 @@
 #pragma once
 
-#include "math/geometry/mesh.h"
-#include "math/geometry/bvh.h"
+#include "owl/geometry/mesh.h"
+#include "owl/geometry/bvh.h"
 
-namespace math {
+namespace owl {
 
 template <typename Scalar, int Dim, typename Mesh>
 using MeshPrimitive = FacetShape<Scalar, Dim, Mesh::VertexCount>;
@@ -33,4 +33,4 @@ void mesh_to_bvh(const Mesh& mesh, Bvh<MeshPrimitive<Scalar, Dim, Mesh>>& bvh)
     bvh.construct(primitives);
 }
 
-} // namespace math
+} // namespace owl

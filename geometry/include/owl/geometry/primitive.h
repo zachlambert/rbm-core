@@ -3,14 +3,14 @@
 #include <variant>
 #include <array>
 #include <concepts>
-#include "core/std/annotated_variant.h"
-#include "math/types/matrix.h"
-#include "math/types/color.h"
-#include "math/transform/transform.h"
-#include "math/transform/homogeneous.h"
-#include "math/geometry/bounding.h"
+#include "cpp_utils/annotated_variant.h"
+#include "owl/types/matrix.h"
+#include "owl/types/color.h"
+#include "owl/transform/transform.h"
+#include "owl/transform/homogeneous.h"
+#include "owl/geometry/bounding.h"
 
-namespace math {
+namespace owl {
 
 template <typename T>
 concept is_primitive = requires(T t, Transform<typename T::Scalar, T::Dim> transform, typename T::Scalar scaling) {
@@ -351,11 +351,11 @@ InstancedPrimitive<Scalar, Dim> cast_primitive(const InstancedPrimitive<OtherSca
 template <typename Scalar, int Dim>
 struct ColoredPrimitive {
     InstancedPrimitive<Scalar, Dim> primitive;
-    math::ColorRGBd color;
+    ColorRGBd color;
     ColoredPrimitive() {}
     ColoredPrimitive(
             const InstancedPrimitive<Scalar, Dim>& primitive,
-            const math::ColorRGBd& color):
+            const ColorRGBd& color):
         primitive(primitive), color(color)
     {}
 };
@@ -364,38 +364,38 @@ typedef ColoredPrimitive<float, 3> ColoredPrimitive3f;
 typedef ColoredPrimitive<double, 2> ColoredPrimitive2d;
 typedef ColoredPrimitive<double, 3> ColoredPrimitive3d;
 
-} // namespace math
+} // namespace owl
 
 template <typename Scalar, int Dim>
-struct core::variant_details<math::InstancedPrimitive<Scalar, Dim>> {
-    typedef math::InstancedPrimitive<Scalar, Dim> T;
+struct cpp_utils::variant_details<owl::InstancedPrimitive<Scalar, Dim>> {
+    typedef owl::InstancedPrimitive<Scalar, Dim> T;
     static constexpr std::size_t count = 4;
     static T construct(std::size_t i) {
         switch(i) {
         case 0:
-            return math::Box<Scalar, Dim>();
+            return owl::Box<Scalar, Dim>();
         case 1:
-            return math::Sphere<Scalar, Dim>();
+            return owl::Sphere<Scalar, Dim>();
         case 2:
-            return math::Cylinder<Scalar, Dim>();
+            return owl::Cylinder<Scalar, Dim>();
         case 3:
-            return math::Cone<Scalar, Dim>();
+            return owl::Cone<Scalar, Dim>();
         default:
             assert(false);
-            return math::Box<Scalar, Dim>();
+            return owl::Box<Scalar, Dim>();
         }
     }
     static std::size_t index(const T& variant) {
-        if (std::get_if<math::Box<Scalar, Dim>>(&variant)) {
+        if (std::get_if<owl::Box<Scalar, Dim>>(&variant)) {
             return 0;
         }
-        else if (std::get_if<math::Sphere<Scalar, Dim>>(&variant)) {
+        else if (std::get_if<owl::Sphere<Scalar, Dim>>(&variant)) {
             return 1;
         }
-        else if (std::get_if<math::Cylinder<Scalar, Dim>>(&variant)) {
+        else if (std::get_if<owl::Cylinder<Scalar, Dim>>(&variant)) {
             return 2;
         }
-        else if (std::get_if<math::Cone<Scalar, Dim>>(&variant)) {
+        else if (std::get_if<owl::Cone<Scalar, Dim>>(&variant)) {
             return 3;
         }
         else {

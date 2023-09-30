@@ -1,10 +1,10 @@
 #pragma once
 
-#include "math/types/matrix.h"
-#include "math/types/interval.h"
+#include "owl/types/matrix.h"
+#include "owl/types/interval.h"
 #include <numeric>
 
-namespace math {
+namespace owl {
 
 template <typename Scalar, int Dim>
 struct BoundingBox {
@@ -64,4 +64,4 @@ typedef BoundingBox<double, 2> BoundingBox2d;
 typedef BoundingBox<float, 3> BoundingBox3f;
 typedef BoundingBox<double, 3> BoundingBox3d;
 
-} // namespace math
+} // namespace owl

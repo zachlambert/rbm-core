@@ -1,19 +1,19 @@
 #pragma once
 
-#include "math/types/matrix.h"
-#include "core/std/cloneable.h"
+#include "owl/types/matrix.h"
+#include "cpp_utils/cloneable.h"
 #include <memory>
 
-namespace math {
+namespace owl {
 
 class HeightMapInterface {
 public:
-    virtual bool contains(const math::Vector2d& position) const = 0;
-    virtual double height(const math::Vector2d& position) const = 0;
-    virtual math::Vector3d normal(const math::Vector2d& position) const {
+    virtual bool contains(const Vector2d& position) const = 0;
+    virtual double height(const Vector2d& position) const = 0;
+    virtual Vector3d normal(const Vector2d& position) const {
         assert(false);
         // Not implemented
-        return math::Vector3d::UnitZ();
+        return Vector3d::UnitZ();
     }
     virtual bool has_normal() const {
         return false;
@@ -21,20 +21,20 @@ public:
     virtual std::unique_ptr<HeightMapInterface> clone() const = 0;
 };
 
-class HeightMap: public core::OptionalCloneable<HeightMapInterface> {
+class HeightMap: public cpp_utils::OptionalCloneable<HeightMapInterface> {
 public:
     HeightMap() {}
     template <typename Impl>
     HeightMap(const Impl& impl):
-        core::OptionalCloneable<HeightMapInterface>(impl)
+        cpp_utils::OptionalCloneable<HeightMapInterface>(impl)
     {}
-    bool contains(const math::Vector2d& position) const {
+    bool contains(const Vector2d& position) const {
         return interface->contains(position);
     }
-    double height(const math::Vector2d& position) const {
+    double height(const Vector2d& position) const {
         return interface->height(position);
     }
-    math::Vector3d normal(const math::Vector2d& position) const {
+    Vector3d normal(const Vector2d& position) const {
         return interface->normal(position);
     }
     bool has_normal() const {
@@ -45,4 +45,4 @@ public:
     }
 };
 
-} // namespace math
+} // namespace owl

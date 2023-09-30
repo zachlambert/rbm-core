@@ -1,10 +1,10 @@
 #pragma once
 
-#include "math/types/matrix.h"
-#include "math/geometry/bounding.h"
+#include "owl/types/matrix.h"
+#include "owl/geometry/bounding.h"
 #include <array>
 
-namespace math {
+namespace owl {
 
 template <typename IndexType, int VertexCount>
 struct Facet {
