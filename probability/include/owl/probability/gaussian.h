@@ -1,15 +1,15 @@
 #pragma once
 
-#include "math/probability/distribution.h"
-#include "math/types/matrix.h"
-#include "math/algebra/manifold.h"
+#include "owl/probability/distribution.h"
+#include "owl/types/matrix.h"
+#include "owl/algebra/manifold.h"
 
 
-namespace math {
+namespace owl {
 
 template <typename T>
 class GaussianDistribution: public Distribution<T> {
-    static constexpr int Dim = math::manifold_dim<T>;
+    static constexpr int Dim = manifold_dim<T>;
 public:
     GaussianDistribution():
         dist_(0.0, 1.0)
@@ -180,4 +180,4 @@ private:
 };
 
 
-} // namespace math
+} // namespace owl

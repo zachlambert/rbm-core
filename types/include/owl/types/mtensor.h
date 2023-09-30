@@ -1,7 +1,7 @@
 #pragma once
 
 #include "owl/types/matrix.h"
-#include "cpp-utils/darray.h"
+#include "cpp_utils/darray.h"
 
 
 namespace owl {
@@ -133,7 +133,7 @@ private:
     std::size_t rows_;
     std::size_t cols_;
     std::size_t depth_;
-    core::darray<Matrix<Scalar, Rows, Cols>, Depth> data_;
+    cpp_utils::darray<Matrix<Scalar, Rows, Cols>, Depth> data_;
 };
 
 template <int Rows, int Cols, int Depth>

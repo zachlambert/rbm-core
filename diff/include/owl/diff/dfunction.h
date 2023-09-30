@@ -1,11 +1,11 @@
 #pragma once
 
-#include "math/algebra/manifold.h"
-#include "math/types/matrix.h"
-#include "math/types/mtensor.h"
+#include "owl/diff/manifold.h"
+#include "owl/types/matrix.h"
+#include "owl/types/mtensor.h"
 
 
-namespace math {
+namespace owl {
 
 // DFunction = Differentiable function
 // DFunction1 = Once differentiable

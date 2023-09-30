@@ -1,12 +1,12 @@
 #pragma once
 
-#include "math/types/matrix.h"
-#include "math/transform/transform.h"
-#include "math/transform/angle.h"
+#include "owl/types/matrix.h"
+#include "owl/transform/transform.h"
+#include "owl/transform/angle.h"
 #include <type_traits>
 
 
-namespace math {
+namespace owl {
 
 template <typename T>
 struct manifold_details {};
@@ -34,7 +34,7 @@ template <typename T>
 manifold_delta<T> zero_manifold_delta(const T& x) {
     if constexpr(manifold_dim<T> == -1) {
         int dim = manifold_dynamic_dim(x);
-        return math::VectorXd::Zero(dim);
+        return VectorXd::Zero(dim);
     }
     if constexpr(manifold_dim<T> != -1) {
         return manifold_delta<T>::Zero();
@@ -45,7 +45,7 @@ template <typename T>
 manifold_hessian<T> zero_manifold_hessian(const T& x) {
     if constexpr(manifold_dim<T> == -1) {
         int dim = manifold_dynamic_dim(x);
-        return math::MatrixXd::Zero(dim, dim);
+        return MatrixXd::Zero(dim, dim);
     }
     if constexpr(manifold_dim<T> != -1) {
         return manifold_hessian<T>::Zero();
@@ -173,4 +173,4 @@ struct manifold_details<Empty> {
     static Vectord<0> difference(const Empty& a, const Empty& b) { return Vectord<0>(); }
 };
 
-} // namespace math
+} // namespace owl
