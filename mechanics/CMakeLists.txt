@@ -1,11 +1,11 @@
 
-add_library(math_mechanics INTERFACE)
-target_include_directories(math_mechanics
+add_library(owl_mechanics INTERFACE)
+target_include_directories(owl_mechanics
     INTERFACE include
 )
-target_link_libraries(math_mechanics
-    INTERFACE math_types math_transform math_geometry
+target_link_libraries(owl_mechanics
+    INTERFACE owl_types owl_transform owl_geometry
 )
 
-add_executable(math_mechanics_test test/main.cpp)
-target_link_libraries(math_mechanics_test math_mechanics)
+add_executable(example_mechanics example/main.cpp)
+target_link_libraries(example_mechanics owl_mechanics)

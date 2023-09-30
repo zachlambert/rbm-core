@@ -1,12 +1,12 @@
 #pragma once
 
-#include "math/transform/transform.h"
-#include "math/geometry/primitive.h"
-#include "math/transform/adjoint.h"
+#include "owl/transform/transform.h"
+#include "owl/geometry/primitive.h"
+#include "owl/transform/adjoint.h"
 #include <Eigen/Jacobi>
 
 
-namespace math {
+namespace owl {
 
 template <typename Scalar, int Dim>
 struct SpatialInertia {
@@ -59,26 +59,26 @@ struct SpatialInertia {
     void transform(const Transform<Scalar, Dim>& transform)
     {
         gyration =
-            math::AdjointTransform(transform).matrix().transpose()
+            AdjointTransform(transform).matrix().transpose()
             * gyration
-            * math::AdjointTransform(transform).matrix();
+            * AdjointTransform(transform).matrix();
     }
 
-    math::Vector3d com() const {
-        return -math::Vector3d(
+    Vector3d com() const {
+        return -Vector3d(
             -gyration(4, 2),
             gyration(3, 2),
             -gyration(3, 1)
         );
     }
 
-    math::Transform3d principle_frame() const {
+    Transform3d principle_frame() const {
         SpatialInertia temp = *this;
-        temp.transform(math::Transform3d(math::Rotation3d::Identity(), temp.com()));
+        temp.transform(Transform3d(Rotation3d::Identity(), temp.com()));
 
-        Eigen::JacobiSVD<math::Matrix3d> svd;
+        Eigen::JacobiSVD<Matrix3d> svd;
         svd.compute(temp.gyration.template block<3, 3>(0, 0), Eigen::ComputeFullU | Eigen::ComputeFullV);
-        math::Matrix3d principle_axes = svd.matrixV();
+        Matrix3d principle_axes = svd.matrixV();
         // Symmetric matrix, so singular vectors define an orthonormal basis
         // satisfies |det(V)| = 1
         // To be a valid rotation, require det(V) = +1
@@ -88,7 +88,7 @@ struct SpatialInertia {
             principle_axes.block<3, 1>(0, 0) *= -1;
         }
 
-        return math::Transform3d(principle_axes, com());
+        return Transform3d(principle_axes, com());
     }
 
 };
@@ -204,4 +204,4 @@ SpatialInertia<Scalar, Dim> primitive_to_inertia(const InstancedPrimitive<Scalar
     return std::visit([density](const auto& value) { return primitive_to_inertia(value, density); }, primitive);
 }
 
-} // namespace math
+} // namespace owl

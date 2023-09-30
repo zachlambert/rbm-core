@@ -53,16 +53,16 @@ add_subdirectory(transform)
 add_subdirectory(diff)
 add_subdirectory(geometry)
 add_subdirectory(opt)
-# add_subdirectory(probability)
-# add_subdirectory(mechanics)
+add_subdirectory(probability)
+add_subdirectory(mechanics)
 
 add_library(owl INTERFACE)
 target_link_libraries(owl INTERFACE
     owl_types
     owl_transform
-    # owl_algebra
-    # owl_geometry
-    # owl_opt
-    # owl_probability
-    # owl_mechanics
+    owl_diff
+    owl_geometry
+    owl_opt
+    owl_probability
+    owl_mechanics
 )

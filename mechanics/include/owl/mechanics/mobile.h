@@ -1,9 +1,9 @@
 #pragma once
 
-#include "math/types/matrix.h"
-#include "math/transform/transform.h"
+#include "owl/types/matrix.h"
+#include "owl/transform/transform.h"
 
-namespace math {
+namespace owl {
 
 template <typename Scalar, int From, int To>
 Matrix<Scalar, To, From> velocity_mapping()
@@ -107,9 +107,9 @@ Matrix<Scalar, 3, 6> spatial_3d_to_2d()
 }
 
 template <typename Scalar>
-math::Matrix3<Scalar> normalise_orientation(math::Matrix3<Scalar> rotation, const math::Vector3<Scalar>& target_normal)
+Matrix3<Scalar> normalise_orientation(Matrix3<Scalar> rotation, const Vector3<Scalar>& target_normal)
 {
-    typedef math::Vector3<Scalar> Vector;
+    typedef Vector3<Scalar> Vector;
     const Vector normal = rotation.template block<3, 1>(0, 2);
     const Vector cp = normal.cross(target_normal);
     Scalar sin_angle = cp.norm();
@@ -117,4 +117,4 @@ math::Matrix3<Scalar> normalise_orientation(math::Matrix3<Scalar> rotation, cons
     return Eigen::AngleAxis<Scalar>(angle, cp.normalized()) * rotation;
 }
 
-} // namespace math
+} // namespace owl

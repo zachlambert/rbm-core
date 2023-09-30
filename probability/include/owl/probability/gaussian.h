@@ -2,7 +2,7 @@
 
 #include "owl/probability/distribution.h"
 #include "owl/types/matrix.h"
-#include "owl/algebra/manifold.h"
+#include "owl/diff/manifold.h"
 
 
 namespace owl {
@@ -29,10 +29,10 @@ public:
         for (std::size_t i = 0; i < delta.size(); i++) {
             delta(i) = dist_(rng);
         }
-        return math::manifold_add(mean_, covariance_L_ * delta);
+        return manifold_add(mean_, covariance_L_ * delta);
     }
     virtual double evaluate(const T& x) const override {
-        Vectord<Dim> delta = math::manifold_difference(mean_, x);
+        Vectord<Dim> delta = gmanifold_difference(mean_, x);
         return normalization_ * std::exp(-0.5 * (delta.transpose() * covariance_inv_ * delta).value());
     }
     virtual std::unique_ptr<DistributionImpl<T>> clone() const override {

@@ -1,9 +1,9 @@
 #pragma once
 
-#include "math/transform/transform.h"
-#include "math/transform/adjoint.h"
+#include "owl/transform/transform.h"
+#include "owl/transform/adjoint.h"
 
-namespace math {
+namespace owl {
 
 template <typename Scalar, int Dim>
 Vector<Scalar, dim_se_adj<Dim>()> frame_velocity(
@@ -30,4 +30,4 @@ Vector<Scalar, dim_se_adj<Dim>()> frame_acceleration(
         + relative_acceleration;
 }
 
-} // namespace math
+} // namespace owl
