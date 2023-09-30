@@ -9,15 +9,15 @@ namespace owl {
 
 VisualMesh height_map_to_visual_mesh(
     const HeightMapInterface& height_map,
-    const math::Vector2d& origin,
-    const math::Vector2d& size,
-    const math::Vector2i& divisions,
+    const Vector2d& origin,
+    const Vector2d& size,
+    const Vector2i& divisions,
     const ColorRGBd& color);
 
 HeightMapGrid height_map_to_height_map_grid(
     const HeightMapInterface& height_map,
-    const math::Vector2d& origin,
-    const math::Vector2d& size,
-    const math::Vector2i& divisions);
+    const Vector2d& origin,
+    const Vector2d& size,
+    const Vector2i& divisions);
 
 } // namespace owl

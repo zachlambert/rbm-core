@@ -4,7 +4,6 @@
 
 #include "owl/geometry/collision.h"
 #include "owl/geometry/primitive.h"
-#include <iostream>
 
 namespace owl {
 
@@ -46,7 +45,7 @@ struct collision_details<Edge<Scalar, 3>, Triangle<Scalar, 3>> {
 } // namespace owl
 
 template <typename Scalar>
-struct collision_details<owl::Triangle<Scalar, 3>, owl::Triangle<Scalar, 3>> {
+struct owl::collision_details<owl::Triangle<Scalar, 3>, owl::Triangle<Scalar, 3>> {
     typedef owl::Edge<Scalar, 3> intersection_type;
 
     static bool intersects(const owl::Triangle<Scalar, 3>& a, const owl::Triangle<Scalar, 3>& b) {
@@ -82,7 +81,7 @@ struct collision_details<owl::Triangle<Scalar, 3>, owl::Triangle<Scalar, 3>> {
             owl::Edge<Scalar, 3> edge;
             edge.vertices[0] = a.vertices[i];
             edge.vertices[1] = a.vertices[(i + 1) % 3];
-            auto intersection = ::math::intersection(edge, b);
+            auto intersection = ::owl::intersection(edge, b);
             if (intersection.has_value()) {
                 result.vertices[intersection_count] = intersection.value();
                 intersection_count++;
@@ -94,7 +93,7 @@ struct collision_details<owl::Triangle<Scalar, 3>, owl::Triangle<Scalar, 3>> {
             owl::Edge<Scalar, 3> edge;
             edge.vertices[0] = b.vertices[i];
             edge.vertices[1] = b.vertices[(i + 1) % 3];
-            auto intersection = ::math::intersection(edge, a);
+            auto intersection = ::owl::intersection(edge, a);
             if (intersection.has_value()) {
                 result.vertices[intersection_count] = intersection.value();
                 intersection_count++;
@@ -106,5 +105,3 @@ struct collision_details<owl::Triangle<Scalar, 3>, owl::Triangle<Scalar, 3>> {
         return std::nullopt;
     }
 };
-
-// namespace math
