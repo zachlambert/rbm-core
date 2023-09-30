@@ -52,7 +52,7 @@ add_subdirectory(types)
 add_subdirectory(transform)
 add_subdirectory(diff)
 add_subdirectory(geometry)
-# add_subdirectory(opt)
+add_subdirectory(opt)
 # add_subdirectory(probability)
 # add_subdirectory(mechanics)
 

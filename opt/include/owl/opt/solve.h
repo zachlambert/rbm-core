@@ -73,7 +73,7 @@
 //  the step)
 
 
-namespace math {
+namespace owl {
 
 template <typename X, typename Solver>
 concept is_solver = requires(const Solver& solver, typename Solver::State& state, const X& initial_x) {
@@ -111,4 +111,4 @@ typename Solver::State solve(const X& initial_x, const Solver& solver, std::vect
     return state;
 }
 
-} // namespace math
+} // namespace owl

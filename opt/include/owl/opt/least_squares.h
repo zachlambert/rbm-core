@@ -1,6 +1,6 @@
 #pragma once
 
-#include "math/algebra/dfunction.h"
+#include "owl/diff/dfunction.h"
 #include <memory>
 #include <iostream>
 
@@ -9,7 +9,7 @@
 // They will use numerator-layout convention for derivatives (ie: jacobian layout)
 // since hessian aren't needed.
 
-namespace math::least_squares {
+namespace owl::least_squares {
 
 // Gradient descent with f(x) = 0.5 * e(x)^T * e(x)
 // grad_fx = [e^T * de/dx]^T = (de/dx)^T * e
@@ -261,4 +261,4 @@ private:
 };
 
 
-} // namespace math::least_squares
+} // namespace owl::least_squares

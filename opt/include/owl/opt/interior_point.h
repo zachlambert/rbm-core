@@ -1,10 +1,10 @@
 #pragma once
 
-#include "math/algebra/dfunction.h"
+#include "owl/diff/dfunction.h"
 #include <iostream>
 
 
-namespace math {
+namespace owl {
 
 template <typename X>
 class InteriorPointSolver {
@@ -143,7 +143,7 @@ public:
         // NOTE: At the moment, this doesn't work if this is disabled, since it will overshoot
         if (config_.verify_constraints) {
             while (true) {
-                X test_x = math::manifold_sum<X>(state.x, alpha * delta_z.template head<XDim>());
+                X test_x = manifold_sum<X>(state.x, alpha * delta_z.template head<XDim>());
                 auto test_g_x = g(test_x);
                 if ((test_g_x.array() > 0).all()) break;
                 alpha *= 0.5;
@@ -151,7 +151,7 @@ public:
         }
         delta_z *= alpha;
 
-        math::manifold_add(state.x, delta_z.head(x_dim));
+        manifold_add(state.x, delta_z.head(x_dim));
         state.lambda += delta_z.tail(g_dim);
 
         state.converged = (delta_z.norm() <= config_.convergence_delta_norm);
@@ -171,4 +171,4 @@ private:
     Config config_;
 };
 
-} // namespace math
+} // namespace owl

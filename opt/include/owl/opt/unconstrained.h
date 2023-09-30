@@ -3,11 +3,11 @@
 #include <optional>
 #include <variant>
 #include <Eigen/Eigenvalues>
-#include "math/algebra/dfunction.h"
-#include "math/algebra/manifold.h"
+#include "owl/diff/dfunction.h"
+#include "owl/diff/manifold.h"
 
 
-namespace math::unconstrained {
+namespace owl::unconstrained {
 
 
 template <typename Scalar, int Dim>
@@ -65,7 +65,7 @@ public:
         }
     };
 
-    GradientDescent(const math::ScalarDFunction1<X>& f):
+    GradientDescent(const ScalarDFunction1<X>& f):
         f(f)
     {}
 
@@ -75,7 +75,7 @@ public:
 
     bool step(State& state) const {
         auto delta_x = calculate_delta_x(state.x);
-        math::manifold_add(state.x, delta_x);
+        manifold_add(state.x, delta_x);
         state.converged = (delta_x.norm() <= config_.convergence_delta_norm);
 
         if (!state.converged) {
@@ -88,11 +88,11 @@ public:
     const Config& config() const { return config_; }
 
 private:
-    math::manifold_delta<X> calculate_delta_x(const X& x) const {
+    manifold_delta<X> calculate_delta_x(const X& x) const {
         return -config_.learning_rate * f.gradient(x);
     }
 
-    const math::ScalarDFunction1<X>& f;
+    const ScalarDFunction1<X>& f;
     Config config_;
 };
 
@@ -131,7 +131,7 @@ public:
         }
     };
 
-    GaussNewton(const math::ScalarDFunction2<X>& f):
+    GaussNewton(const ScalarDFunction2<X>& f):
         f(f)
     {}
 
@@ -141,15 +141,15 @@ public:
 
     bool step(State& state) const {
         auto delta_x = calculate_delta_x(state.x);
-        math::manifold_add(state.x, delta_x);
+        manifold_add(state.x, delta_x);
         state.converged = (delta_x.norm() <= config_.convergence_delta_norm);
 
         if (state.converged && config_.verify_minima) {
             auto hessian = f.hessian(state.x);
-            math::manifold_delta<X> perturbation;
+            manifold_delta<X> perturbation;
             if (!verify_minima(hessian, perturbation, config_.maxima_perturbation_amount)) {
                 state.converged = false;
-                math::manifold_add<X>(state.x, perturbation);
+                manifold_add<X>(state.x, perturbation);
             }
         }
         if (!state.converged) {
@@ -170,8 +170,8 @@ private:
         return delta_x;
     }
 
-    const math::ScalarDFunction2<X>& f;
+    const ScalarDFunction2<X>& f;
     Config config_;
 };
 
-} // namespace math::unconstrained
+} // namespace owl::unconstrained
