@@ -26,18 +26,8 @@ endif()
 # Dependencies
 
 find_package(Eigen3 3.4 REQUIRED NO_MODULE)
-
-FetchContent_Declare(cpp-utils
-    GIT_REPOSITORY https://github.com/zachlambert/cpp-utils.git
-    GIT_TAG master
-)
-FetchContent_MakeAvailable(cpp-utils)
-
-FetchContent_Declare(datapack
-    GIT_REPOSITORY https://github.com/zachlambert/datapack.git
-    GIT_TAG master
-)
-FetchContent_MakeAvailable(datapack)
+find_package(datapack REQUIRED)
+find_package(cpp-utils REQUIRED)
 
 # Library
 
@@ -59,3 +49,40 @@ target_link_libraries(mbox INTERFACE
     mbox-probability
     mbox-mechanics
 )
+
+# Create install target
+# https://stackoverflow.com/questions/47718485/install-and-export-interface-only-library-cmake
+
+include(CMakePackageConfigHelpers)
+write_basic_package_version_file(
+    "${PROJECT_BINARY_DIR}/mboxConfigVersion.cmake"
+    VERSION 0.1
+    COMPATIBILITY AnyNewerVersion
+)
+
+install(
+    TARGETS
+        mbox-types
+        mbox-transform
+    EXPORT mboxTargets
+    LIBRARY DESTINATION lib COMPONENT Runtime
+    ARCHIVE DESTINATION lib COMPONENT Development
+    RUNTIME DESTINATION bin COMPONENT Runtime
+    PUBLIC_HEADER DESTINATION include COMPONENT Development
+    BUNDLE DESTINATION bin COMPONENT Runtime
+)
+
+include(CMakePackageConfigHelpers)
+configure_package_config_file(
+    "${PROJECT_SOURCE_DIR}/cmake/mboxConfig.cmake.in"
+    "${PROJECT_BINARY_DIR}/mboxConfig.cmake"
+    INSTALL_DESTINATION lib/cmake/mbox
+)
+
+install(EXPORT mboxTargets DESTINATION lib/cmake/mbox)
+install(FILES "${PROJECT_BINARY_DIR}/mboxConfigVersion.cmake"
+              "${PROJECT_BINARY_DIR}/mboxConfig.cmake"
+        DESTINATION lib/cmake/mbox)
+
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/types/include/ DESTINATION include)
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/transform/include/ DESTINATION include)
