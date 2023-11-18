@@ -33,18 +33,11 @@ FetchContent_Declare(cpp-utils
 )
 FetchContent_MakeAvailable(cpp-utils)
 
-FetchContent_Declare(parrot
-    GIT_REPOSITORY https://github.com/zachlambert/parrot.git
+FetchContent_Declare(dataflow
+    GIT_REPOSITORY https://github.com/zachlambert/dataflow.git
     GIT_TAG master
 )
-FetchContent_MakeAvailable(parrot)
-
-FetchContent_Declare(sentinel
-    GIT_REPOSITORY https://github.com/zachlambert/sentinel.git
-    GIT_TAG master
-)
-FetchContent_MakeAvailable(sentinel)
-
+FetchContent_MakeAvailable(dataflow)
 
 # Library
 
@@ -56,13 +49,13 @@ add_subdirectory(opt)
 add_subdirectory(probability)
 add_subdirectory(mechanics)
 
-add_library(owl INTERFACE)
-target_link_libraries(owl INTERFACE
-    owl_types
-    owl_transform
-    owl_diff
-    owl_geometry
-    owl_opt
-    owl_probability
-    owl_mechanics
+add_library(mathbox INTERFACE)
+target_link_libraries(mathbox INTERFACE
+    mathbox-types
+    mathbox-transform
+    mathbox-diff
+    mathbox-geometry
+    mathbox-opt
+    mathbox-probability
+    mathbox-mechanics
 )
