@@ -1,6 +1,6 @@
 #pragma once
 
-#include "mathbox/geometry/height_map.h"
+#include "mbox/geometry/height_map.h"
 
 
 namespace mbox {

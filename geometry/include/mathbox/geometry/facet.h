@@ -1,7 +1,7 @@
 #pragma once
 
-#include "mathbox/types/matrix.h"
-#include "mathbox/geometry/bounding.h"
+#include "mbox/types/matrix.h"
+#include "mbox/geometry/bounding.h"
 #include <array>
 
 namespace mbox {

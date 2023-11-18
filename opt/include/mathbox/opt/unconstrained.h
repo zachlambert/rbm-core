@@ -3,8 +3,8 @@
 #include <optional>
 #include <variant>
 #include <Eigen/Eigenvalues>
-#include "mathbox/diff/dfunction.h"
-#include "mathbox/diff/manifold.h"
+#include "mbox/diff/dfunction.h"
+#include "mbox/diff/manifold.h"
 
 
 namespace mbox::unconstrained {

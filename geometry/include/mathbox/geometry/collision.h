@@ -1,7 +1,7 @@
 #pragma once
 
 #include <concepts>
-#include "mathbox/types/matrix.h"
+#include "mbox/types/matrix.h"
 #include <optional>
 
 namespace mbox {

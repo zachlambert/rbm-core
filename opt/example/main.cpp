@@ -1,8 +1,8 @@
 
-#include "mathbox/opt/unconstrained.h"
-#include "mathbox/opt/least_squares.h"
-#include "mathbox/opt/interior_point.h"
-#include "mathbox/opt/solve.h"
+#include "mbox/opt/unconstrained.h"
+#include "mbox/opt/least_squares.h"
+#include "mbox/opt/interior_point.h"
+#include "mbox/opt/solve.h"
 #include <iostream>
 
 // TODO

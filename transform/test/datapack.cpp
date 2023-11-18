@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
-#include <mathbox/transform/euler.h>
-#include <mathbox/transform/datapack.h>
+#include <mbox/transform/euler.h>
+#include <mbox/transform/datapack.h>
 
 TEST(Transform, Datapack)
 {

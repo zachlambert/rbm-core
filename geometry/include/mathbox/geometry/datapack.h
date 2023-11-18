@@ -1,13 +1,13 @@
 #pragma once
 
 #include "datapack/json.h"
-#include "mathbox/types/datapack.h"
-#include "mathbox/transform/datapack.h"
+#include "mbox/types/datapack.h"
+#include "mbox/transform/datapack.h"
 
-#include "mathbox/geometry/vertex.h"
-#include "mathbox/geometry/mesh.h"
-#include "mathbox/geometry/primitive.h"
-#include "mathbox/transform/euler.h"
+#include "mbox/geometry/vertex.h"
+#include "mbox/geometry/mesh.h"
+#include "mbox/geometry/primitive.h"
+#include "mbox/transform/euler.h"
 
 
 template <typename Scalar, int Dim>

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "mathbox/transform/transform.h"
-#include "mathbox/transform/angle.h"
+#include "mbox/transform/transform.h"
+#include "mbox/transform/angle.h"
 
 
 namespace mbox {

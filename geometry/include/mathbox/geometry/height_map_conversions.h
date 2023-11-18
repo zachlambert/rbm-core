@@ -1,8 +1,8 @@
 #pragma once
 
-#include "mathbox/geometry/height_map.h"
-#include "mathbox/geometry/height_map_grid.h"
-#include "mathbox/geometry/visual_mesh.h"
+#include "mbox/geometry/height_map.h"
+#include "mbox/geometry/height_map_grid.h"
+#include "mbox/geometry/visual_mesh.h"
 
 
 namespace mbox {

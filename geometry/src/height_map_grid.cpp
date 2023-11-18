@@ -1,5 +1,5 @@
 
-#include "mathbox/geometry/height_map_grid.h"
+#include "mbox/geometry/height_map_grid.h"
 
 
 namespace mbox {

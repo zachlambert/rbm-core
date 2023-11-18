@@ -1,7 +1,7 @@
 #pragma once
 
-#include "mathbox/geometry/mesh.h"
-#include "mathbox/geometry/bvh.h"
+#include "mbox/geometry/mesh.h"
+#include "mbox/geometry/bvh.h"
 
 namespace mbox {
 

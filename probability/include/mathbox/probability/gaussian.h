@@ -1,8 +1,8 @@
 #pragma once
 
-#include "mathbox/probability/distribution.h"
-#include "mathbox/types/matrix.h"
-#include "mathbox/diff/manifold.h"
+#include "mbox/probability/distribution.h"
+#include "mbox/types/matrix.h"
+#include "mbox/diff/manifold.h"
 
 
 namespace mbox {

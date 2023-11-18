@@ -1,8 +1,8 @@
 #pragma once
 
-#include "mathbox/transform/transform.h"
-#include "mathbox/geometry/primitive.h"
-#include "mathbox/transform/adjoint.h"
+#include "mbox/transform/transform.h"
+#include "mbox/geometry/primitive.h"
+#include "mbox/transform/adjoint.h"
 #include <Eigen/Jacobi>
 
 

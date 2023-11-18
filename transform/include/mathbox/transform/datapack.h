@@ -1,8 +1,8 @@
 #pragma once
 
-#include "mathbox/transform/euler.h"
+#include "mbox/transform/euler.h"
 #include "datapack/json.h"
-#include "mathbox/types/datapack.h"
+#include "mbox/types/datapack.h"
 
 
 template <typename Scalar, int Dim>

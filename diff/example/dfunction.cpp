@@ -1,5 +1,5 @@
 
-#include "mathbox/diff/dfunction.h"
+#include "mbox/diff/dfunction.h"
 #include <iostream>
 
 template <typename X>

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "mathbox/probability//gaussian.h"
+#include "mbox/probability//gaussian.h"
 
 namespace mbox {
 

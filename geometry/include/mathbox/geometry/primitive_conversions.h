@@ -1,8 +1,8 @@
 #pragma once
 
-#include "mathbox/geometry/primitive.h"
-#include "mathbox/geometry/mesh.h"
-#include "mathbox/geometry/vertex.h"
+#include "mbox/geometry/primitive.h"
+#include "mbox/geometry/mesh.h"
+#include "mbox/geometry/vertex.h"
 
 
 namespace mbox {

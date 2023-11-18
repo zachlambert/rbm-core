@@ -1,5 +1,5 @@
 
-#include "mathbox/geometry/primitive_collisions.h"
+#include "mbox/geometry/primitive_collisions.h"
 #include <iostream>
 
 int test_edge_triangle() {

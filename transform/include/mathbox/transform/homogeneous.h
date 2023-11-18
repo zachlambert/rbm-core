@@ -1,6 +1,6 @@
 #pragma once
 
-#include "mathbox/types/matrix.h"
+#include "mbox/types/matrix.h"
 
 
 namespace mbox {

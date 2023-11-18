@@ -1,5 +1,5 @@
 
-#include "mathbox/geometry/height_map_conversions.h"
+#include "mbox/geometry/height_map_conversions.h"
 #include <iostream>
 
 

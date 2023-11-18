@@ -1,5 +1,5 @@
 
-#include "mathbox/mechanics/inertia.h"
+#include "mbox/mechanics/inertia.h"
 #include <iostream>
 
 

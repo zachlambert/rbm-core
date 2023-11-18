@@ -2,8 +2,8 @@
 
 // TODO: Do other primitives too
 
-#include "mathbox/geometry/collision.h"
-#include "mathbox/geometry/primitive.h"
+#include "mbox/geometry/collision.h"
+#include "mbox/geometry/primitive.h"
 
 namespace mbox {
 

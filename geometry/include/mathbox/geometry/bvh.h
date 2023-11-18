@@ -1,9 +1,9 @@
 #pragma once
 
-#include "mathbox/geometry/bounding.h"
-#include "mathbox/geometry/primitive.h"
-#include "mathbox/geometry/collision.h"
-#include "mathbox/geometry/primitive_collisions.h"
+#include "mbox/geometry/bounding.h"
+#include "mbox/geometry/primitive.h"
+#include "mbox/geometry/collision.h"
+#include "mbox/geometry/primitive_collisions.h"
 #include <algorithm>
 #include <iostream>
 #include <stack>

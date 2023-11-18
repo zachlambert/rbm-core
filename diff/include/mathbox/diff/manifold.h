@@ -1,8 +1,8 @@
 #pragma once
 
-#include "mathbox/types/matrix.h"
-#include "mathbox/transform/transform.h"
-#include "mathbox/transform/angle.h"
+#include "mbox/types/matrix.h"
+#include "mbox/transform/transform.h"
+#include "mbox/transform/angle.h"
 #include <type_traits>
 
 

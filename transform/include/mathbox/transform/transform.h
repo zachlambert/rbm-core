@@ -1,11 +1,11 @@
 #pragma once
 
 #include <Eigen/Geometry>
-#include "mathbox/transform/group_dimensions.h"
-#include "mathbox/transform/angle.h"
-#include "mathbox/transform/cross_product_matrix.h"
-#include "mathbox/transform/screw_transform.h"
-#include "mathbox/transform/rotation.h"
+#include "mbox/transform/group_dimensions.h"
+#include "mbox/transform/angle.h"
+#include "mbox/transform/cross_product_matrix.h"
+#include "mbox/transform/screw_transform.h"
+#include "mbox/transform/rotation.h"
 #include <cmath>
 
 

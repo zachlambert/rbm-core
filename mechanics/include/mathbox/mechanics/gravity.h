@@ -1,8 +1,8 @@
 #pragma once
 
-#include "mathbox/types/matrix.h"
-#include "mathbox/transform/transform.h"
-#include "mathbox/mechanics/inertia.h"
+#include "mbox/types/matrix.h"
+#include "mbox/transform/transform.h"
+#include "mbox/mechanics/inertia.h"
 
 
 namespace mbox {

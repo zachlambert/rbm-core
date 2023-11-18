@@ -1,8 +1,8 @@
 #pragma once
 
-#include "mathbox/types/matrix.h"
-#include "mathbox/types/color.h"
-#include "mathbox/types/interval.h"
+#include "mbox/types/matrix.h"
+#include "mbox/types/color.h"
+#include "mbox/types/interval.h"
 #include "datapack/json.h"
 
 

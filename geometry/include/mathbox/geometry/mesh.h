@@ -4,9 +4,9 @@
 #include <algorithm>
 #include <array>
 #include <unordered_map>
-#include "mathbox/geometry/vertex.h"
-#include "mathbox/geometry/facet.h"
-#include "mathbox/geometry/primitive.h"
+#include "mbox/geometry/vertex.h"
+#include "mbox/geometry/facet.h"
+#include "mbox/geometry/primitive.h"
 
 
 namespace mbox {

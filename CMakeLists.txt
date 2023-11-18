@@ -49,13 +49,13 @@ add_subdirectory(opt)
 add_subdirectory(probability)
 add_subdirectory(mechanics)
 
-add_library(mathbox INTERFACE)
-target_link_libraries(mathbox INTERFACE
-    mathbox-types
-    mathbox-transform
-    mathbox-diff
-    mathbox-geometry
-    mathbox-opt
-    mathbox-probability
-    mathbox-mechanics
+add_library(mbox INTERFACE)
+target_link_libraries(mbox INTERFACE
+    mbox-types
+    mbox-transform
+    mbox-diff
+    mbox-geometry
+    mbox-opt
+    mbox-probability
+    mbox-mechanics
 )

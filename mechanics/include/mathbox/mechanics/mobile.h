@@ -1,7 +1,7 @@
 #pragma once
 
-#include "mathbox/types/matrix.h"
-#include "mathbox/transform/transform.h"
+#include "mbox/types/matrix.h"
+#include "mbox/transform/transform.h"
 
 namespace mbox {
 

@@ -1,5 +1,5 @@
 
-#include "mathbox/probability/gaussian.h"
+#include "mbox/probability/gaussian.h"
 #include <iostream>
 
 

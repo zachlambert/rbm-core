@@ -4,11 +4,11 @@
 #include <array>
 #include <concepts>
 #include "cpp_utils/annotated_variant.h"
-#include "mathbox/types/matrix.h"
-#include "mathbox/types/color.h"
-#include "mathbox/transform/transform.h"
-#include "mathbox/transform/homogeneous.h"
-#include "mathbox/geometry/bounding.h"
+#include "mbox/types/matrix.h"
+#include "mbox/types/color.h"
+#include "mbox/transform/transform.h"
+#include "mbox/transform/homogeneous.h"
+#include "mbox/geometry/bounding.h"
 
 namespace mbox {
 

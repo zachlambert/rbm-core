@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
-#include <mathbox/transform/transform.h>
-#include <mathbox/transform/euler.h>
-#include <mathbox/transform/io.h>
+#include <mbox/transform/transform.h>
+#include <mbox/transform/euler.h>
+#include <mbox/transform/io.h>
 
 
 TEST(Transform, Transform3)

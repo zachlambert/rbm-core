@@ -1,5 +1,5 @@
 
-#include "mathbox/geometry/height_map_functional.h"
+#include "mbox/geometry/height_map_functional.h"
 
 // Note: Must include this eigen header, otherwise there are linker error
 // with the cross product
