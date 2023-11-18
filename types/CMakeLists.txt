@@ -1,7 +1,7 @@
-add_library(owl_types INTERFACE)
-target_include_directories(owl_types
+add_library(mathbox-types INTERFACE)
+target_include_directories(mathbox-types
     INTERFACE include
 )
-target_link_libraries(owl_types
-    INTERFACE Eigen3::Eigen cpp-utils parrot
+target_link_libraries(mathbox-types
+    INTERFACE Eigen3::Eigen cpp-utils dataflow
 )

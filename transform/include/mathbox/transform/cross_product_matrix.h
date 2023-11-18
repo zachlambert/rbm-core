@@ -1,9 +1,9 @@
 #pragma once
 
-#include "owl/types/matrix.h"
+#include "mathbox/types/matrix.h"
 
 
-namespace owl {
+namespace mbox {
 
 template <typename Scalar>
 inline Eigen::Matrix<Scalar, 2, 2> cross_product_matrix(Scalar scalar)
@@ -37,4 +37,4 @@ inline Eigen::Matrix<Scalar, 3, 3> cross_product_matrix(const Eigen::Vector<Scal
     return result;
 }
 
-} // namespace owl
+} // namespace mbox

@@ -1,10 +1,10 @@
 #pragma once
 
 #include <cmath>
-#include "owl/types/matrix.h"
+#include "mathbox/types/matrix.h"
 
 
-namespace owl {
+namespace mbox {
 
 template <typename T>
 T sinc(T x)
@@ -43,4 +43,4 @@ Matrix<Scalar, Dim, Dim> screw_displacement_matrix(
     return decltype(S)::Identity() + cos_comp * S + sin_comp * S * S;
 }
 
-} // namespace owl
+} // namespace mbox

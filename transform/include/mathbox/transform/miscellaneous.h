@@ -1,14 +1,14 @@
 #pragma once
 
-#include "owl/types/matrix.h"
+#include "mathbox/types/matrix.h"
 
 
-namespace owl {
+namespace mbox {
 
 template <typename Scalar>
 Scalar angle_between(const Vector<Scalar, 3>& a, const Vector<Scalar, 3>& b)
 {
-    typedef ::owl::Vector<Scalar, 3> Vector;
+    typedef ::mbox::Vector<Scalar, 3> Vector;
 
     if (a.norm() == 0 || b.norm() == 0) return 0;
 
@@ -61,4 +61,4 @@ Matrix<Scalar, 3, 3> rotation_from_normal(const Vector<Scalar, 3>& normal) {
     return rotation_from_direction(normal, 2);
 }
 
-} // namespace owl
+} // namespace mbox

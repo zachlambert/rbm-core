@@ -1,7 +1,7 @@
 #pragma once
 
 
-namespace owl {
+namespace mbox {
 
 template <int Dim>
 constexpr int dim_so() {
@@ -20,4 +20,4 @@ constexpr int dim_se_adj() {
     return Dim * 2;
 }
 
-} // namespace owl
+} // namespace mbox

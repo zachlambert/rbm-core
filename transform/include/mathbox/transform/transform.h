@@ -1,15 +1,15 @@
 #pragma once
 
 #include <Eigen/Geometry>
-#include "owl/transform/group_dimensions.h"
-#include "owl/transform/angle.h"
-#include "owl/transform/cross_product_matrix.h"
-#include "owl/transform/screw_transform.h"
-#include "owl/transform/rotation.h"
+#include "mathbox/transform/group_dimensions.h"
+#include "mathbox/transform/angle.h"
+#include "mathbox/transform/cross_product_matrix.h"
+#include "mathbox/transform/screw_transform.h"
+#include "mathbox/transform/rotation.h"
 #include <cmath>
 
 
-namespace owl {
+namespace mbox {
 
 template <typename Scalar, int Dim>
 class Transform {
@@ -222,4 +222,4 @@ typedef LogTransform<double, 2> LogTransform2d;
 typedef LogTransform<float, 3> LogTransform3f;
 typedef LogTransform<double, 3> LogTransform3d;
 
-} // namespace owl
+} // namespace mbox

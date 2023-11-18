@@ -1,10 +1,10 @@
 #pragma once
 
-#include "owl/transform/transform.h"
-#include "owl/transform/angle.h"
+#include "mathbox/transform/transform.h"
+#include "mathbox/transform/angle.h"
 
 
-namespace owl {
+namespace mbox {
 
 template <typename Scalar, int Dim>
 class EulerRotation {
@@ -212,4 +212,4 @@ typedef EulerTransform<float, 3> EulerTransform3f;
 typedef EulerTransform<double, 2> EulerTransform2d;
 typedef EulerTransform<double, 3> EulerTransform3d;
 
-} // namespace owl
+} // namespace mbox

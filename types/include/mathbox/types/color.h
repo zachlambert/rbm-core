@@ -3,7 +3,7 @@
 #include <array>
 
 
-namespace owl {
+namespace mbox {
 
 template <typename Scalar>
 struct ColorRGB {
@@ -43,4 +43,4 @@ struct ColorRGB {
 typedef ColorRGB<float> ColorRGBf;
 typedef ColorRGB<double> ColorRGBd;
 
-} // namespace owl
+} // namespace mbox

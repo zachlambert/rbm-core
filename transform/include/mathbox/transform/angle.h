@@ -1,10 +1,10 @@
 #pragma once
 
 #include <cmath>
-#include "owl/types/matrix.h"
+#include "mathbox/types/matrix.h"
 
 
-namespace owl {
+namespace mbox {
 
 template <typename T>
 void normalize_angle(T& angle) {
@@ -64,7 +64,7 @@ public:
         return Angle<T_>(static_cast<T_>(angle));
     }
 
-    Angle<T>& operator=(const owl::Matrix<T, 2, 2>& rotation) {
+    Angle<T>& operator=(const Matrix<T, 2, 2>& rotation) {
         angle = std::atan2(rotation(1, 0), rotation(0, 0));
         return angle;
     }
@@ -116,8 +116,8 @@ Angle<T> operator-(Angle<T> lhs)
 }
 
 template <typename T>
-owl::Vector<T, 2> operator*(const Angle<T>& lhs, const owl::Vector<T, 2>& rhs) {
+Vector<T, 2> operator*(const Angle<T>& lhs, const Vector<T, 2>& rhs) {
     return Eigen::Rotation2D<T>(lhs) * rhs;
 }
 
-} // namespace owl
+} // namespace mbox

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "owl/transform/transform.h"
+#include "mathbox/transform/transform.h"
 
-namespace owl {
+namespace mbox {
 
 template <typename Scalar, int Dim>
 class AdjointTransform {
@@ -90,4 +90,4 @@ typedef AdjointLieBracket<double, 2> AdjointLieBracket2d;
 typedef AdjointLieBracket<float, 3> AdjointLieBracket3f;
 typedef AdjointLieBracket<double, 3> AdjointLieBracket3d;
 
-} // namespace owl
+} // namespace mbox
