@@ -4,19 +4,19 @@
 #include <algorithm>
 #include <array>
 #include <unordered_map>
-#include "owl/geometry/vertex.h"
-#include "owl/geometry/facet.h"
-#include "owl/geometry/primitive.h"
+#include "mathbox/geometry/vertex.h"
+#include "mathbox/geometry/facet.h"
+#include "mathbox/geometry/primitive.h"
 
 
-namespace owl {
+namespace mbox {
 
 template <typename Vertex_, typename IndexType_, int VertexCount_>
 struct Mesh {
     using Vertex = Vertex_;
     using IndexType = IndexType_;
     static constexpr int VertexCount = VertexCount_;
-    using Facet = ::owl::Facet<IndexType, VertexCount>;
+    using Facet = ::mbox::Facet<IndexType, VertexCount>;
 
     std::vector<Vertex> vertices;
     std::vector<Facet> facets;
@@ -73,4 +73,4 @@ void scale(Scalar scaling, Mesh& mesh) {
 }
 #endif
 
-} // namespace owl
+} // namespace mbox

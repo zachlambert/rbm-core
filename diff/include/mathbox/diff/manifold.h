@@ -1,12 +1,12 @@
 #pragma once
 
-#include "owl/types/matrix.h"
-#include "owl/transform/transform.h"
-#include "owl/transform/angle.h"
+#include "mathbox/types/matrix.h"
+#include "mathbox/transform/transform.h"
+#include "mathbox/transform/angle.h"
 #include <type_traits>
 
 
-namespace owl {
+namespace mbox {
 
 template <typename T>
 struct manifold_details {};
@@ -173,4 +173,4 @@ struct manifold_details<Empty> {
     static Vectord<0> difference(const Empty& a, const Empty& b) { return Vectord<0>(); }
 };
 
-} // namespace owl
+} // namespace mbox

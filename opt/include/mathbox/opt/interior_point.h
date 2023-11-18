@@ -1,10 +1,10 @@
 #pragma once
 
-#include "owl/diff/dfunction.h"
+#include "mathbox/diff/dfunction.h"
 #include <iostream>
 
 
-namespace owl {
+namespace mbox {
 
 template <typename X>
 class InteriorPointSolver {
@@ -171,4 +171,4 @@ private:
     Config config_;
 };
 
-} // namespace owl
+} // namespace mbox

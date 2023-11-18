@@ -2,10 +2,10 @@
 
 // TODO: Do other primitives too
 
-#include "owl/geometry/collision.h"
-#include "owl/geometry/primitive.h"
+#include "mathbox/geometry/collision.h"
+#include "mathbox/geometry/primitive.h"
 
-namespace owl {
+namespace mbox {
 
 template <typename Scalar>
 struct collision_details<Edge<Scalar, 3>, Triangle<Scalar, 3>> {
@@ -42,18 +42,18 @@ struct collision_details<Edge<Scalar, 3>, Triangle<Scalar, 3>> {
     }
 };
 
-} // namespace owl
+} // namespace mbox
 
 template <typename Scalar>
-struct owl::collision_details<owl::Triangle<Scalar, 3>, owl::Triangle<Scalar, 3>> {
-    typedef owl::Edge<Scalar, 3> intersection_type;
+struct mbox::collision_details<mbox::Triangle<Scalar, 3>, mbox::Triangle<Scalar, 3>> {
+    typedef mbox::Edge<Scalar, 3> intersection_type;
 
-    static bool intersects(const owl::Triangle<Scalar, 3>& a, const owl::Triangle<Scalar, 3>& b) {
+    static bool intersects(const mbox::Triangle<Scalar, 3>& a, const mbox::Triangle<Scalar, 3>& b) {
         int intersection_count = 0;
         // Query edges of a with triangle b
         for (std::size_t i = 0; i < 3; i++) {
             if (intersection_count == 2) break;
-            owl::Edge<Scalar, 3> edge;
+            mbox::Edge<Scalar, 3> edge;
             edge.vertices[0] = a.vertices[i];
             edge.vertices[1] = a.vertices[(i + 1) % 3];
             intersection_count += intersects(edge, b);
@@ -61,7 +61,7 @@ struct owl::collision_details<owl::Triangle<Scalar, 3>, owl::Triangle<Scalar, 3>
         // Query edges of b with triangle a
         for (std::size_t i = 0; i < 3; i++) {
             if (intersection_count == 2) break;
-            owl::Edge<Scalar, 3> edge;
+            mbox::Edge<Scalar, 3> edge;
             edge.vertices[0] = b.vertices[i];
             edge.vertices[1] = b.vertices[(i + 1) % 3];
             intersection_count += intersects(edge, a);
@@ -69,19 +69,19 @@ struct owl::collision_details<owl::Triangle<Scalar, 3>, owl::Triangle<Scalar, 3>
         return intersection_count == 2;
     }
 
-    static std::optional<owl::Edge<Scalar, 3>> intersection(
-            const owl::Triangle<Scalar, 3>& a,
-            const owl::Triangle<Scalar, 3>& b)
+    static std::optional<mbox::Edge<Scalar, 3>> intersection(
+            const mbox::Triangle<Scalar, 3>& a,
+            const mbox::Triangle<Scalar, 3>& b)
     {
         int intersection_count = 0;
-        owl::Edge<Scalar, 3> result;
+        mbox::Edge<Scalar, 3> result;
         // Query edges of a with triangle b
         for (std::size_t i = 0; i < 3; i++) {
             if (intersection_count == 2) break;
-            owl::Edge<Scalar, 3> edge;
+            mbox::Edge<Scalar, 3> edge;
             edge.vertices[0] = a.vertices[i];
             edge.vertices[1] = a.vertices[(i + 1) % 3];
-            auto intersection = ::owl::intersection(edge, b);
+            auto intersection = ::mbox::intersection(edge, b);
             if (intersection.has_value()) {
                 result.vertices[intersection_count] = intersection.value();
                 intersection_count++;
@@ -90,10 +90,10 @@ struct owl::collision_details<owl::Triangle<Scalar, 3>, owl::Triangle<Scalar, 3>
         // Query edges of b with triangle a
         for (std::size_t i = 0; i < 3; i++) {
             if (intersection_count == 2) break;
-            owl::Edge<Scalar, 3> edge;
+            mbox::Edge<Scalar, 3> edge;
             edge.vertices[0] = b.vertices[i];
             edge.vertices[1] = b.vertices[(i + 1) % 3];
-            auto intersection = ::owl::intersection(edge, a);
+            auto intersection = ::mbox::intersection(edge, a);
             if (intersection.has_value()) {
                 result.vertices[intersection_count] = intersection.value();
                 intersection_count++;

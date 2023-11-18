@@ -1,9 +1,9 @@
 
-#include "owl/geometry/height_map_conversions.h"
+#include "mathbox/geometry/height_map_conversions.h"
 #include <iostream>
 
 
-namespace owl {
+namespace mbox {
 
 VisualMesh height_map_to_visual_mesh(
     const HeightMapInterface& height_map,
@@ -126,4 +126,4 @@ HeightMapGrid height_map_to_height_map_grid(
     return grid;
 }
 
-} // namespace owl
+} // namespace mbox

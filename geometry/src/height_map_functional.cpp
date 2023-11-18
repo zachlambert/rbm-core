@@ -1,12 +1,12 @@
 
-#include "owl/geometry/height_map_functional.h"
+#include "mathbox/geometry/height_map_functional.h"
 
 // Note: Must include this eigen header, otherwise there are linker error
 // with the cross product
 #include <Eigen/Geometry>
 
 
-namespace owl {
+namespace mbox {
 
 double HeightMapGaussianMixture::height(const Vector2d& position) const {
     double z = 0;
@@ -29,4 +29,4 @@ Vector3d HeightMapGaussianMixture::normal(const Vector2d& position) const {
     return normal;
 }
 
-} // namespace owl
+} // namespace mbox

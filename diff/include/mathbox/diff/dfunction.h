@@ -1,11 +1,11 @@
 #pragma once
 
-#include "owl/diff/manifold.h"
-#include "owl/types/matrix.h"
-#include "owl/types/mtensor.h"
+#include "mathbox/diff/manifold.h"
+#include "mathbox/types/matrix.h"
+#include "mathbox/types/mtensor.h"
 
 
-namespace owl {
+namespace mbox {
 
 // DFunction = Differentiable function
 // DFunction1 = Once differentiable
@@ -167,4 +167,4 @@ private:
 // MultiDFunction2: TODO
 
 
-} // namespace math
+} // namespace mbox

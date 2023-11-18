@@ -1,12 +1,12 @@
 #pragma once
 
-#include "owl/transform/transform.h"
-#include "owl/geometry/primitive.h"
-#include "owl/transform/adjoint.h"
+#include "mathbox/transform/transform.h"
+#include "mathbox/geometry/primitive.h"
+#include "mathbox/transform/adjoint.h"
 #include <Eigen/Jacobi>
 
 
-namespace owl {
+namespace mbox {
 
 template <typename Scalar, int Dim>
 struct SpatialInertia {
@@ -204,4 +204,4 @@ SpatialInertia<Scalar, Dim> primitive_to_inertia(const InstancedPrimitive<Scalar
     return std::visit([density](const auto& value) { return primitive_to_inertia(value, density); }, primitive);
 }
 
-} // namespace owl
+} // namespace mbox

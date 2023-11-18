@@ -4,13 +4,13 @@
 #include <array>
 #include <concepts>
 #include "cpp_utils/annotated_variant.h"
-#include "owl/types/matrix.h"
-#include "owl/types/color.h"
-#include "owl/transform/transform.h"
-#include "owl/transform/homogeneous.h"
-#include "owl/geometry/bounding.h"
+#include "mathbox/types/matrix.h"
+#include "mathbox/types/color.h"
+#include "mathbox/transform/transform.h"
+#include "mathbox/transform/homogeneous.h"
+#include "mathbox/geometry/bounding.h"
 
-namespace owl {
+namespace mbox {
 
 template <typename T>
 concept is_primitive = requires(T t, Transform<typename T::Scalar, T::Dim> transform, typename T::Scalar scaling) {
@@ -364,38 +364,38 @@ typedef ColoredPrimitive<float, 3> ColoredPrimitive3f;
 typedef ColoredPrimitive<double, 2> ColoredPrimitive2d;
 typedef ColoredPrimitive<double, 3> ColoredPrimitive3d;
 
-} // namespace owl
+} // namespace mbox
 
 template <typename Scalar, int Dim>
-struct cpp_utils::variant_details<owl::InstancedPrimitive<Scalar, Dim>> {
-    typedef owl::InstancedPrimitive<Scalar, Dim> T;
+struct cpp_utils::variant_details<mbox::InstancedPrimitive<Scalar, Dim>> {
+    typedef mbox::InstancedPrimitive<Scalar, Dim> T;
     static constexpr std::size_t count = 4;
     static T construct(std::size_t i) {
         switch(i) {
         case 0:
-            return owl::Box<Scalar, Dim>();
+            return mbox::Box<Scalar, Dim>();
         case 1:
-            return owl::Sphere<Scalar, Dim>();
+            return mbox::Sphere<Scalar, Dim>();
         case 2:
-            return owl::Cylinder<Scalar, Dim>();
+            return mbox::Cylinder<Scalar, Dim>();
         case 3:
-            return owl::Cone<Scalar, Dim>();
+            return mbox::Cone<Scalar, Dim>();
         default:
             assert(false);
-            return owl::Box<Scalar, Dim>();
+            return mbox::Box<Scalar, Dim>();
         }
     }
     static std::size_t index(const T& variant) {
-        if (std::get_if<owl::Box<Scalar, Dim>>(&variant)) {
+        if (std::get_if<mbox::Box<Scalar, Dim>>(&variant)) {
             return 0;
         }
-        else if (std::get_if<owl::Sphere<Scalar, Dim>>(&variant)) {
+        else if (std::get_if<mbox::Sphere<Scalar, Dim>>(&variant)) {
             return 1;
         }
-        else if (std::get_if<owl::Cylinder<Scalar, Dim>>(&variant)) {
+        else if (std::get_if<mbox::Cylinder<Scalar, Dim>>(&variant)) {
             return 2;
         }
-        else if (std::get_if<owl::Cone<Scalar, Dim>>(&variant)) {
+        else if (std::get_if<mbox::Cone<Scalar, Dim>>(&variant)) {
             return 3;
         }
         else {

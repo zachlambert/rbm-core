@@ -1,9 +1,9 @@
 #pragma once
 
-#include "owl/geometry/mesh.h"
-#include "owl/geometry/vertex.h"
+#include "mathbox/geometry/mesh.h"
+#include "mathbox/geometry/vertex.h"
 
-namespace owl {
+namespace mbox {
 
 using VisualMeshVertex = make_vertex<float, 3,
     vertex_attributes::position |
@@ -12,4 +12,4 @@ using VisualMeshVertex = make_vertex<float, 3,
 >;
 using VisualMesh = Mesh<VisualMeshVertex, unsigned short, 3>;
 
-} // namespace owl
+} // namespace mbox

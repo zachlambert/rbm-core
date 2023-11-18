@@ -1,10 +1,10 @@
 #pragma once
 
-#include "owl/types/matrix.h"
+#include "mathbox/types/matrix.h"
 #include "cpp_utils/cloneable.h"
 #include <memory>
 
-namespace owl {
+namespace mbox {
 
 class HeightMapInterface {
 public:
@@ -45,4 +45,4 @@ public:
     }
 };
 
-} // namespace owl
+} // namespace mbox

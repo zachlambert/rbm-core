@@ -3,11 +3,11 @@
 #include <optional>
 #include <variant>
 #include <Eigen/Eigenvalues>
-#include "owl/diff/dfunction.h"
-#include "owl/diff/manifold.h"
+#include "mathbox/diff/dfunction.h"
+#include "mathbox/diff/manifold.h"
 
 
-namespace owl::unconstrained {
+namespace mbox::unconstrained {
 
 
 template <typename Scalar, int Dim>
@@ -174,4 +174,4 @@ private:
     Config config_;
 };
 
-} // namespace owl::unconstrained
+} // namespace mbox::unconstrained

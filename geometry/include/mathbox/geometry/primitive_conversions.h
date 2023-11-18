@@ -1,11 +1,11 @@
 #pragma once
 
-#include "owl/geometry/primitive.h"
-#include "owl/geometry/mesh.h"
-#include "owl/geometry/vertex.h"
+#include "mathbox/geometry/primitive.h"
+#include "mathbox/geometry/mesh.h"
+#include "mathbox/geometry/vertex.h"
 
 
-namespace owl {
+namespace mbox {
 
 template <typename Scalar, int Dim, typename Mesh>
 requires has_position<Scalar, Dim, typename Mesh::Vertex>
@@ -336,4 +336,4 @@ void primitive_to_mesh(const InstancedPrimitive<Scalar, Dim>& primitive, double 
     }, primitive);
 }
 
-} // namespace owl
+} // namespace mbox

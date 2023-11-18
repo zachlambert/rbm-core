@@ -1,10 +1,10 @@
 #pragma once
 
-#include "owl/geometry/height_map.h"
-#include "owl/geometry/grid.h"
+#include "mathbox/geometry/height_map.h"
+#include "mathbox/geometry/grid.h"
 
 
-namespace owl {
+namespace mbox {
 
 class HeightMapGrid: public HeightMapInterface {
 public:
@@ -57,4 +57,4 @@ private:
     GridDimensions2d dimensions_;
 };
 
-} // namespace owl
+} // namespace mbox

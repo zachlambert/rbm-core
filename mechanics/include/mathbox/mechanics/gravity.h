@@ -1,11 +1,11 @@
 #pragma once
 
-#include "owl/types/matrix.h"
-#include "owl/transform/transform.h"
-#include "owl/mechanics/inertia.h"
+#include "mathbox/types/matrix.h"
+#include "mathbox/transform/transform.h"
+#include "mathbox/mechanics/inertia.h"
 
 
-namespace owl {
+namespace mbox {
 
 static constexpr double gravity = 9.81;
 
@@ -32,4 +32,4 @@ inline Vector6d frame_gravity_force(const Rotation3d& rotation, const SpatialIne
 }
 
 
-} // namespace owl
+} // namespace mbox

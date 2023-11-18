@@ -1,11 +1,11 @@
 #pragma once
 
-#include "owl/probability/distribution.h"
-#include "owl/types/matrix.h"
-#include "owl/diff/manifold.h"
+#include "mathbox/probability/distribution.h"
+#include "mathbox/types/matrix.h"
+#include "mathbox/diff/manifold.h"
 
 
-namespace owl {
+namespace mbox {
 
 template <typename T>
 class GaussianDistribution: public Distribution<T> {
@@ -180,4 +180,4 @@ private:
 };
 
 
-} // namespace owl
+} // namespace mbox

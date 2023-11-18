@@ -4,7 +4,7 @@
 #include "cpp_utils/cloneable.h"
 
 
-namespace owl {
+namespace mbox {
 
 template <typename T>
 class DistributionImpl {
@@ -30,4 +30,4 @@ public:
     }
 };
 
-} // namespace owl
+} // namespace mbox

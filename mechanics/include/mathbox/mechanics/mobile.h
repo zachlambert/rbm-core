@@ -1,9 +1,9 @@
 #pragma once
 
-#include "owl/types/matrix.h"
-#include "owl/transform/transform.h"
+#include "mathbox/types/matrix.h"
+#include "mathbox/transform/transform.h"
 
-namespace owl {
+namespace mbox {
 
 template <typename Scalar, int From, int To>
 Matrix<Scalar, To, From> velocity_mapping()
@@ -117,4 +117,4 @@ Matrix3<Scalar> normalise_orientation(Matrix3<Scalar> rotation, const Vector3<Sc
     return Eigen::AngleAxis<Scalar>(angle, cp.normalized()) * rotation;
 }
 
-} // namespace owl
+} // namespace mbox

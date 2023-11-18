@@ -1,17 +1,17 @@
 
-#include "owl/geometry/primitive_collisions.h"
+#include "mathbox/geometry/primitive_collisions.h"
 #include <iostream>
 
 int test_edge_triangle() {
-    owl::Edge3d a;
-    a.vertices[0] = owl::Vector3d(0, 0, -1);
-    a.vertices[1] = owl::Vector3d(0, 0, 1);
-    owl::Triangle3d b;
-    b.vertices[0] = owl::Vector3d(-1, -1, 0);
-    b.vertices[1] = owl::Vector3d(1, -1, 0);
-    b.vertices[2] = owl::Vector3d(0, 1, 0);
+    mbox::Edge3d a;
+    a.vertices[0] = mbox::Vector3d(0, 0, -1);
+    a.vertices[1] = mbox::Vector3d(0, 0, 1);
+    mbox::Triangle3d b;
+    b.vertices[0] = mbox::Vector3d(-1, -1, 0);
+    b.vertices[1] = mbox::Vector3d(1, -1, 0);
+    b.vertices[2] = mbox::Vector3d(0, 1, 0);
 
-    std::optional<owl::Vector3d> point = owl::intersection(a, b);
+    std::optional<mbox::Vector3d> point = mbox::intersection(a, b);
     if (!point.has_value()) {
         std::cout << "No intersection" << std::endl;
     }
@@ -23,17 +23,17 @@ int test_edge_triangle() {
 }
 
 int test_triangle_triangle() {
-    owl::Triangle3d a;
-    a.vertices[0] = owl::Vector3d(0, 0, -1);
-    a.vertices[1] = owl::Vector3d(0, 0, 1);
-    a.vertices[2] = owl::Vector3d(2, 0, 0);
+    mbox::Triangle3d a;
+    a.vertices[0] = mbox::Vector3d(0, 0, -1);
+    a.vertices[1] = mbox::Vector3d(0, 0, 1);
+    a.vertices[2] = mbox::Vector3d(2, 0, 0);
 
-    owl::Triangle3d b;
-    b.vertices[0] = owl::Vector3d(-1, -1, 0);
-    b.vertices[1] = owl::Vector3d(1, -1, 0);
-    b.vertices[2] = owl::Vector3d(0, 1, 0);
+    mbox::Triangle3d b;
+    b.vertices[0] = mbox::Vector3d(-1, -1, 0);
+    b.vertices[1] = mbox::Vector3d(1, -1, 0);
+    b.vertices[2] = mbox::Vector3d(0, 1, 0);
 
-    std::optional<owl::Edge3d> edge = owl::intersection(a, b);
+    std::optional<mbox::Edge3d> edge = mbox::intersection(a, b);
     if (!edge.has_value()) {
         std::cout << "No intersection" << std::endl;
     }

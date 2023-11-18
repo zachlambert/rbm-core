@@ -5,12 +5,12 @@
 #include <concepts>
 #include <string>
 #include <cstring>
-#include "owl/types/matrix.h"
-#include "owl/types/color.h"
-#include "owl/transform/transform.h"
+#include "mathbox/types/matrix.h"
+#include "mathbox/types/color.h"
+#include "mathbox/transform/transform.h"
 
 
-namespace owl  {
+namespace mbox  {
 
 template <typename Scalar, int Dim, typename Vertex>
 concept has_position = requires(const Vertex& vertex) {
@@ -57,4 +57,4 @@ struct make_vertex<Scalar, Dim, vertex_attributes::position | vertex_attributes:
     std::array<Scalar, 2> uv;
 };
 
-} // namespace owl
+} // namespace mbox

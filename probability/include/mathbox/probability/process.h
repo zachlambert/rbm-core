@@ -1,8 +1,8 @@
 #pragma once
 
-#include "owl/probability//gaussian.h"
+#include "mathbox/probability//gaussian.h"
 
-namespace owl {
+namespace mbox {
 
 // Weiner process = Integral of white noise (continuous)
 // Value at time t is zero mean with variance proportional to t
@@ -19,4 +19,4 @@ Vectord<Dim> white_noise_integral(const Matrixd<Dim, Dim>& dfdw, double dt, std:
 }
 
 
-} // namespace owl
+} // namespace mbox

@@ -1,11 +1,11 @@
 #pragma once
 
-#include "owl/geometry/height_map.h"
-#include "owl/geometry/height_map_grid.h"
-#include "owl/geometry/visual_mesh.h"
+#include "mathbox/geometry/height_map.h"
+#include "mathbox/geometry/height_map_grid.h"
+#include "mathbox/geometry/visual_mesh.h"
 
 
-namespace owl {
+namespace mbox {
 
 VisualMesh height_map_to_visual_mesh(
     const HeightMapInterface& height_map,
@@ -20,4 +20,4 @@ HeightMapGrid height_map_to_height_map_grid(
     const Vector2d& size,
     const Vector2i& divisions);
 
-} // namespace owl
+} // namespace mbox

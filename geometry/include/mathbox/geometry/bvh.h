@@ -1,15 +1,15 @@
 #pragma once
 
-#include "owl/geometry/bounding.h"
-#include "owl/geometry/primitive.h"
-#include "owl/geometry/collision.h"
-#include "owl/geometry/primitive_collisions.h"
+#include "mathbox/geometry/bounding.h"
+#include "mathbox/geometry/primitive.h"
+#include "mathbox/geometry/collision.h"
+#include "mathbox/geometry/primitive_collisions.h"
 #include <algorithm>
 #include <iostream>
 #include <stack>
 
 
-namespace owl {
+namespace mbox {
 
 // Bounded volume hierarchy
 template <typename Primitive>
@@ -158,7 +158,7 @@ requires primitives_compatible<A, B>
 struct collision_details<Bvh<A>, Bvh<B>> {
     typedef typename A::Scalar Scalar;
     static constexpr int Dim = A::Dim;
-    typedef std::vector<::owl::intersection_type<A, B>> intersection_type;
+    typedef std::vector<::mbox::intersection_type<A, B>> intersection_type;
 
     static bool intersects(const Bvh<A>& a, const Bvh<B>& b) {
         std::vector<B*> b_candidates;
@@ -186,7 +186,7 @@ struct collision_details<Bvh<A>, Bvh<B>> {
             b.query(a_box, b_candidates);
 
             for (auto b_candidate: b_candidates) {
-                auto intersection = ::owl::intersection(a_candidate, *b_candidate);
+                auto intersection = ::mbox::intersection(a_candidate, *b_candidate);
                 if (intersection.has_value()) {
                     intersection.value().transform(b.pose());
                     result.push_back(intersection.value());
@@ -200,4 +200,4 @@ struct collision_details<Bvh<A>, Bvh<B>> {
     }
 };
 
-} // namespace owl
+} // namespace mbox

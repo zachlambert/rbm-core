@@ -1,9 +1,9 @@
 #pragma once
 
-#include "owl/geometry/height_map.h"
+#include "mathbox/geometry/height_map.h"
 
 
-namespace owl {
+namespace mbox {
 
 class HeightMapGaussianMixture: public HeightMapInterface {
 public:
@@ -47,4 +47,4 @@ private:
     std::vector<Component> components_;
 };
 
-} // namespace owl
+} // namespace mbox

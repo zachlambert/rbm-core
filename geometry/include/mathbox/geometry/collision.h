@@ -1,10 +1,10 @@
 #pragma once
 
 #include <concepts>
-#include "owl/types/matrix.h"
+#include "mathbox/types/matrix.h"
 #include <optional>
 
-namespace owl {
+namespace mbox {
 
 template <typename A, typename B>
 struct collision_details {};
@@ -35,4 +35,4 @@ std::optional<intersection_type<A, B>> intersection(const A& a, const B& b) {
     return collision_details<A, B>::intersection(a, b);
 }
 
-} // namespace owl
+} // namespace mbox
