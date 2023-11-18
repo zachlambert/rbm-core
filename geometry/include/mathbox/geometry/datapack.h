@@ -1,8 +1,8 @@
 #pragma once
 
 #include "datapack/json.h"
-#include "mathbox/types/serialize.h"
-#include "mathbox/transform/serialize.h"
+#include "mathbox/types/datapack.h"
+#include "mathbox/transform/datapack.h"
 
 #include "mathbox/geometry/vertex.h"
 #include "mathbox/geometry/mesh.h"

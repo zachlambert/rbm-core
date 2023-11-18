@@ -10,7 +10,7 @@ TEST(Transform, Transform2)
     mbox::LogTransform2d dx(dx_coords);
 
     {
-        mbox::Transform2d X = owl::Transform2d::Identity();
+        mbox::Transform2d X = mbox::Transform2d::Identity();
         X = X * dx.exp();
         std::cout << mbox::EulerTransform2d(X) << std::endl;
     }

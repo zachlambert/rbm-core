@@ -1,10 +1,10 @@
 #include <gtest/gtest.h>
 #include <mathbox/transform/euler.h>
-#include <mathbox/transform/serialize.h>
+#include <mathbox/transform/datapack.h>
 
-TEST(Transform, Serialize)
+TEST(Transform, Datapack)
 {
-    std::cout << "=== Serialize ===" << std::endl;
+    std::cout << "=== Datapack ===" << std::endl;
 
     mbox::EulerTransform3d pose;
     pose.translation() = mbox::Vector3d(1, 2, 3);

@@ -2,7 +2,7 @@
 
 #include "mathbox/transform/euler.h"
 #include "datapack/json.h"
-#include "mathbox/types/serialize.h"
+#include "mathbox/types/datapack.h"
 
 
 template <typename Scalar, int Dim>
