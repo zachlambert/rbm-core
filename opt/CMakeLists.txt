@@ -1,7 +1,8 @@
 
 add_library(mbox-opt INTERFACE)
-target_include_directories(mbox-opt
-    INTERFACE include
+target_include_directories(mbox-opt INTERFACE
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>
 )
 target_link_libraries(mbox-opt
     INTERFACE mbox-types mbox-diff

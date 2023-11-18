@@ -62,8 +62,13 @@ write_basic_package_version_file(
 
 install(
     TARGETS
-        mbox-types
+        mbox-diff
+        mbox-geometry
+        mbox-mechanics
+        mbox-opt
+        mbox-probability
         mbox-transform
+        mbox-types
     EXPORT mboxTargets
     LIBRARY DESTINATION lib COMPONENT Runtime
     ARCHIVE DESTINATION lib COMPONENT Development
@@ -84,5 +89,10 @@ install(FILES "${PROJECT_BINARY_DIR}/mboxConfigVersion.cmake"
               "${PROJECT_BINARY_DIR}/mboxConfig.cmake"
         DESTINATION lib/cmake/mbox)
 
-install(DIRECTORY ${PROJECT_SOURCE_DIR}/types/include/ DESTINATION include)
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/diff/include/ DESTINATION include)
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/geometry/include/ DESTINATION include)
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/mechanics/include/ DESTINATION include)
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/opt/include/ DESTINATION include)
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/probability/include/ DESTINATION include)
 install(DIRECTORY ${PROJECT_SOURCE_DIR}/transform/include/ DESTINATION include)
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/types/include/ DESTINATION include)
