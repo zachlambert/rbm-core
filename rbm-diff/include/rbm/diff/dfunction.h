@@ -1,8 +1,8 @@
 #pragma once
 
-#include "rbm/diff/manifold.h"
-#include "rbm/types/matrix.h"
-#include "rbm/types/mtensor.h"
+#include <rbm/diff/manifold.h>
+#include <rbm/types/matrix.h>
+#include <rbm/types/mtensor.h>
 
 
 namespace rbm {

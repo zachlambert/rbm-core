@@ -3,6 +3,7 @@
 #include "rbm/geometry/mesh.h"
 #include "rbm/geometry/vertex.h"
 
+
 namespace rbm {
 
 using VisualMeshVertex = make_vertex<float, 3,

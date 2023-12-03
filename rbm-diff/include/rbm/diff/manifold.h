@@ -1,9 +1,9 @@
 #pragma once
 
-#include "rbm/types/matrix.h"
-#include "rbm/transform/transform.h"
-#include "rbm/transform/angle.h"
 #include <type_traits>
+#include <rbm/types/matrix.h>
+#include <rbm/transform/transform.h>
+#include <rbm/transform/angle.h>
 
 
 namespace rbm {

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "rbm/transform/euler.h"
 #include <iostream>
+#include "rbm/transform/euler.h"
 
 
 template <typename Scalar, int Dim>

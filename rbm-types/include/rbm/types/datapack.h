@@ -1,9 +1,9 @@
 #pragma once
 
+#include <datapack/json.h>
 #include "rbm/types/matrix.h"
 #include "rbm/types/color.h"
 #include "rbm/types/interval.h"
-#include "datapack/json.h"
 
 
 template <typename Scalar, int Rows, int Cols>

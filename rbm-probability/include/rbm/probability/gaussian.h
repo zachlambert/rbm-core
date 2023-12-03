@@ -1,8 +1,8 @@
 #pragma once
 
+#include <rbm/types/matrix.h>
+#include <rbm/diff/manifold.h>
 #include "rbm/probability/distribution.h"
-#include "rbm/types/matrix.h"
-#include "rbm/diff/manifold.h"
 
 
 namespace rbm {

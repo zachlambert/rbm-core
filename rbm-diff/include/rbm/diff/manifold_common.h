@@ -1,7 +1,7 @@
 #pragma once
 
-#include "rbm/optional_tuple.h"
-#include "rbm/diff/manifold.h"
+#include <rbm/cpp/optional_tuple.h>
+#include <rbm/diff/manifold.h>
 
 
 template <typename Tuple, std::size_t Remaining>

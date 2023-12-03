@@ -1,7 +1,7 @@
 #pragma once
 
 #include <random>
-#include "rbm/cpp/cloneable.h"
+#include <rbm/cpp/cloneable.h>
 
 
 namespace rbm {

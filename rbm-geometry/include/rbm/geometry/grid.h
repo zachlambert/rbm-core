@@ -1,8 +1,8 @@
 #pragma once
 
-#include "rbm/types/matrix.h"
 #include <vector>
 #include <iostream>
+#include <rbm/types/matrix.h>
 
 namespace rbm {
 

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "rbm/types/matrix.h"
-#include "rbm/transform/transform.h"
+#include <rbm/types/matrix.h>
+#include <rbm/transform/transform.h>
 
 namespace rbm {
 

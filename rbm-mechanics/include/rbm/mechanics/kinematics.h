@@ -1,7 +1,7 @@
 #pragma once
 
-#include "rbm/transform/transform.h"
-#include "rbm/transform/adjoint.h"
+#include <rbm/transform/transform.h>
+#include <rbm/transform/adjoint.h>
 
 namespace rbm {
 

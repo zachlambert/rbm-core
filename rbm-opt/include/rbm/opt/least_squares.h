@@ -1,8 +1,8 @@
 #pragma once
 
-#include "rbm/diff/dfunction.h"
 #include <memory>
 #include <iostream>
+#include <rbm/diff/dfunction.h>
 
 
 // Least squares solver work with the function for the error directly

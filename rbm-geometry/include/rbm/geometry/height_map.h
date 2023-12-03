@@ -1,8 +1,8 @@
 #pragma once
 
-#include "rbm/types/matrix.h"
-#include "rbm/cpp/cloneable.h"
 #include <memory>
+#include <rbm/cpp/cloneable.h>
+#include <rbm/types/matrix.h>
 
 namespace rbm {
 

@@ -1,8 +1,8 @@
 #pragma once
 
+#include <datapack/json.h>
+#include <rbm/types/datapack.h>
 #include "rbm/transform/euler.h"
-#include "datapack/json.h"
-#include "rbm/types/datapack.h"
 
 
 template <typename Scalar, int Dim>

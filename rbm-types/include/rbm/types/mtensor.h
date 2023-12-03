@@ -1,7 +1,7 @@
 #pragma once
 
+#include <rbm/cpp/darray.h>
 #include "rbm/types/matrix.h"
-#include "rbm/cpp/darray.h"
 
 
 namespace rbm {

@@ -2,6 +2,7 @@
 
 #include "rbm/probability//gaussian.h"
 
+
 namespace rbm {
 
 // Weiner process = Integral of white noise (continuous)

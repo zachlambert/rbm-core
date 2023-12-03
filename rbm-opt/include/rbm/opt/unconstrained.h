@@ -3,8 +3,8 @@
 #include <optional>
 #include <variant>
 #include <Eigen/Eigenvalues>
-#include "rbm/diff/dfunction.h"
-#include "rbm/diff/manifold.h"
+#include <rbm/diff/dfunction.h>
+#include <rbm/diff/manifold.h>
 
 
 namespace rbm::unconstrained {

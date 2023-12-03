@@ -1,6 +1,6 @@
 #pragma once
 
-#include "rbm/types/matrix.h"
+#include <rbm/types/matrix.h>
 
 
 namespace rbm {

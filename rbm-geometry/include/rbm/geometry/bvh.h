@@ -1,12 +1,12 @@
 #pragma once
 
+#include <algorithm>
+#include <iostream>
+#include <stack>
 #include "rbm/geometry/bounding.h"
 #include "rbm/geometry/primitive.h"
 #include "rbm/geometry/collision.h"
 #include "rbm/geometry/primitive_collisions.h"
-#include <algorithm>
-#include <iostream>
-#include <stack>
 
 
 namespace rbm {

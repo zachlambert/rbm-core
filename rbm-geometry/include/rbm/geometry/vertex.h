@@ -5,9 +5,9 @@
 #include <concepts>
 #include <string>
 #include <cstring>
-#include "rbm/types/matrix.h"
-#include "rbm/types/color.h"
-#include "rbm/transform/transform.h"
+#include <rbm/types/matrix.h>
+#include <rbm/types/color.h>
+#include <rbm/transform/transform.h>
 
 
 namespace rbm  {

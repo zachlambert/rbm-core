@@ -1,8 +1,9 @@
 #pragma once
 
-#include "rbm/types/matrix.h"
-#include "rbm/geometry/bounding.h"
 #include <array>
+#include <rbm/types/matrix.h>
+#include "rbm/geometry/bounding.h"
+
 
 namespace rbm {
 

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "rbm/types/matrix.h"
-#include "rbm/types/interval.h"
+#include <rbm/types/matrix.h>
+#include <rbm/types/interval.h>
 #include <numeric>
 
 namespace rbm {

@@ -1,9 +1,8 @@
 #pragma once
 
-// TODO: Do other primitives too
-
 #include "rbm/geometry/collision.h"
 #include "rbm/geometry/primitive.h"
+
 
 namespace rbm {
 

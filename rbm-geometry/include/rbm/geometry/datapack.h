@@ -1,13 +1,12 @@
 #pragma once
 
-#include "datapack/json.h"
-#include "rbm/types/datapack.h"
-#include "rbm/transform/datapack.h"
-
+#include <datapack/json.h>
+#include <rbm/types/datapack.h>
+#include <rbm/transform/datapack.h>
+#include <rbm/transform/euler.h>
 #include "rbm/geometry/vertex.h"
 #include "rbm/geometry/mesh.h"
 #include "rbm/geometry/primitive.h"
-#include "rbm/transform/euler.h"
 
 
 template <typename Scalar, int Dim>

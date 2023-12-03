@@ -3,6 +3,7 @@
 #include "rbm/geometry/mesh.h"
 #include "rbm/geometry/bvh.h"
 
+
 namespace rbm {
 
 template <typename Scalar, int Dim, typename Mesh>

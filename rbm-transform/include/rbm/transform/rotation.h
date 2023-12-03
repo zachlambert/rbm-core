@@ -1,11 +1,11 @@
 #pragma once
 
+#include <cmath>
 #include <Eigen/Geometry>
 #include "rbm/transform/group_dimensions.h"
 #include "rbm/transform/angle.h"
 #include "rbm/transform/cross_product_matrix.h"
 #include "rbm/transform/screw_transform.h"
-#include <cmath>
 
 
 namespace rbm {

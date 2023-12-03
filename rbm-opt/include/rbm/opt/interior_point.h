@@ -1,7 +1,7 @@
 #pragma once
 
-#include "rbm/diff/dfunction.h"
 #include <iostream>
+#include <rbm/diff/dfunction.h>
 
 
 namespace rbm {
