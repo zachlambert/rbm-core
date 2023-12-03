@@ -3,11 +3,11 @@
 #include <optional>
 #include <variant>
 #include <Eigen/Eigenvalues>
-#include "mbox/diff/dfunction.h"
-#include "mbox/diff/manifold.h"
+#include "rbm/diff/dfunction.h"
+#include "rbm/diff/manifold.h"
 
 
-namespace mbox::unconstrained {
+namespace rbm::unconstrained {
 
 
 template <typename Scalar, int Dim>
@@ -174,4 +174,4 @@ private:
     Config config_;
 };
 
-} // namespace mbox::unconstrained
+} // namespace rbm::unconstrained

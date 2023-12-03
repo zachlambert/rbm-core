@@ -4,19 +4,19 @@
 #include <algorithm>
 #include <array>
 #include <unordered_map>
-#include "mbox/geometry/vertex.h"
-#include "mbox/geometry/facet.h"
-#include "mbox/geometry/primitive.h"
+#include "rbm/geometry/vertex.h"
+#include "rbm/geometry/facet.h"
+#include "rbm/geometry/primitive.h"
 
 
-namespace mbox {
+namespace rbm {
 
 template <typename Vertex_, typename IndexType_, int VertexCount_>
 struct Mesh {
     using Vertex = Vertex_;
     using IndexType = IndexType_;
     static constexpr int VertexCount = VertexCount_;
-    using Facet = ::mbox::Facet<IndexType, VertexCount>;
+    using Facet = ::rbm::Facet<IndexType, VertexCount>;
 
     std::vector<Vertex> vertices;
     std::vector<Facet> facets;
@@ -73,4 +73,4 @@ void scale(Scalar scaling, Mesh& mesh) {
 }
 #endif
 
-} // namespace mbox
+} // namespace rbm

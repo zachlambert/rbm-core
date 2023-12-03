@@ -1,11 +1,11 @@
 #pragma once
 
-#include "mbox/geometry/mesh.h"
-#include "mbox/geometry/bvh.h"
-#include "mbox/geometry/mesh_conversions.h"
+#include "rbm/geometry/mesh.h"
+#include "rbm/geometry/bvh.h"
+#include "rbm/geometry/mesh_conversions.h"
 
 
-namespace mbox {
+namespace rbm {
 
 typedef Mesh<
     make_vertex<double, 3, vertex_attributes::position>,
@@ -13,4 +13,4 @@ typedef Mesh<
     3>
         CollisionMesh;
 
-} // namespace mbox
+} // namespace rbm

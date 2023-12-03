@@ -1,12 +1,12 @@
 #pragma once
 
-#include "mbox/transform/transform.h"
-#include "mbox/geometry/primitive.h"
-#include "mbox/transform/adjoint.h"
+#include "rbm/transform/transform.h"
+#include "rbm/geometry/primitive.h"
+#include "rbm/transform/adjoint.h"
 #include <Eigen/Jacobi>
 
 
-namespace mbox {
+namespace rbm {
 
 template <typename Scalar, int Dim>
 struct SpatialInertia {
@@ -204,4 +204,4 @@ SpatialInertia<Scalar, Dim> primitive_to_inertia(const InstancedPrimitive<Scalar
     return std::visit([density](const auto& value) { return primitive_to_inertia(value, density); }, primitive);
 }
 
-} // namespace mbox
+} // namespace rbm

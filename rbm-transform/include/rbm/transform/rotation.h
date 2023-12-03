@@ -1,14 +1,14 @@
 #pragma once
 
 #include <Eigen/Geometry>
-#include "mbox/transform/group_dimensions.h"
-#include "mbox/transform/angle.h"
-#include "mbox/transform/cross_product_matrix.h"
-#include "mbox/transform/screw_transform.h"
+#include "rbm/transform/group_dimensions.h"
+#include "rbm/transform/angle.h"
+#include "rbm/transform/cross_product_matrix.h"
+#include "rbm/transform/screw_transform.h"
 #include <cmath>
 
 
-namespace mbox {
+namespace rbm {
 
 template <typename Scalar, int Dim>
 class Rotation: public Eigen::Matrix<Scalar, Dim, Dim> {
@@ -145,4 +145,4 @@ Eigen::Quaternion<Scalar> rotation_matrix_to_quaternion(Eigen::Matrix<Scalar, 3,
     return q;
 }
 
-} // namespace mbox
+} // namespace rbm

@@ -1,9 +1,9 @@
 
-#include "mbox/geometry/height_map_conversions.h"
+#include "rbm/geometry/height_map_conversions.h"
 #include <iostream>
 
 
-namespace mbox {
+namespace rbm {
 
 VisualMesh height_map_to_visual_mesh(
     const HeightMapInterface& height_map,
@@ -126,4 +126,4 @@ HeightMapGrid height_map_to_height_map_grid(
     return grid;
 }
 
-} // namespace mbox
+} // namespace rbm

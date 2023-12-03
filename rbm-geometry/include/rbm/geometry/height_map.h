@@ -1,10 +1,10 @@
 #pragma once
 
-#include "mbox/types/matrix.h"
+#include "rbm/types/matrix.h"
 #include "cpp_utils/cloneable.h"
 #include <memory>
 
-namespace mbox {
+namespace rbm {
 
 class HeightMapInterface {
 public:
@@ -45,4 +45,4 @@ public:
     }
 };
 
-} // namespace mbox
+} // namespace rbm

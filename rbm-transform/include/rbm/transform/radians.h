@@ -3,7 +3,7 @@
 #include <cmath>
 
 
-namespace mbox {
+namespace rbm {
 
 template <typename T>
 T to_radians(T degrees) {
@@ -15,4 +15,4 @@ T to_degrees(T radians) {
     return radians * 180 / M_PI;
 }
 
-} // namespace mbox
+} // namespace rbm

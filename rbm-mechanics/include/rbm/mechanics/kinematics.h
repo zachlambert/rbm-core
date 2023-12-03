@@ -1,9 +1,9 @@
 #pragma once
 
-#include "mbox/transform/transform.h"
-#include "mbox/transform/adjoint.h"
+#include "rbm/transform/transform.h"
+#include "rbm/transform/adjoint.h"
 
-namespace mbox {
+namespace rbm {
 
 template <typename Scalar, int Dim>
 Vector<Scalar, dim_se_adj<Dim>()> frame_velocity(
@@ -30,4 +30,4 @@ Vector<Scalar, dim_se_adj<Dim>()> frame_acceleration(
         + relative_acceleration;
 }
 
-} // namespace mbox
+} // namespace rbm

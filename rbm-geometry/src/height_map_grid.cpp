@@ -1,8 +1,8 @@
 
-#include "mbox/geometry/height_map_grid.h"
+#include "rbm/geometry/height_map_grid.h"
 
 
-namespace mbox {
+namespace rbm {
 
 double HeightMapGrid::height(const Vector2d& position) const {
     auto result = height_data_.query(dimensions_.to_normalized(position));
@@ -27,4 +27,4 @@ Vector3d HeightMapGrid::normal(const Vector2d& position) const {
     return normal_data_.get(index);
 }
 
-} // namespace mbox
+} // namespace rbm

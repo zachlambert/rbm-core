@@ -1,11 +1,11 @@
 #pragma once
 
-#include "mbox/types/matrix.h"
-#include "mbox/transform/transform.h"
-#include "mbox/mechanics/inertia.h"
+#include "rbm/types/matrix.h"
+#include "rbm/transform/transform.h"
+#include "rbm/mechanics/inertia.h"
 
 
-namespace mbox {
+namespace rbm {
 
 static constexpr double gravity = 9.81;
 
@@ -32,4 +32,4 @@ inline Vector6d frame_gravity_force(const Rotation3d& rotation, const SpatialIne
 }
 
 
-} // namespace mbox
+} // namespace rbm

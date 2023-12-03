@@ -1,11 +1,11 @@
 #pragma once
 
-#include "mbox/geometry/primitive.h"
-#include "mbox/geometry/mesh.h"
-#include "mbox/geometry/vertex.h"
+#include "rbm/geometry/primitive.h"
+#include "rbm/geometry/mesh.h"
+#include "rbm/geometry/vertex.h"
 
 
-namespace mbox {
+namespace rbm {
 
 template <typename Scalar, int Dim, typename Mesh>
 requires has_position<Scalar, Dim, typename Mesh::Vertex>
@@ -336,4 +336,4 @@ void primitive_to_mesh(const InstancedPrimitive<Scalar, Dim>& primitive, double 
     }, primitive);
 }
 
-} // namespace mbox
+} // namespace rbm

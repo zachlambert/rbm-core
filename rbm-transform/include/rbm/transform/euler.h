@@ -1,10 +1,10 @@
 #pragma once
 
-#include "mbox/transform/transform.h"
-#include "mbox/transform/angle.h"
+#include "rbm/transform/transform.h"
+#include "rbm/transform/angle.h"
 
 
-namespace mbox {
+namespace rbm {
 
 template <typename Scalar, int Dim>
 class EulerRotation {
@@ -212,4 +212,4 @@ typedef EulerTransform<float, 3> EulerTransform3f;
 typedef EulerTransform<double, 2> EulerTransform2d;
 typedef EulerTransform<double, 3> EulerTransform3d;
 
-} // namespace mbox
+} // namespace rbm

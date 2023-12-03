@@ -1,10 +1,10 @@
 #pragma once
 
 #include <cmath>
-#include "mbox/types/matrix.h"
+#include "rbm/types/matrix.h"
 
 
-namespace mbox {
+namespace rbm {
 
 template <typename T>
 void normalize_angle(T& angle) {
@@ -120,4 +120,4 @@ Vector<T, 2> operator*(const Angle<T>& lhs, const Vector<T, 2>& rhs) {
     return Eigen::Rotation2D<T>(lhs) * rhs;
 }
 
-} // namespace mbox
+} // namespace rbm

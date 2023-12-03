@@ -1,9 +1,9 @@
 #pragma once
 
-#include "mbox/types/matrix.h"
-#include "mbox/transform/transform.h"
+#include "rbm/types/matrix.h"
+#include "rbm/transform/transform.h"
 
-namespace mbox {
+namespace rbm {
 
 template <typename Scalar, int From, int To>
 Matrix<Scalar, To, From> velocity_mapping()
@@ -117,4 +117,4 @@ Matrix3<Scalar> normalise_orientation(Matrix3<Scalar> rotation, const Vector3<Sc
     return Eigen::AngleAxis<Scalar>(angle, cp.normalized()) * rotation;
 }
 
-} // namespace mbox
+} // namespace rbm

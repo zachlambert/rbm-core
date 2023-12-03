@@ -1,8 +1,8 @@
 #pragma once
 
-#include "mbox/probability//gaussian.h"
+#include "rbm/probability//gaussian.h"
 
-namespace mbox {
+namespace rbm {
 
 // Weiner process = Integral of white noise (continuous)
 // Value at time t is zero mean with variance proportional to t
@@ -19,4 +19,4 @@ Vectord<Dim> white_noise_integral(const Matrixd<Dim, Dim>& dfdw, double dt, std:
 }
 
 
-} // namespace mbox
+} // namespace rbm

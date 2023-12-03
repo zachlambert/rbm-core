@@ -1,15 +1,15 @@
 #pragma once
 
 #include <Eigen/Geometry>
-#include "mbox/transform/group_dimensions.h"
-#include "mbox/transform/angle.h"
-#include "mbox/transform/cross_product_matrix.h"
-#include "mbox/transform/screw_transform.h"
-#include "mbox/transform/rotation.h"
+#include "rbm/transform/group_dimensions.h"
+#include "rbm/transform/angle.h"
+#include "rbm/transform/cross_product_matrix.h"
+#include "rbm/transform/screw_transform.h"
+#include "rbm/transform/rotation.h"
 #include <cmath>
 
 
-namespace mbox {
+namespace rbm {
 
 template <typename Scalar, int Dim>
 class Transform {
@@ -222,4 +222,4 @@ typedef LogTransform<double, 2> LogTransform2d;
 typedef LogTransform<float, 3> LogTransform3f;
 typedef LogTransform<double, 3> LogTransform3d;
 
-} // namespace mbox
+} // namespace rbm

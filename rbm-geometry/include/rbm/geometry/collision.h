@@ -1,10 +1,10 @@
 #pragma once
 
 #include <concepts>
-#include "mbox/types/matrix.h"
+#include "rbm/types/matrix.h"
 #include <optional>
 
-namespace mbox {
+namespace rbm {
 
 template <typename A, typename B>
 struct collision_details {};
@@ -35,4 +35,4 @@ std::optional<intersection_type<A, B>> intersection(const A& a, const B& b) {
     return collision_details<A, B>::intersection(a, b);
 }
 
-} // namespace mbox
+} // namespace rbm

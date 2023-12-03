@@ -1,9 +1,9 @@
 #pragma once
 
-#include "mbox/geometry/height_map.h"
+#include "rbm/geometry/height_map.h"
 
 
-namespace mbox {
+namespace rbm {
 
 class HeightMapGaussianMixture: public HeightMapInterface {
 public:
@@ -47,4 +47,4 @@ private:
     std::vector<Component> components_;
 };
 
-} // namespace mbox
+} // namespace rbm

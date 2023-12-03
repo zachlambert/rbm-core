@@ -1,12 +1,12 @@
 
-#include "mbox/geometry/height_map_functional.h"
+#include "rbm/geometry/height_map_functional.h"
 
 // Note: Must include this eigen header, otherwise there are linker error
 // with the cross product
 #include <Eigen/Geometry>
 
 
-namespace mbox {
+namespace rbm {
 
 double HeightMapGaussianMixture::height(const Vector2d& position) const {
     double z = 0;
@@ -29,4 +29,4 @@ Vector3d HeightMapGaussianMixture::normal(const Vector2d& position) const {
     return normal;
 }
 
-} // namespace mbox
+} // namespace rbm

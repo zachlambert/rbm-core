@@ -1,10 +1,10 @@
 #pragma once
 
-#include "mbox/types/matrix.h"
-#include "mbox/types/interval.h"
+#include "rbm/types/matrix.h"
+#include "rbm/types/interval.h"
 #include <numeric>
 
-namespace mbox {
+namespace rbm {
 
 template <typename Scalar, int Dim>
 struct BoundingBox {
@@ -64,4 +64,4 @@ typedef BoundingBox<double, 2> BoundingBox2d;
 typedef BoundingBox<float, 3> BoundingBox3f;
 typedef BoundingBox<double, 3> BoundingBox3d;
 
-} // namespace mbox
+} // namespace rbm

@@ -1,11 +1,11 @@
 #pragma once
 
-#include "mbox/diff/manifold.h"
-#include "mbox/types/matrix.h"
-#include "mbox/types/mtensor.h"
+#include "rbm/diff/manifold.h"
+#include "rbm/types/matrix.h"
+#include "rbm/types/mtensor.h"
 
 
-namespace mbox {
+namespace rbm {
 
 // DFunction = Differentiable function
 // DFunction1 = Once differentiable
@@ -167,4 +167,4 @@ private:
 // MultiDFunction2: TODO
 
 
-} // namespace mbox
+} // namespace rbm

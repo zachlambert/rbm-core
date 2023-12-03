@@ -1,18 +1,18 @@
 #include <gtest/gtest.h>
-#include <mbox/transform/transform.h>
-#include <mbox/transform/euler.h>
-#include <mbox/transform/io.h>
+#include <rbm/transform/transform.h>
+#include <rbm/transform/euler.h>
+#include <rbm/transform/io.h>
 
 TEST(Transform, Transform2)
 {
-    mbox::Vector3d dx_coords;
+    rbm::Vector3d dx_coords;
     dx_coords << M_PI/2, 1, 0;
-    mbox::LogTransform2d dx(dx_coords);
+    rbm::LogTransform2d dx(dx_coords);
 
     {
-        mbox::Transform2d X = mbox::Transform2d::Identity();
+        rbm::Transform2d X = rbm::Transform2d::Identity();
         X = X * dx.exp();
-        std::cout << mbox::EulerTransform2d(X) << std::endl;
+        std::cout << rbm::EulerTransform2d(X) << std::endl;
     }
 }
 

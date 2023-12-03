@@ -1,12 +1,12 @@
 #pragma once
 
-#include "mbox/types/matrix.h"
-#include "mbox/transform/transform.h"
-#include "mbox/transform/angle.h"
+#include "rbm/types/matrix.h"
+#include "rbm/transform/transform.h"
+#include "rbm/transform/angle.h"
 #include <type_traits>
 
 
-namespace mbox {
+namespace rbm {
 
 template <typename T>
 struct manifold_details {};
@@ -173,4 +173,4 @@ struct manifold_details<Empty> {
     static Vectord<0> difference(const Empty& a, const Empty& b) { return Vectord<0>(); }
 };
 
-} // namespace mbox
+} // namespace rbm

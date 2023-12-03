@@ -1,10 +1,10 @@
 #pragma once
 
-#include "mbox/types/matrix.h"
+#include "rbm/types/matrix.h"
 #include <vector>
 #include <iostream>
 
-namespace mbox {
+namespace rbm {
 
 template <int N>
 void step_grid_index(Vectori<N>& index, const Vectori<N>& end) {
@@ -226,4 +226,4 @@ using Grid3f = Grid<T, float, 3>;
 template <typename T>
 using Grid3d = Grid<T, double, 3>;
 
-} // namespace mbox
+} // namespace rbm

@@ -4,7 +4,7 @@
 #include "cpp_utils/cloneable.h"
 
 
-namespace mbox {
+namespace rbm {
 
 template <typename T>
 class DistributionImpl {
@@ -30,4 +30,4 @@ public:
     }
 };
 
-} // namespace mbox
+} // namespace rbm

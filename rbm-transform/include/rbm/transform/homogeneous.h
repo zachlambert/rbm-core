@@ -1,9 +1,9 @@
 #pragma once
 
-#include "mbox/types/matrix.h"
+#include "rbm/types/matrix.h"
 
 
-namespace mbox {
+namespace rbm {
 
 template <typename T, int Dim>
 Matrix<T, Dim+1, Dim+1> make_homogeneous_translation(const Vector<T, Dim>& translation) {
@@ -29,4 +29,4 @@ Matrix<T, Dim+1, Dim+1> make_homogeneous_scaling(T scaling) {
     return result;
 }
 
-} // namespace mbox
+} // namespace rbm

@@ -1,10 +1,10 @@
 #pragma once
 
-#include "mbox/diff/dfunction.h"
+#include "rbm/diff/dfunction.h"
 #include <iostream>
 
 
-namespace mbox {
+namespace rbm {
 
 template <typename X>
 class InteriorPointSolver {
@@ -171,4 +171,4 @@ private:
     Config config_;
 };
 
-} // namespace mbox
+} // namespace rbm

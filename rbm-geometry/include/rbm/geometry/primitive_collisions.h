@@ -2,10 +2,10 @@
 
 // TODO: Do other primitives too
 
-#include "mbox/geometry/collision.h"
-#include "mbox/geometry/primitive.h"
+#include "rbm/geometry/collision.h"
+#include "rbm/geometry/primitive.h"
 
-namespace mbox {
+namespace rbm {
 
 template <typename Scalar>
 struct collision_details<Edge<Scalar, 3>, Triangle<Scalar, 3>> {
@@ -42,18 +42,18 @@ struct collision_details<Edge<Scalar, 3>, Triangle<Scalar, 3>> {
     }
 };
 
-} // namespace mbox
+} // namespace rbm
 
 template <typename Scalar>
-struct mbox::collision_details<mbox::Triangle<Scalar, 3>, mbox::Triangle<Scalar, 3>> {
-    typedef mbox::Edge<Scalar, 3> intersection_type;
+struct rbm::collision_details<rbm::Triangle<Scalar, 3>, rbm::Triangle<Scalar, 3>> {
+    typedef rbm::Edge<Scalar, 3> intersection_type;
 
-    static bool intersects(const mbox::Triangle<Scalar, 3>& a, const mbox::Triangle<Scalar, 3>& b) {
+    static bool intersects(const rbm::Triangle<Scalar, 3>& a, const rbm::Triangle<Scalar, 3>& b) {
         int intersection_count = 0;
         // Query edges of a with triangle b
         for (std::size_t i = 0; i < 3; i++) {
             if (intersection_count == 2) break;
-            mbox::Edge<Scalar, 3> edge;
+            rbm::Edge<Scalar, 3> edge;
             edge.vertices[0] = a.vertices[i];
             edge.vertices[1] = a.vertices[(i + 1) % 3];
             intersection_count += intersects(edge, b);
@@ -61,7 +61,7 @@ struct mbox::collision_details<mbox::Triangle<Scalar, 3>, mbox::Triangle<Scalar,
         // Query edges of b with triangle a
         for (std::size_t i = 0; i < 3; i++) {
             if (intersection_count == 2) break;
-            mbox::Edge<Scalar, 3> edge;
+            rbm::Edge<Scalar, 3> edge;
             edge.vertices[0] = b.vertices[i];
             edge.vertices[1] = b.vertices[(i + 1) % 3];
             intersection_count += intersects(edge, a);
@@ -69,19 +69,19 @@ struct mbox::collision_details<mbox::Triangle<Scalar, 3>, mbox::Triangle<Scalar,
         return intersection_count == 2;
     }
 
-    static std::optional<mbox::Edge<Scalar, 3>> intersection(
-            const mbox::Triangle<Scalar, 3>& a,
-            const mbox::Triangle<Scalar, 3>& b)
+    static std::optional<rbm::Edge<Scalar, 3>> intersection(
+            const rbm::Triangle<Scalar, 3>& a,
+            const rbm::Triangle<Scalar, 3>& b)
     {
         int intersection_count = 0;
-        mbox::Edge<Scalar, 3> result;
+        rbm::Edge<Scalar, 3> result;
         // Query edges of a with triangle b
         for (std::size_t i = 0; i < 3; i++) {
             if (intersection_count == 2) break;
-            mbox::Edge<Scalar, 3> edge;
+            rbm::Edge<Scalar, 3> edge;
             edge.vertices[0] = a.vertices[i];
             edge.vertices[1] = a.vertices[(i + 1) % 3];
-            auto intersection = ::mbox::intersection(edge, b);
+            auto intersection = ::rbm::intersection(edge, b);
             if (intersection.has_value()) {
                 result.vertices[intersection_count] = intersection.value();
                 intersection_count++;
@@ -90,10 +90,10 @@ struct mbox::collision_details<mbox::Triangle<Scalar, 3>, mbox::Triangle<Scalar,
         // Query edges of b with triangle a
         for (std::size_t i = 0; i < 3; i++) {
             if (intersection_count == 2) break;
-            mbox::Edge<Scalar, 3> edge;
+            rbm::Edge<Scalar, 3> edge;
             edge.vertices[0] = b.vertices[i];
             edge.vertices[1] = b.vertices[(i + 1) % 3];
-            auto intersection = ::mbox::intersection(edge, a);
+            auto intersection = ::rbm::intersection(edge, a);
             if (intersection.has_value()) {
                 result.vertices[intersection_count] = intersection.value();
                 intersection_count++;

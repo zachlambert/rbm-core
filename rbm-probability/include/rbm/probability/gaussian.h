@@ -1,11 +1,11 @@
 #pragma once
 
-#include "mbox/probability/distribution.h"
-#include "mbox/types/matrix.h"
-#include "mbox/diff/manifold.h"
+#include "rbm/probability/distribution.h"
+#include "rbm/types/matrix.h"
+#include "rbm/diff/manifold.h"
 
 
-namespace mbox {
+namespace rbm {
 
 template <typename T>
 class GaussianDistribution: public Distribution<T> {
@@ -180,4 +180,4 @@ private:
 };
 
 
-} // namespace mbox
+} // namespace rbm

@@ -1,8 +1,8 @@
 
-#include "mbox/opt/unconstrained.h"
-#include "mbox/opt/least_squares.h"
-#include "mbox/opt/interior_point.h"
-#include "mbox/opt/solve.h"
+#include "rbm/opt/unconstrained.h"
+#include "rbm/opt/least_squares.h"
+#include "rbm/opt/interior_point.h"
+#include "rbm/opt/solve.h"
 #include <iostream>
 
 #include "sviz/gui/window.h"
@@ -14,12 +14,12 @@
 
 void plot_scalar_function(
     const std::string& label,
-    const std::function<double(const mbox::Vector2d&)>& f,
-    mbox::Vector2d x_lower,
-    mbox::Vector2d x_upper,
+    const std::function<double(const rbm::Vector2d&)>& f,
+    rbm::Vector2d x_lower,
+    rbm::Vector2d x_upper,
     double resolution)
 {
-    mbox::Vector2d x_range = x_upper - x_lower;
+    rbm::Vector2d x_range = x_upper - x_lower;
     std::size_t rows = std::ceil(x_range.y() / resolution);
     std::size_t cols = std::ceil(x_range.x() / resolution);
 
@@ -27,7 +27,7 @@ void plot_scalar_function(
     std::size_t k = 0;
     for (std::size_t i = 0; i < rows; i++) {
         for (std::size_t j = 0; j < cols; j++) {
-            mbox::Vector2d x = x_lower;
+            rbm::Vector2d x = x_lower;
             x.x() = x_lower.x() + ((double)j + 0.5) * x_range.x() / cols;
             x.y() = x_upper.y() - ((double)i + 0.5) * x_range.y() / rows;
             fs[k] = f(x);
@@ -58,10 +58,10 @@ void create_plot(const std::function<void()>& plot) {
 #endif
 
 template <typename... Lists>
-std::tuple<mbox::Vector2d, mbox::Vector2d> get_min_max(double padding, const Lists&... xs_list) {
-    mbox::Vector2d min = mbox::Vector2d::Constant(std::numeric_limits<double>::max());
-    mbox::Vector2d max = mbox::Vector2d::Constant(-std::numeric_limits<double>::max());
-    auto apply_xs = [&](const std::vector<mbox::Vector2d>& xs) {
+std::tuple<rbm::Vector2d, rbm::Vector2d> get_min_max(double padding, const Lists&... xs_list) {
+    rbm::Vector2d min = rbm::Vector2d::Constant(std::numeric_limits<double>::max());
+    rbm::Vector2d max = rbm::Vector2d::Constant(-std::numeric_limits<double>::max());
+    auto apply_xs = [&](const std::vector<rbm::Vector2d>& xs) {
         for (const auto& x: xs) {
             min.x() = std::min(min.x(), x.x());
             min.y() = std::min(min.y(), x.y());
@@ -71,49 +71,49 @@ std::tuple<mbox::Vector2d, mbox::Vector2d> get_min_max(double padding, const Lis
     };
     (apply_xs(xs_list),...);
 
-    min -= mbox::Vector2d::Constant(padding);
-    max += mbox::Vector2d::Constant(padding);
+    min -= rbm::Vector2d::Constant(padding);
+    max += rbm::Vector2d::Constant(padding);
     return std::make_tuple(min, max);
 }
 
 template <int XDim>
-std::function<double(const mbox::Vectord<XDim>&)> error_half_square_norm_f(const mbox::Vectord<XDim>& target) {
-    return [target](const mbox::Vectord<XDim>& x) {
+std::function<double(const rbm::Vectord<XDim>&)> error_half_square_norm_f(const rbm::Vectord<XDim>& target) {
+    return [target](const rbm::Vectord<XDim>& x) {
         return 0.5 * (target - x).squaredNorm();
     };
 }
 
 template <int XDim>
-std::function<mbox::Vectord<XDim>(const mbox::Vectord<XDim>&)> error_half_square_norm_gradient(const mbox::Vectord<XDim>& target) {
-    return [target](const mbox::Vectord<XDim>& x) {
+std::function<rbm::Vectord<XDim>(const rbm::Vectord<XDim>&)> error_half_square_norm_gradient(const rbm::Vectord<XDim>& target) {
+    return [target](const rbm::Vectord<XDim>& x) {
         return x - target;
     };
 }
 
 template <int XDim>
-std::function<mbox::Matrixd<XDim, XDim>(const mbox::Vectord<XDim>&)> error_half_square_norm_hessian(const mbox::Vectord<XDim>& target) {
-    return [target](const mbox::Vectord<XDim>& x) {
-        return mbox::Matrixd<XDim, XDim>::Identity(x.size(), x.size());
+std::function<rbm::Matrixd<XDim, XDim>(const rbm::Vectord<XDim>&)> error_half_square_norm_hessian(const rbm::Vectord<XDim>& target) {
+    return [target](const rbm::Vectord<XDim>& x) {
+        return rbm::Matrixd<XDim, XDim>::Identity(x.size(), x.size());
     };
 }
 
 template <int XDim>
-std::function<mbox::Vectord<XDim>(const mbox::Vectord<XDim>&)> error_vector_f(const mbox::Vectord<XDim>& target) {
-    return [target](const mbox::Vectord<XDim>& x) {
+std::function<rbm::Vectord<XDim>(const rbm::Vectord<XDim>&)> error_vector_f(const rbm::Vectord<XDim>& target) {
+    return [target](const rbm::Vectord<XDim>& x) {
         return target - x;
     };
 }
 
 template <int XDim>
-std::function<mbox::Matrixd<XDim, XDim>(const mbox::Vectord<XDim>&)> error_vector_dfdx(const mbox::Vectord<XDim>& target) {
-    return [target](const mbox::Vectord<XDim>& x) {
-        return -mbox::Matrixd<XDim, XDim>::Identity(x.rows(), x.rows());
+std::function<rbm::Matrixd<XDim, XDim>(const rbm::Vectord<XDim>&)> error_vector_dfdx(const rbm::Vectord<XDim>& target) {
+    return [target](const rbm::Vectord<XDim>& x) {
+        return -rbm::Matrixd<XDim, XDim>::Identity(x.rows(), x.rows());
     };
 }
 
-std::function<mbox::VectorXd(const mbox::Vector2d&)> polynomial_error_f(const std::vector<std::vector<double>> coefficients) {
-    return [=](const mbox::Vector2d& x) {
-        mbox::VectorXd result(coefficients.size());
+std::function<rbm::VectorXd(const rbm::Vector2d&)> polynomial_error_f(const std::vector<std::vector<double>> coefficients) {
+    return [=](const rbm::Vector2d& x) {
+        rbm::VectorXd result(coefficients.size());
         for (std::size_t n = 0; n < coefficients.size(); n ++) {
             double y = 0;
             for (std::size_t i = 0; i < coefficients[n].size(); i++) {
@@ -125,9 +125,9 @@ std::function<mbox::VectorXd(const mbox::Vector2d&)> polynomial_error_f(const st
     };
 }
 
-std::function<mbox::MatrixX2d(const mbox::Vector2d&)> polynomial_error_dfdx(const std::vector<std::vector<double>> coefficients) {
-    return [=](const mbox::Vector2d& x) {
-        mbox::MatrixX2d result(coefficients.size(), 2);
+std::function<rbm::MatrixX2d(const rbm::Vector2d&)> polynomial_error_dfdx(const std::vector<std::vector<double>> coefficients) {
+    return [=](const rbm::Vector2d& x) {
+        rbm::MatrixX2d result(coefficients.size(), 2);
         result.block(0, 1, coefficients.size(), 1).setOnes();
         for (std::size_t n = 0; n < coefficients.size(); n ++) {
             double dydx = 0;
@@ -140,9 +140,9 @@ std::function<mbox::MatrixX2d(const mbox::Vector2d&)> polynomial_error_dfdx(cons
     };
 }
 
-std::function<mbox::MTensord<Eigen::Dynamic, 2, 2>(const mbox::Vector2d&)> polynomial_error_d2fdx2(const std::vector<std::vector<double>> coefficients) {
-    return [=](const mbox::Vector2d& x) {
-        mbox::MTensord<Eigen::Dynamic, 2, 2> result(coefficients.size(), 2, 2);
+std::function<rbm::MTensord<Eigen::Dynamic, 2, 2>(const rbm::Vector2d&)> polynomial_error_d2fdx2(const std::vector<std::vector<double>> coefficients) {
+    return [=](const rbm::Vector2d& x) {
+        rbm::MTensord<Eigen::Dynamic, 2, 2> result(coefficients.size(), 2, 2);
         result[1].setZero();
         result[0].block(0, 1, coefficients.size(), 1).setZero();
         for (std::size_t n = 0; n < coefficients.size(); n ++) {
@@ -175,71 +175,71 @@ std::vector<std::function<double(double)>> polynomial_error_solution(const std::
 int main() {
     sviz::Window window("Mathbox optimisation example");
     {
-        mbox::Vector2d initial_x = mbox::Vector2d::Zero();
-        mbox::Vector2d target = mbox::Vector2d(1, 2);
+        rbm::Vector2d initial_x = rbm::Vector2d::Zero();
+        rbm::Vector2d target = rbm::Vector2d(1, 2);
 
-        auto f1 = mbox::ScalarDFunction1<mbox::Vector2d>(
+        auto f1 = rbm::ScalarDFunction1<rbm::Vector2d>(
             error_half_square_norm_f(target),
             error_half_square_norm_gradient(target)
         );
-        auto f2 = mbox::ScalarDFunction2<mbox::Vector2d>(
+        auto f2 = rbm::ScalarDFunction2<rbm::Vector2d>(
             error_half_square_norm_f(target),
             error_half_square_norm_gradient(target),
             error_half_square_norm_hessian(target)
         );
 
-        mbox::unconstrained::GradientDescent<mbox::Vector2d> solver1(f1);
+        rbm::unconstrained::GradientDescent<rbm::Vector2d> solver1(f1);
         solver1.config().learning_rate = 1e-2;
         solver1.config().max_iterations = 1000;
 
-        mbox::unconstrained::GaussNewton<mbox::Vector2d> solver2(f2);
+        rbm::unconstrained::GaussNewton<rbm::Vector2d> solver2(f2);
 
-        std::vector<mbox::Vector2d> xs1, xs2;
-        mbox::solve(initial_x, solver1, xs1);
-        mbox::solve(initial_x, solver2, xs2);
-        mbox::Vector2d x_min, x_max;
+        std::vector<rbm::Vector2d> xs1, xs2;
+        rbm::solve(initial_x, solver1, xs1);
+        rbm::solve(initial_x, solver2, xs2);
+        rbm::Vector2d x_min, x_max;
         std::tie(x_min, x_max) = get_min_max(1, xs1, xs2);
 
 #if 0
         create_plot([&](){
             plot_scalar_function("f", f1.f(), x_min, x_max, 0.01);
             ImPlot::SetNextMarkerStyle(ImPlotMarker_Circle);
-            ImPlot::PlotLine("xs_grad_descent", &xs1[0].x(), &xs1[0].y(), xs1.size(), ImPlotFlags_None, 0, sizeof(mbox::Vector2d));
+            ImPlot::PlotLine("xs_grad_descent", &xs1[0].x(), &xs1[0].y(), xs1.size(), ImPlotFlags_None, 0, sizeof(rbm::Vector2d));
             ImPlot::SetNextMarkerStyle(ImPlotMarker_Circle);
-            ImPlot::PlotLine("xs_gauss_newton", &xs2[0].x(), &xs2[0].y(), xs2.size(), ImPlotFlags_None, 0, sizeof(mbox::Vector2d));
+            ImPlot::PlotLine("xs_gauss_newton", &xs2[0].x(), &xs2[0].y(), xs2.size(), ImPlotFlags_None, 0, sizeof(rbm::Vector2d));
         });
 #endif
     }
 
     {
         std::vector<std::vector<double>> coefficients;
-        mbox::Vector2d initial_x = mbox::Vector2d::Zero();
+        rbm::Vector2d initial_x = rbm::Vector2d::Zero();
         coefficients.push_back({ 2, -2, 0.6 });
-        auto g = mbox::DFunction1(polynomial_error_f(coefficients), polynomial_error_dfdx(coefficients));
-        auto f = [&](const mbox::Vector2d& x) {
+        auto g = rbm::DFunction1(polynomial_error_f(coefficients), polynomial_error_dfdx(coefficients));
+        auto f = [&](const rbm::Vector2d& x) {
             return 0.5 * g(x).squaredNorm();
         };
 
-        mbox::least_squares::GradientDescent<mbox::Vector2d> solver1(g);
-        mbox::least_squares::NewtonsMethod<mbox::Vector2d> solver2(g);
-        mbox::least_squares::LevenbergMarquardt<mbox::Vector2d> solver3(g);
+        rbm::least_squares::GradientDescent<rbm::Vector2d> solver1(g);
+        rbm::least_squares::NewtonsMethod<rbm::Vector2d> solver2(g);
+        rbm::least_squares::LevenbergMarquardt<rbm::Vector2d> solver3(g);
 
-        std::vector<mbox::Vector2d> xs1, xs2, xs3;
-        mbox::solve(initial_x, solver1, xs1);
-        mbox::solve(initial_x, solver2, xs2);
-        mbox::solve(initial_x, solver3, xs3);
-        mbox::Vector2d x_min, x_max;
+        std::vector<rbm::Vector2d> xs1, xs2, xs3;
+        rbm::solve(initial_x, solver1, xs1);
+        rbm::solve(initial_x, solver2, xs2);
+        rbm::solve(initial_x, solver3, xs3);
+        rbm::Vector2d x_min, x_max;
         std::tie(x_min, x_max) = get_min_max(1, xs1, xs2, xs3);
 
         auto g_solution = polynomial_error_solution(coefficients);
-        std::vector<std::vector<mbox::Vector2d>> g_xs(coefficients.size());
+        std::vector<std::vector<rbm::Vector2d>> g_xs(coefficients.size());
         for (std::size_t i = 0; i < coefficients.size(); i++) {
             const auto& gi_sol = g_solution[i];
             auto& gi_xs = g_xs[i];
             for (double x = x_min.x(); x <= x_max.x(); x += 0.05) {
                 double y = gi_sol(x);
                 if (y > x_max.y() || y < x_min.y()) continue;
-                gi_xs.push_back(mbox::Vector2d(x, y));
+                gi_xs.push_back(rbm::Vector2d(x, y));
             }
         }
 
@@ -247,25 +247,25 @@ int main() {
         create_plot([&](){
             plot_scalar_function("f", f, x_min, x_max, 0.01);
             ImPlot::SetNextMarkerStyle(ImPlotMarker_Circle);
-            ImPlot::PlotLine("xs_steepest", &xs1[0].x(), &xs1[0].y(), xs1.size(), ImPlotFlags_None, 0, sizeof(mbox::Vector2d));
+            ImPlot::PlotLine("xs_steepest", &xs1[0].x(), &xs1[0].y(), xs1.size(), ImPlotFlags_None, 0, sizeof(rbm::Vector2d));
             ImPlot::SetNextMarkerStyle(ImPlotMarker_Circle);
-            ImPlot::PlotLine("xs_newton", &xs2[0].x(), &xs2[0].y(), xs2.size(), ImPlotFlags_None, 0, sizeof(mbox::Vector2d));
+            ImPlot::PlotLine("xs_newton", &xs2[0].x(), &xs2[0].y(), xs2.size(), ImPlotFlags_None, 0, sizeof(rbm::Vector2d));
             ImPlot::SetNextMarkerStyle(ImPlotMarker_Circle);
-            ImPlot::PlotLine("xs_lma", &xs3[0].x(), &xs3[0].y(), xs3.size(), ImPlotFlags_None, 0, sizeof(mbox::Vector2d));
+            ImPlot::PlotLine("xs_lma", &xs3[0].x(), &xs3[0].y(), xs3.size(), ImPlotFlags_None, 0, sizeof(rbm::Vector2d));
             for (std::size_t i = 0; i < g_xs.size(); i++) {
                 char label[32];
                 snprintf(label, sizeof(label), "g%zu", i);
-                ImPlot::PlotLine(label, &g_xs[i][0].x(), &g_xs[i][0].y(), g_xs[i].size(), ImPlotFlags_None, 0, sizeof(mbox::Vector2d));
+                ImPlot::PlotLine(label, &g_xs[i][0].x(), &g_xs[i][0].y(), g_xs[i].size(), ImPlotFlags_None, 0, sizeof(rbm::Vector2d));
             }
         });
 #endif
     }
 
     {
-        mbox::Vector2d initial_x(2, 1);
+        rbm::Vector2d initial_x(2, 1);
 
-        mbox::Vector2d target(1.5, 0);
-        auto f = mbox::ScalarDFunction2<mbox::Vector2d>(
+        rbm::Vector2d target(1.5, 0);
+        auto f = rbm::ScalarDFunction2<rbm::Vector2d>(
             error_half_square_norm_f(target),
             error_half_square_norm_gradient(target),
             error_half_square_norm_hessian(target)
@@ -274,30 +274,30 @@ int main() {
         std::vector<std::vector<double>> coefficients;
         coefficients.push_back({ 2, -2, 0.6 });
         coefficients.push_back({ 7, -4, 0 });
-        auto g = mbox::DFunction2(
+        auto g = rbm::DFunction2(
             polynomial_error_f(coefficients),
             polynomial_error_dfdx(coefficients),
             polynomial_error_d2fdx2(coefficients)
         );
 
-        mbox::InteriorPointSolver<mbox::Vector2d> solver(f, g);
+        rbm::InteriorPointSolver<rbm::Vector2d> solver(f, g);
         solver.config().initial_mu = 1e-4;
         auto b = solver.make_barrier_function();
 
-        std::vector<mbox::Vector2d> xs;
-        mbox::solve(initial_x, solver, xs);
-        mbox::Vector2d x_min, x_max;
+        std::vector<rbm::Vector2d> xs;
+        rbm::solve(initial_x, solver, xs);
+        rbm::Vector2d x_min, x_max;
         std::tie(x_min, x_max) = get_min_max(1, xs);
 
         auto g_solution = polynomial_error_solution(coefficients);
-        std::vector<std::vector<mbox::Vector2d>> g_xs(coefficients.size());
+        std::vector<std::vector<rbm::Vector2d>> g_xs(coefficients.size());
         for (std::size_t i = 0; i < coefficients.size(); i++) {
             const auto& gi_sol = g_solution[i];
             auto& gi_xs = g_xs[i];
             for (double x = x_min.x(); x <= x_max.x(); x += 0.05) {
                 double y = gi_sol(x);
                 if (y > x_max.y() || y < x_min.y()) continue;
-                gi_xs.push_back(mbox::Vector2d(x, y));
+                gi_xs.push_back(rbm::Vector2d(x, y));
             }
         }
 
@@ -308,39 +308,39 @@ int main() {
             for (std::size_t i = 0; i < coefficients.size(); i++) {
                 char label[32];
                 snprintf(label, sizeof(label), "g%zu", i);
-                ImPlot::PlotLine(label, &g_xs[i][0].x(), &g_xs[i][0].y(), g_xs[i].size(), ImPlotFlags_None, 0, sizeof(mbox::Vector2d));
+                ImPlot::PlotLine(label, &g_xs[i][0].x(), &g_xs[i][0].y(), g_xs[i].size(), ImPlotFlags_None, 0, sizeof(rbm::Vector2d));
             }
             ImPlot::SetNextMarkerStyle(ImPlotMarker_Circle);
-            ImPlot::PlotLine("xs", &xs[0].x(), &xs[0].y(), xs.size(), ImPlotFlags_None, 0, sizeof(mbox::Vector2d));
+            ImPlot::PlotLine("xs", &xs[0].x(), &xs[0].y(), xs.size(), ImPlotFlags_None, 0, sizeof(rbm::Vector2d));
         });
 #endif
     }
     {
-        mbox::VectorXd initial_x(10);
+        rbm::VectorXd initial_x(10);
         initial_x.setZero();
 
-        mbox::VectorXd target(10);
+        rbm::VectorXd target(10);
         target.setRandom();
         std::cout << "Target: " << target << std::endl;
-        auto f1 = mbox::ScalarDFunction1<mbox::VectorXd>(
+        auto f1 = rbm::ScalarDFunction1<rbm::VectorXd>(
             error_half_square_norm_f(target),
             error_half_square_norm_gradient(target)
         );
-        auto f2 = mbox::ScalarDFunction2<mbox::VectorXd>(
+        auto f2 = rbm::ScalarDFunction2<rbm::VectorXd>(
             error_half_square_norm_f(target),
             error_half_square_norm_gradient(target),
             error_half_square_norm_hessian(target)
         );
 
-        mbox::unconstrained::GradientDescent<mbox::VectorXd> solver1(f1);
+        rbm::unconstrained::GradientDescent<rbm::VectorXd> solver1(f1);
         solver1.config().learning_rate = 1e-2;
         solver1.config().max_iterations = 10000;
 
-        auto result1 = mbox::solve<mbox::VectorXd>(initial_x, solver1);
+        auto result1 = rbm::solve<rbm::VectorXd>(initial_x, solver1);
         std::cout << "Grad descent result:\n" << result1 << std::endl;
 
-        mbox::unconstrained::GaussNewton<mbox::VectorXd> solver2(f2);
-        auto result2 = mbox::solve<mbox::VectorXd>(initial_x, solver2);
+        rbm::unconstrained::GaussNewton<rbm::VectorXd> solver2(f2);
+        auto result2 = rbm::solve<rbm::VectorXd>(initial_x, solver2);
         std::cout << "Gauss newton result:\n" << result2 << std::endl;
     }
 }

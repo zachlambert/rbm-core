@@ -1,9 +1,9 @@
 #pragma once
 
-#include "mbox/geometry/mesh.h"
-#include "mbox/geometry/vertex.h"
+#include "rbm/geometry/mesh.h"
+#include "rbm/geometry/vertex.h"
 
-namespace mbox {
+namespace rbm {
 
 using VisualMeshVertex = make_vertex<float, 3,
     vertex_attributes::position |
@@ -12,4 +12,4 @@ using VisualMeshVertex = make_vertex<float, 3,
 >;
 using VisualMesh = Mesh<VisualMeshVertex, unsigned short, 3>;
 
-} // namespace mbox
+} // namespace rbm

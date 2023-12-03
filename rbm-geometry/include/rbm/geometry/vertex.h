@@ -5,12 +5,12 @@
 #include <concepts>
 #include <string>
 #include <cstring>
-#include "mbox/types/matrix.h"
-#include "mbox/types/color.h"
-#include "mbox/transform/transform.h"
+#include "rbm/types/matrix.h"
+#include "rbm/types/color.h"
+#include "rbm/transform/transform.h"
 
 
-namespace mbox  {
+namespace rbm  {
 
 template <typename Scalar, int Dim, typename Vertex>
 concept has_position = requires(const Vertex& vertex) {
@@ -57,4 +57,4 @@ struct make_vertex<Scalar, Dim, vertex_attributes::position | vertex_attributes:
     std::array<Scalar, 2> uv;
 };
 
-} // namespace mbox
+} // namespace rbm

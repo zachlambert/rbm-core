@@ -1,9 +1,9 @@
 #pragma once
 
-#include "mbox/geometry/mesh.h"
-#include "mbox/geometry/bvh.h"
+#include "rbm/geometry/mesh.h"
+#include "rbm/geometry/bvh.h"
 
-namespace mbox {
+namespace rbm {
 
 template <typename Scalar, int Dim, typename Mesh>
 using MeshPrimitive = FacetShape<Scalar, Dim, Mesh::VertexCount>;
@@ -33,4 +33,4 @@ void mesh_to_bvh(const Mesh& mesh, Bvh<MeshPrimitive<Scalar, Dim, Mesh>>& bvh)
     bvh.construct(primitives);
 }
 
-} // namespace mbox
+} // namespace rbm

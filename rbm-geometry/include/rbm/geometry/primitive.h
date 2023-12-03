@@ -4,13 +4,13 @@
 #include <array>
 #include <concepts>
 #include "cpp_utils/annotated_variant.h"
-#include "mbox/types/matrix.h"
-#include "mbox/types/color.h"
-#include "mbox/transform/transform.h"
-#include "mbox/transform/homogeneous.h"
-#include "mbox/geometry/bounding.h"
+#include "rbm/types/matrix.h"
+#include "rbm/types/color.h"
+#include "rbm/transform/transform.h"
+#include "rbm/transform/homogeneous.h"
+#include "rbm/geometry/bounding.h"
 
-namespace mbox {
+namespace rbm {
 
 template <typename T>
 concept is_primitive = requires(T t, Transform<typename T::Scalar, T::Dim> transform, typename T::Scalar scaling) {
@@ -364,38 +364,38 @@ typedef ColoredPrimitive<float, 3> ColoredPrimitive3f;
 typedef ColoredPrimitive<double, 2> ColoredPrimitive2d;
 typedef ColoredPrimitive<double, 3> ColoredPrimitive3d;
 
-} // namespace mbox
+} // namespace rbm
 
 template <typename Scalar, int Dim>
-struct cpp_utils::variant_details<mbox::InstancedPrimitive<Scalar, Dim>> {
-    typedef mbox::InstancedPrimitive<Scalar, Dim> T;
+struct cpp_utils::variant_details<rbm::InstancedPrimitive<Scalar, Dim>> {
+    typedef rbm::InstancedPrimitive<Scalar, Dim> T;
     static constexpr std::size_t count = 4;
     static T construct(std::size_t i) {
         switch(i) {
         case 0:
-            return mbox::Box<Scalar, Dim>();
+            return rbm::Box<Scalar, Dim>();
         case 1:
-            return mbox::Sphere<Scalar, Dim>();
+            return rbm::Sphere<Scalar, Dim>();
         case 2:
-            return mbox::Cylinder<Scalar, Dim>();
+            return rbm::Cylinder<Scalar, Dim>();
         case 3:
-            return mbox::Cone<Scalar, Dim>();
+            return rbm::Cone<Scalar, Dim>();
         default:
             assert(false);
-            return mbox::Box<Scalar, Dim>();
+            return rbm::Box<Scalar, Dim>();
         }
     }
     static std::size_t index(const T& variant) {
-        if (std::get_if<mbox::Box<Scalar, Dim>>(&variant)) {
+        if (std::get_if<rbm::Box<Scalar, Dim>>(&variant)) {
             return 0;
         }
-        else if (std::get_if<mbox::Sphere<Scalar, Dim>>(&variant)) {
+        else if (std::get_if<rbm::Sphere<Scalar, Dim>>(&variant)) {
             return 1;
         }
-        else if (std::get_if<mbox::Cylinder<Scalar, Dim>>(&variant)) {
+        else if (std::get_if<rbm::Cylinder<Scalar, Dim>>(&variant)) {
             return 2;
         }
-        else if (std::get_if<mbox::Cone<Scalar, Dim>>(&variant)) {
+        else if (std::get_if<rbm::Cone<Scalar, Dim>>(&variant)) {
             return 3;
         }
         else {

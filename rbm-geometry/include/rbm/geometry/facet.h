@@ -1,10 +1,10 @@
 #pragma once
 
-#include "mbox/types/matrix.h"
-#include "mbox/geometry/bounding.h"
+#include "rbm/types/matrix.h"
+#include "rbm/geometry/bounding.h"
 #include <array>
 
-namespace mbox {
+namespace rbm {
 
 template <typename IndexType, int VertexCount>
 struct Facet {
@@ -12,4 +12,4 @@ struct Facet {
 };
 
 
-} // namespace mbox
+} // namespace rbm

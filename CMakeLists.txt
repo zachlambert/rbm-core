@@ -46,7 +46,7 @@ add_subdirectory(rbm-mechanics)
 
 # include(CMakePackageConfigHelpers)
 # write_basic_package_version_file(
-#     "${PROJECT_BINARY_DIR}/mboxConfigVersion.cmake"
+#     "${PROJECT_BINARY_DIR}/rbmConfigVersion.cmake"
 #     VERSION 0.1
 #     COMPATIBILITY AnyNewerVersion
 # )
@@ -60,7 +60,7 @@ add_subdirectory(rbm-mechanics)
 #         rbm-opt
 #         rbm-probability
 #         rbm-mechanics
-#     EXPORT mboxTargets
+#     EXPORT rbmTargets
 #     LIBRARY DESTINATION lib COMPONENT Runtime
 #     ARCHIVE DESTINATION lib COMPONENT Development
 #     RUNTIME DESTINATION bin COMPONENT Runtime
@@ -70,15 +70,15 @@ add_subdirectory(rbm-mechanics)
 #
 # include(CMakePackageConfigHelpers)
 # configure_package_config_file(
-#     "${PROJECT_SOURCE_DIR}/cmake/mboxConfig.cmake.in"
-#     "${PROJECT_BINARY_DIR}/mboxConfig.cmake"
-#     INSTALL_DESTINATION lib/cmake/mbox
+#     "${PROJECT_SOURCE_DIR}/cmake/rbmConfig.cmake.in"
+#     "${PROJECT_BINARY_DIR}/rbmConfig.cmake"
+#     INSTALL_DESTINATION lib/cmake/rbm
 # )
 #
-# install(EXPORT mboxTargets DESTINATION lib/cmake/mbox)
-# install(FILES "${PROJECT_BINARY_DIR}/mboxConfigVersion.cmake"
-#               "${PROJECT_BINARY_DIR}/mboxConfig.cmake"
-#         DESTINATION lib/cmake/mbox)
+# install(EXPORT rbmTargets DESTINATION lib/cmake/rbm)
+# install(FILES "${PROJECT_BINARY_DIR}/rbmConfigVersion.cmake"
+#               "${PROJECT_BINARY_DIR}/rbmConfig.cmake"
+#         DESTINATION lib/cmake/rbm)
 #
 # install(DIRECTORY ${PROJECT_SOURCE_DIR}/diff/include/ DESTINATION include)
 # install(DIRECTORY ${PROJECT_SOURCE_DIR}/geometry/include/ DESTINATION include)

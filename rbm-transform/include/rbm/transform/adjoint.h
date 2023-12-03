@@ -1,8 +1,8 @@
 #pragma once
 
-#include "mbox/transform/transform.h"
+#include "rbm/transform/transform.h"
 
-namespace mbox {
+namespace rbm {
 
 template <typename Scalar, int Dim>
 class AdjointTransform {
@@ -90,4 +90,4 @@ typedef AdjointLieBracket<double, 2> AdjointLieBracket2d;
 typedef AdjointLieBracket<float, 3> AdjointLieBracket3f;
 typedef AdjointLieBracket<double, 3> AdjointLieBracket3d;
 
-} // namespace mbox
+} // namespace rbm

@@ -1,10 +1,10 @@
 #pragma once
 
-#include "mbox/geometry/height_map.h"
-#include "mbox/geometry/grid.h"
+#include "rbm/geometry/height_map.h"
+#include "rbm/geometry/grid.h"
 
 
-namespace mbox {
+namespace rbm {
 
 class HeightMapGrid: public HeightMapInterface {
 public:
@@ -57,4 +57,4 @@ private:
     GridDimensions2d dimensions_;
 };
 
-} // namespace mbox
+} // namespace rbm
