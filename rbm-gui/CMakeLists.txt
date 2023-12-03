@@ -28,12 +28,20 @@ add_library(rbm-gui SHARED
     src/shader.cpp
     src/viewport.cpp
     src/window.cpp
+    lib/imgui/imgui.cpp
+    lib/imgui/imgui_demo.cpp
+    lib/imgui/imgui_draw.cpp
+    lib/imgui/imgui_tables.cpp
+    lib/imgui/imgui_widgets.cpp
+    lib/imgui/backends/imgui_impl_opengl3.cpp
+    lib/imgui/backends/imgui_impl_glfw.cpp
 )
 target_include_directories(rbm-gui
     PRIVATE
         shaders/include
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/lib/imgui>
         $<INSTALL_INTERFACE:include>
 )
 target_link_libraries(rbm-gui

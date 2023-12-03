@@ -81,3 +81,11 @@ add_subdirectory(rbm-mechanics)
 # install(DIRECTORY ${PROJECT_SOURCE_DIR}/probability/include/ DESTINATION include)
 # install(DIRECTORY ${PROJECT_SOURCE_DIR}/transform/include/ DESTINATION include)
 # install(DIRECTORY ${PROJECT_SOURCE_DIR}/types/include/ DESTINATION include)
+
+# install(
+#     FILES
+#         ${PROJECT_SOURCE_DIR}/gui/libs/imgui/imgui.h
+#         ${PROJECT_SOURCE_DIR}/gui/libs/imgui/imconfig.h
+#     DESTINATION
+#         include
+# )
