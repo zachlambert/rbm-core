@@ -1,11 +1,11 @@
-#include "sviz/render/grid_renderer.h"
-#include "sviz/render/shader.h"
-#include "shader/grid_fs.h"
-#include "shader/grid_vs.h"
+#include "rbm/gui/grid_renderer.h"
+#include "rbm/gui/shader.h"
+#include "rbm/gui/shader/grid_fs.h"
+#include "rbm/gui/shader/grid_vs.h"
 #include <imgui.h>
 
 
-namespace sviz {
+namespace rbm {
 
 GridRenderer::GridRenderer()
 {
@@ -141,4 +141,4 @@ void GridRenderer::render(
     }
 }
 
-} // namespace sviz
+} // namespace rbm

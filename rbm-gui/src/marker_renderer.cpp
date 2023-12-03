@@ -1,13 +1,14 @@
-#include "sviz/render/marker_renderer.h"
+#include "rbm/gui/marker_renderer.h"
 
 #include <GL/glew.h>
-#include <mbox/geometry/primitive_conversions.h>
-#include <mbox/transform/miscellaneous.h>
-#include "sviz/render/shader.h"
-#include "shader/marker_fs.h"
-#include "shader/marker_vs.h"
+#include <rbm/geometry/primitive_conversions.h>
+#include <rbm/transform/miscellaneous.h>
+#include "rbm/gui/shader.h"
+#include "rbm/gui/shader/marker_fs.h"
+#include "rbm/gui/shader/marker_vs.h"
 
-namespace sviz {
+
+namespace rbm {
 
 MarkerRenderer::MarkerRenderer():
     resolution(0.2),
@@ -238,4 +239,4 @@ void MarkerRenderer::render(
     commands.clear();
 }
 
-} // namespace sviz
+} // namespace rbm

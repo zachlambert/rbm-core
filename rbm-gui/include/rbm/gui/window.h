@@ -3,19 +3,16 @@
 #include <array>
 #include <memory>
 #include <unordered_map>
-
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-
-#include "imgui.h"
-
-#include "sviz/gui/font.h"
-#include "sviz/gui/widget.h"
+#include <imgui.h>
+#include "rbm/gui/font.h"
+#include "rbm/gui/widget.h"
 
 
-namespace sviz {
+namespace rbm {
 
-struct UserInput {
+struct WindowInput {
     enum class Axis {
         LEFT_X,
         LEFT_Y,
@@ -104,7 +101,7 @@ private:
     GLFWwindow* window;
     std::string title;
     Config config;
-    UserInput user_input;
+    WindowInput input;
 
     std::unordered_map<std::string, std::shared_ptr<Widget>> widgets;
 };

@@ -1,7 +1,13 @@
 add_library(rbm-gui SHARED
-    src/height_map_grid.cpp
-    src/height_map_conversions.cpp
-    src/height_map_functional.cpp
+    src/camera.cpp
+    src/camera_controller.cpp
+    src/font.cpp
+    src/grid_renderer.cpp
+    src/marker_renderer.cpp
+    src/mesh_renderer.cpp
+    src/shader.cpp
+    src/viewport.cpp
+    src/window.cpp
 )
 target_include_directories(rbm-gui PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>

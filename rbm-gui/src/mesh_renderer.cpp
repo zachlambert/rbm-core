@@ -1,11 +1,11 @@
-#include "sviz/render/mesh_renderer.h"
+#include "rbm/gui/mesh_renderer.h"
 
-#include "shader/mesh_vs.h"
-#include "shader/mesh_fs.h"
-#include "sviz/render/shader.h"
+#include "rbm/gui/shader.h"
+#include "rbm/gui/shader/mesh_vs.h"
+#include "rbm/gui/shader/mesh_fs.h"
 
 
-namespace sviz {
+namespace rbm {
 
 MeshRenderer::MeshRenderer()
 {
@@ -130,4 +130,4 @@ void MeshRenderer::render(
     commands.clear();
 }
 
-} // namespace sviz
+} // namespace rbm

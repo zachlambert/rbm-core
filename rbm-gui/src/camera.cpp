@@ -1,9 +1,10 @@
-#include "sviz/render/camera.h"
+#include "rbm/gui/camera.h"
+
 #include <imgui.h>
-#include <mbox/transform/radians.h>
+#include <rbm/transform/radians.h>
 
 
-namespace sviz {
+namespace rbm {
 
 Camera::Camera():
     clipping_near(0.01),
@@ -30,4 +31,4 @@ void Camera::update_view(const mbox::Transform3d& pose) {
     view = to_screen * pose.inverse().cast<float>().matrix();
 }
 
-} // namespace sviz
+} // namespace rbm

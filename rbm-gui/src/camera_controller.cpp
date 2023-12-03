@@ -1,11 +1,11 @@
-#include "sviz/render/camera_controller.h"
-#include <mbox/transform/miscellaneous.h>
-#include <mbox/transform/euler.h>
-#include <mbox/transform/radians.h>
+#include "rbm/gui/camera_controller.h"
 #include <imgui.h>
+#include <rbm/transform/miscellaneous.h>
+#include <rbm/transform/euler.h>
+#include <rbm/transform/radians.h>
 
 
-namespace sviz {
+namespace rbm {
 
 CameraController::CameraController() {}
 
@@ -182,4 +182,4 @@ bool CameraController::is_clicked(mbox::Vector3d& click_pos)
     return false;
 }
 
-} // namespace sviz
+} // namespace rbm

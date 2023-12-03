@@ -1,10 +1,11 @@
-#include "sviz/render/viewport.h"
+#include "rbm/gui/viewport.h"
+
 #include <imgui.h>
 #include <iostream>
-#include "sviz/render/marker_renderer.h"
+#include "rbm/gui/marker_renderer.h"
 
 
-namespace sviz {
+namespace rbm {
 
 Viewport::Viewport(int width, int height):
     width(width),
@@ -136,4 +137,4 @@ void Viewport::add_entity(const std::string& name, const std::shared_ptr<Entity>
     entities.emplace(name, entity);
 }
 
-} // namespace sviz
+} // namespace rbm

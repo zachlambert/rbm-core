@@ -3,7 +3,7 @@
 #include <optional>
 #include <string>
 
-namespace sviz {
+namespace rbm {
 
 enum class Font {
     DejaVuSans,
@@ -13,4 +13,4 @@ enum class Font {
 
 std::optional<std::string> find_font_path(Font font);
 
-} // namespace ink
+} // namespace rbm

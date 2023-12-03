@@ -1,11 +1,11 @@
-#include "sviz/gui/font.h"
+#include "rbm/gui/font.h"
 #include <unordered_map>
 #include <vector>
 #include <filesystem>
 #include <algorithm>
 
 
-namespace sviz {
+namespace rbm {
 
 std::optional<std::string> find_font_path(Font font)
 {
@@ -52,4 +52,4 @@ std::optional<std::string> find_font_path(Font font)
     return candidates.front();
 }
 
-} // namespace sviz
+} // namespace rbm

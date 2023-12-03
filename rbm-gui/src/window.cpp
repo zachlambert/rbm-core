@@ -1,15 +1,15 @@
-#include "sviz/gui/window.h"
-#include "sviz/gui/font.h"
-#include "imgui.h"
-#include "backends/imgui_impl_glfw.h"
-#include "backends/imgui_impl_opengl3.h"
+#include "rbm/gui/window.h"
 
 #include <iostream>
 #include <unordered_map>
 #include <filesystem>
+#include <imgui.h>
+#include <backends/imgui_impl_glfw.h>
+#include <backends/imgui_impl_opengl3.h>
+#include "rbm/gui/font.h"
 
 
-namespace sviz {
+namespace rbm {
 
 bool Window::init()
 {
@@ -152,4 +152,4 @@ void Window::render_end()
     glfwSwapBuffers(window);
 }
 
-} // namespace sviz
+} // namespace rbm

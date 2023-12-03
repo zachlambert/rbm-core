@@ -1,13 +1,13 @@
-#include "sviz/render/shader.h"
+#include "rbm/gui/shader.h"
 
 #include <fstream>
 #include <iostream>
 #include <sstream>
 #include <vector>
-
 #include <GL/glew.h>
 
-namespace sviz {
+
+namespace rbm {
 
 bool load_file_into_string(const std::string &file_path, std::string& string)
 {
@@ -91,4 +91,4 @@ unsigned int load_shader(const std::string &vs_code, const std::string &fs_code)
     return program_id;
 }
 
-} // namespace sviz
+} // namespace rbm
