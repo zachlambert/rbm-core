@@ -4,5 +4,5 @@ target_include_directories(rbm-types INTERFACE
     $<INSTALL_INTERFACE:include>
 )
 target_link_libraries(rbm-types
-    INTERFACE Eigen3::Eigen cpp-utils datapack
+    INTERFACE Eigen3::Eigen rbm-cpp datapack
 )

@@ -5,7 +5,7 @@
 #include "rbm/opt/solve.h"
 #include <iostream>
 
-#include "sviz/gui/window.h"
+#include "rbm/gui/window.h"
 
 // TODO
 #if 0

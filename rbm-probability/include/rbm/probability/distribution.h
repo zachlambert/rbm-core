@@ -1,7 +1,7 @@
 #pragma once
 
 #include <random>
-#include "cpp_utils/cloneable.h"
+#include "rbm/cpp/cloneable.h"
 
 
 namespace rbm {
@@ -16,11 +16,11 @@ public:
 
 
 template <typename T>
-class Distribution: public cpp_utils::Cloneable<DistributionImpl<T>> {
+class Distribution: public rbm::Cloneable<DistributionImpl<T>> {
 public:
     template <typename Impl>
     Distribution(const Impl& impl):
-        cpp_utils::Cloneable<DistributionImpl<T>>(impl)
+        rbm::Cloneable<DistributionImpl<T>>(impl)
     {}
     T sample(std::default_random_engine& rng) const {
         return this->interface->sample(rng);

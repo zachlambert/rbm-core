@@ -1,7 +1,7 @@
 #pragma once
 
 #include "rbm/types/matrix.h"
-#include "cpp_utils/cloneable.h"
+#include "rbm/cpp/cloneable.h"
 #include <memory>
 
 namespace rbm {
@@ -21,12 +21,12 @@ public:
     virtual std::unique_ptr<HeightMapInterface> clone() const = 0;
 };
 
-class HeightMap: public cpp_utils::OptionalCloneable<HeightMapInterface> {
+class HeightMap: public rbm::OptionalCloneable<HeightMapInterface> {
 public:
     HeightMap() {}
     template <typename Impl>
     HeightMap(const Impl& impl):
-        cpp_utils::OptionalCloneable<HeightMapInterface>(impl)
+        rbm::OptionalCloneable<HeightMapInterface>(impl)
     {}
     bool contains(const Vector2d& position) const {
         return interface->contains(position);

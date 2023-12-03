@@ -1,7 +1,7 @@
 #pragma once
 
 #include "rbm/types/matrix.h"
-#include "cpp_utils/darray.h"
+#include "rbm/cpp/darray.h"
 
 
 namespace rbm {
@@ -133,7 +133,7 @@ private:
     std::size_t rows_;
     std::size_t cols_;
     std::size_t depth_;
-    cpp_utils::darray<Matrix<Scalar, Rows, Cols>, Depth> data_;
+    rbm::darray<Matrix<Scalar, Rows, Cols>, Depth> data_;
 };
 
 template <int Rows, int Cols, int Depth>

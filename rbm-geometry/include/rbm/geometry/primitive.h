@@ -3,7 +3,7 @@
 #include <variant>
 #include <array>
 #include <concepts>
-#include "cpp_utils/annotated_variant.h"
+#include "rbm/cpp/annotated_variant.h"
 #include "rbm/types/matrix.h"
 #include "rbm/types/color.h"
 #include "rbm/transform/transform.h"
@@ -367,7 +367,7 @@ typedef ColoredPrimitive<double, 3> ColoredPrimitive3d;
 } // namespace rbm
 
 template <typename Scalar, int Dim>
-struct cpp_utils::variant_details<rbm::InstancedPrimitive<Scalar, Dim>> {
+struct rbm::variant_details<rbm::InstancedPrimitive<Scalar, Dim>> {
     typedef rbm::InstancedPrimitive<Scalar, Dim> T;
     static constexpr std::size_t count = 4;
     static T construct(std::size_t i) {

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "cpp_utils/optional_tuple.h"
+#include "rbm/optional_tuple.h"
 #include "rbm/diff/manifold.h"
 
 
@@ -59,8 +59,8 @@ struct optional_manifold_iterator<Tuple, 0> {
 };
 
 template <typename ...Args>
-struct rbm::manifold_details<cpp_utils::OptionalTuple<Args...>> {
-    typedef cpp_utils::OptionalTuple<Args...> X;
+struct rbm::manifold_details<rbm::OptionalTuple<Args...>> {
+    typedef rbm::OptionalTuple<Args...> X;
     static constexpr int dim = Eigen::Dynamic;
     static int dynamic_dim(const X& x) {
         return optional_manifold_iterator<X, X::capacity()>::dynamic_dim(x, 0);

@@ -1,18 +1,13 @@
 cmake_minimum_required(VERSION 3.14)
-project(mathbox)
+project(rbm-core)
 
 # Setup
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-include(FetchContent)
 
-set(BUILD_ADDITIONAL_TARGETS OFF)
-if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
-    set(BUILD_ADDITIONAL_TARGETS ON)
-endif()
-
-if(BUILD_ADDITIONAL_TARGETS)
+if(${BUILD_TESTS})
+    include(FetchContent)
     FetchContent_Declare(googletest URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip)
     include(GoogleTest)
     set(INSTALL_GTEST OFF)
@@ -27,17 +22,15 @@ endif()
 find_package(Eigen3 3.4 REQUIRED NO_MODULE)
 find_package(datapack REQUIRED)
 find_package(cpp-utils REQUIRED)
-if(${USE_SVIZ})
-    find_package(sviz REQUIRED)
-endif()
 
 # Library
 
+add_subdirectory(rbm-cpp)
 add_subdirectory(rbm-types)
 add_subdirectory(rbm-transform)
 add_subdirectory(rbm-diff)
 add_subdirectory(rbm-geometry)
-add_subdirectory(rbm-opt)
+# add_subdirectory(rbm-opt)
 add_subdirectory(rbm-probability)
 add_subdirectory(rbm-mechanics)
 
