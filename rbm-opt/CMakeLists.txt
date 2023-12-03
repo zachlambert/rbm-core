@@ -8,7 +8,7 @@ target_link_libraries(rbm-opt
     INTERFACE rbm-types rbm-diff
 )
 
-if(${USE_SVIZ})
+if(${BUILD_EXAMPLES})
     add_executable(example_opt example/main.cpp)
     target_link_libraries(example_opt rbm-opt sviz)
 endif()

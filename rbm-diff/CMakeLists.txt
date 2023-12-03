@@ -8,5 +8,7 @@ target_link_libraries(rbm-diff
     INTERFACE rbm-types rbm-transform
 )
 
-add_executable(example_diff_dfunction example/dfunction.cpp)
-target_link_libraries(example_diff_dfunction rbm-diff)
+if (${BUILD_EXAMPLES})
+    add_executable(example_diff_dfunction example/dfunction.cpp)
+    target_link_libraries(example_diff_dfunction rbm-diff)
+endif()

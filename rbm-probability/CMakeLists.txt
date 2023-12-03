@@ -8,5 +8,7 @@ target_link_libraries(rbm-probability
     INTERFACE rbm-types cpp-utils rbm-diff rbm-transform
 )
 
-add_executable(example_probability example/main.cpp)
-target_link_libraries(example_probability rbm-probability)
+if (${BUILD_EXAMPLES})
+    add_executable(example_probability example/main.cpp)
+    target_link_libraries(example_probability rbm-probability)
+endif()

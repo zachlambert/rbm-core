@@ -1,4 +1,3 @@
-
 add_library(rbm-geometry SHARED
     src/height_map_grid.cpp
     src/height_map_conversions.cpp
@@ -12,5 +11,7 @@ target_link_libraries(rbm-geometry
     PUBLIC cpp-utils rbm-types rbm-transform
 )
 
-add_executable(example_geometry_collision_primitives example/collision_primitives.cpp)
-target_link_libraries(example_geometry_collision_primitives PRIVATE rbm-geometry)
+if (${BUILD_EXAMPLES})
+    add_executable(example_geometry_collision_primitives example/collision_primitives.cpp)
+    target_link_libraries(example_geometry_collision_primitives PRIVATE rbm-geometry)
+endif()

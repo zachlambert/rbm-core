@@ -8,5 +8,7 @@ target_link_libraries(rbm-mechanics
     INTERFACE rbm-types rbm-transform rbm-geometry
 )
 
-add_executable(example_mechanics example/main.cpp)
-target_link_libraries(example_mechanics rbm-mechanics)
+if (${BUILD_EXAMPLES})
+    add_executable(example_mechanics example/main.cpp)
+    target_link_libraries(example_mechanics rbm-mechanics)
+endif()

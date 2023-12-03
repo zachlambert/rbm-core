@@ -8,7 +8,7 @@ target_link_libraries(rbm-transform
     INTERFACE rbm-types datapack
 )
 
-if(BUILD_ADDITIONAL_TARGETS)
+if(${BUILD_TESTS})
     add_executable(test_transform_angle test/angle.cpp)
     target_link_libraries(test_transform_angle rbm-transform GTest::gtest_main)
     gtest_discover_tests(test_transform_angle)
@@ -24,7 +24,9 @@ if(BUILD_ADDITIONAL_TARGETS)
     add_executable(test_transform_transform3 test/transform3.cpp)
     target_link_libraries(test_transform_transform3 rbm-transform GTest::gtest_main)
     gtest_discover_tests(test_transform_transform3)
+endif()
 
-    add_executable(benchmark_transform_transform3 benchmark/transform3.cpp)
-    target_link_libraries(benchmark_transform_transform3 rbm-transform)
+if(${BUILD_EXAMPLES})
+    add_executable(example_transform_transform3 example/transform3.cpp)
+    target_link_libraries(example_transform_transform3 rbm-transform)
 endif()
