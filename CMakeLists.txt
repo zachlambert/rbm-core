@@ -33,68 +33,57 @@ endif()
 
 # Library
 
-add_subdirectory(types)
-add_subdirectory(transform)
-add_subdirectory(diff)
-add_subdirectory(geometry)
-add_subdirectory(opt)
-add_subdirectory(probability)
-add_subdirectory(mechanics)
-
-add_library(mbox INTERFACE)
-target_link_libraries(mbox INTERFACE
-    mbox-types
-    mbox-transform
-    mbox-diff
-    mbox-geometry
-    mbox-opt
-    mbox-probability
-    mbox-mechanics
-)
+add_subdirectory(rbm-types)
+add_subdirectory(rbm-transform)
+add_subdirectory(rbm-diff)
+add_subdirectory(rbm-geometry)
+add_subdirectory(rbm-opt)
+add_subdirectory(rbm-probability)
+add_subdirectory(rbm-mechanics)
 
 # Create install target
 # https://stackoverflow.com/questions/47718485/install-and-export-interface-only-library-cmake
 
-include(CMakePackageConfigHelpers)
-write_basic_package_version_file(
-    "${PROJECT_BINARY_DIR}/mboxConfigVersion.cmake"
-    VERSION 0.1
-    COMPATIBILITY AnyNewerVersion
-)
-
-install(
-    TARGETS
-        mbox-diff
-        mbox-geometry
-        mbox-mechanics
-        mbox-opt
-        mbox-probability
-        mbox-transform
-        mbox-types
-    EXPORT mboxTargets
-    LIBRARY DESTINATION lib COMPONENT Runtime
-    ARCHIVE DESTINATION lib COMPONENT Development
-    RUNTIME DESTINATION bin COMPONENT Runtime
-    PUBLIC_HEADER DESTINATION include COMPONENT Development
-    BUNDLE DESTINATION bin COMPONENT Runtime
-)
-
-include(CMakePackageConfigHelpers)
-configure_package_config_file(
-    "${PROJECT_SOURCE_DIR}/cmake/mboxConfig.cmake.in"
-    "${PROJECT_BINARY_DIR}/mboxConfig.cmake"
-    INSTALL_DESTINATION lib/cmake/mbox
-)
-
-install(EXPORT mboxTargets DESTINATION lib/cmake/mbox)
-install(FILES "${PROJECT_BINARY_DIR}/mboxConfigVersion.cmake"
-              "${PROJECT_BINARY_DIR}/mboxConfig.cmake"
-        DESTINATION lib/cmake/mbox)
-
-install(DIRECTORY ${PROJECT_SOURCE_DIR}/diff/include/ DESTINATION include)
-install(DIRECTORY ${PROJECT_SOURCE_DIR}/geometry/include/ DESTINATION include)
-install(DIRECTORY ${PROJECT_SOURCE_DIR}/mechanics/include/ DESTINATION include)
-install(DIRECTORY ${PROJECT_SOURCE_DIR}/opt/include/ DESTINATION include)
-install(DIRECTORY ${PROJECT_SOURCE_DIR}/probability/include/ DESTINATION include)
-install(DIRECTORY ${PROJECT_SOURCE_DIR}/transform/include/ DESTINATION include)
-install(DIRECTORY ${PROJECT_SOURCE_DIR}/types/include/ DESTINATION include)
+# include(CMakePackageConfigHelpers)
+# write_basic_package_version_file(
+#     "${PROJECT_BINARY_DIR}/mboxConfigVersion.cmake"
+#     VERSION 0.1
+#     COMPATIBILITY AnyNewerVersion
+# )
+#
+# install(
+#     TARGETS
+#         rbm-types
+#         rbm-transform
+#         rbm-diff
+#         rbm-geometry
+#         rbm-opt
+#         rbm-probability
+#         rbm-mechanics
+#     EXPORT mboxTargets
+#     LIBRARY DESTINATION lib COMPONENT Runtime
+#     ARCHIVE DESTINATION lib COMPONENT Development
+#     RUNTIME DESTINATION bin COMPONENT Runtime
+#     PUBLIC_HEADER DESTINATION include COMPONENT Development
+#     BUNDLE DESTINATION bin COMPONENT Runtime
+# )
+#
+# include(CMakePackageConfigHelpers)
+# configure_package_config_file(
+#     "${PROJECT_SOURCE_DIR}/cmake/mboxConfig.cmake.in"
+#     "${PROJECT_BINARY_DIR}/mboxConfig.cmake"
+#     INSTALL_DESTINATION lib/cmake/mbox
+# )
+#
+# install(EXPORT mboxTargets DESTINATION lib/cmake/mbox)
+# install(FILES "${PROJECT_BINARY_DIR}/mboxConfigVersion.cmake"
+#               "${PROJECT_BINARY_DIR}/mboxConfig.cmake"
+#         DESTINATION lib/cmake/mbox)
+#
+# install(DIRECTORY ${PROJECT_SOURCE_DIR}/diff/include/ DESTINATION include)
+# install(DIRECTORY ${PROJECT_SOURCE_DIR}/geometry/include/ DESTINATION include)
+# install(DIRECTORY ${PROJECT_SOURCE_DIR}/mechanics/include/ DESTINATION include)
+# install(DIRECTORY ${PROJECT_SOURCE_DIR}/opt/include/ DESTINATION include)
+# install(DIRECTORY ${PROJECT_SOURCE_DIR}/probability/include/ DESTINATION include)
+# install(DIRECTORY ${PROJECT_SOURCE_DIR}/transform/include/ DESTINATION include)
+# install(DIRECTORY ${PROJECT_SOURCE_DIR}/types/include/ DESTINATION include)

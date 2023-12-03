@@ -3,7 +3,7 @@
 #include <optional>
 
 
-namespace mbox {
+namespace rbm {
 
 // Represents the interval [lower, upper]
 // (ie: includes endpoints)
@@ -77,4 +77,4 @@ struct Interval {
 typedef Interval<float> Intervalf;
 typedef Interval<double> Intervald;
 
-} // namespace mbox
+} // namespace rbm

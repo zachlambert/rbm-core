@@ -1,0 +1,72 @@
+#!/bin/bash
+cd "$(dirname "$0")/.."
+
+args=()
+
+build_target=all
+build_type="Debug"
+build_tests=0
+build_examples=0
+
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -b|--build_type)
+      build_type="$2"
+      shift
+      shift
+      ;;
+    -t|--build_tests)
+      build_tests=1
+      shift
+      ;;
+    -e|--build_examples)
+      build_examples=1
+      shift
+      ;;
+    -*|--*)
+      echo "Unknown option $1"
+      exit 1
+      ;;
+    *)
+      args+=("$1") # save positional arg
+      shift # past argument
+      ;;
+  esac
+done
+
+if [[ ${#args[@]} -gt 1 ]]; then
+  echo "Received ${#args[@]} positional arguments, expected at most 1"
+fi
+
+if [[ ${#args[@]} -gt 0 ]]; then
+  build_target="${args[0]}"
+fi
+
+valid_build_types=(
+  "Debug"
+  "Release"
+)
+
+valid_type=0
+for type in ${valid_build_types[@]}; do
+  if [[ $type == $build_type ]]; then
+    valid_type=1
+  fi
+done
+
+if [[ valid_type -ne 1 ]]; then
+  echo "Invalid build type $build_type"
+  exit 1
+fi
+
+cmake_args=""
+if [[ $build_type == "Debug" ]]; then
+  cmake_args="$cmake_args -DCMAKE_EXPORT_COMPILE_COMMANDS=1"
+fi
+cmake_args="$cmake_args -DBUILD_TESTS=$build_tests"
+cmake_args="$cmake_args -DBUILD_EXAMPLES=$build_examples"
+
+build_dir="build/${build_type}"
+mkdir -p $build_dir
+cmake -E chdir $build_dir cmake $cmake_args ../..
+cmake --build $build_dir --target $build_target

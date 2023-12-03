@@ -3,7 +3,7 @@
 #include <Eigen/Core>
 
 
-namespace mbox {
+namespace rbm {
 
 using Eigen::Vector;
 using Eigen::RowVector;
@@ -130,4 +130,4 @@ using Matrix6X = Matrix<Scalar, 6, Eigen::Dynamic>;
 typedef Matrix6X<float> Matrix6Xf;
 typedef Matrix6X<double> Matrix6Xd;
 
-} // namespace mbox
+} // namespace rbm

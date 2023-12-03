@@ -1,10 +1,10 @@
 #pragma once
 
-#include "mbox/types/matrix.h"
+#include "rbm/types/matrix.h"
 #include "cpp_utils/darray.h"
 
 
-namespace mbox {
+namespace rbm {
 
 // MTensor = Matrix tensor
 // ie: Uses eigen matrix types
@@ -141,4 +141,4 @@ using MTensorf = MTensor<float, Rows, Cols, Depth>;
 template <int Rows, int Cols, int Depth>
 using MTensord = MTensor<double, Rows, Cols, Depth>;
 
-} // namespace mbox
+} // namespace rbm
