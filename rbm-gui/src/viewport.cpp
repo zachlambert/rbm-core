@@ -10,7 +10,7 @@ namespace rbm {
 Viewport::Viewport(int width, int height):
     width(width),
     height(height),
-    bg_color(mbox::ColorRGBd(1.0, 1.0, 1.0))
+    bg_color(ColorRGBd(1.0, 1.0, 1.0))
 {}
 
 bool Viewport::init()
@@ -58,9 +58,9 @@ bool Viewport::init()
         }
     }
 
-    mbox::Transform3d initial_camera_pose = mbox::EulerTransform3d(
-        mbox::EulerRotation3d(0, 0.9, 0),
-        mbox::Vector3d(-10, 0, 10)).toTransform();
+    Transform3d initial_camera_pose = EulerTransform3d(
+        EulerRotation3d(0, 0.9, 0),
+        Vector3d(-10, 0, 10)).toTransform();
     camera_controller.init(initial_camera_pose, camera);
 
     renderers.get<MarkerRenderer>();
@@ -86,13 +86,13 @@ void Viewport::render()
     // Render items
 
     {
-        mbox::Vector3d click_pos;
+        Vector3d click_pos;
         if (camera_controller.is_clicked(click_pos)) {
-            mbox::Cylinder3d cylinder;
+            Cylinder3d cylinder;
             cylinder.pose.translation() = click_pos;
             cylinder.length = 0.01;
             cylinder.radius = 0.12;
-            renderers.get<MarkerRenderer>()->queue_primitive(cylinder, mbox::ColorRGBd::White());
+            renderers.get<MarkerRenderer>()->queue_primitive(cylinder, ColorRGBd::White());
         }
     }
 

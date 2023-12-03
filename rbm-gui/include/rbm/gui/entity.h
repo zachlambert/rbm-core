@@ -1,8 +1,9 @@
 #pragma once
 
-#include "sviz/render/renderer.h"
+#include "rbm/gui/renderer.h"
 
-namespace sviz {
+
+namespace rbm {
 
 class Entity {
 public:
@@ -10,4 +11,4 @@ public:
     virtual void render(Renderers& renderers) = 0;
 };
 
-} // namespace sviz
+} // namespace rbm

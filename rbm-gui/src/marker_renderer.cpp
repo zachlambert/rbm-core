@@ -26,20 +26,20 @@ MarkerRenderer::~MarkerRenderer()
 
 void MarkerRenderer::generate_meshes() {
     Mesh primitive_mesh;
-    for (std::size_t primitive_index = 0; primitive_index < cpp_utils::variant_count<mbox::InstancedPrimitive3f>; primitive_index++) {
+    for (std::size_t primitive_index = 0; primitive_index < rbm::variant_count<InstancedPrimitive3f>; primitive_index++) {
         if (!running) return;
 
-        mbox::InstancedPrimitive3f primitive = std::visit([](const auto& value) -> mbox::InstancedPrimitive3f{
+        InstancedPrimitive3f primitive = std::visit([](const auto& value) -> InstancedPrimitive3f{
             typedef std::decay_t<decltype(value)> T;
             return T::Instance();
 
-        }, cpp_utils::variant_construct<mbox::InstancedPrimitive3f>(primitive_index));
+        }, rbm::variant_construct<InstancedPrimitive3f>(primitive_index));
 
-        mbox::primitive_to_mesh(primitive, resolution, primitive_mesh);
+        primitive_to_mesh(primitive, resolution, primitive_mesh);
 
         MeshData data;
         data.primitive = primitive_index;
-        data.mesh_range = mbox::insert_mesh(primitive_mesh, mesh_data);
+        data.mesh_range = insert_mesh(primitive_mesh, mesh_data);
         mesh_datas.push_back(data);
     }
     generate_done = true;
@@ -103,16 +103,16 @@ bool MarkerRenderer::init_opengl() {
     return true;
 }
 
-void MarkerRenderer::queue_primitive(const mbox::InstancedPrimitive3d& primitive, const mbox::ColorRGBd& color) {
+void MarkerRenderer::queue_primitive(const InstancedPrimitive3d& primitive, const ColorRGBd& color) {
     if (!init_done) return;
 
     Command command;
     command.color = color.cast<float>();
-    command.model = std::visit([](const auto& value) -> mbox::Matrix4f {
+    command.model = std::visit([](const auto& value) -> Matrix4f {
         return value.instance_transform().template cast<float>();
     }, primitive);
 
-    std::size_t primitive_index = cpp_utils::variant_index(primitive);
+    std::size_t primitive_index = rbm::variant_index(primitive);
     for (std::size_t i = 0; i < mesh_datas.size(); i++) {
         const MeshData& mesh_data = mesh_datas[i];
         if (mesh_data.primitive == primitive_index) {
@@ -124,60 +124,60 @@ void MarkerRenderer::queue_primitive(const mbox::InstancedPrimitive3d& primitive
 }
 
 void MarkerRenderer::queue_arrow(
-        const mbox::Vector3d& begin,
-        const mbox::Vector3d& end,
+        const Vector3d& begin,
+        const Vector3d& end,
         double width,
         double head_length,
         double head_width,
-        const mbox::ColorRGBd& color)
+        const ColorRGBd& color)
 {
-    mbox::Vector3d direction = (end - begin).normalized();
+    Vector3d direction = (end - begin).normalized();
     double length = (end - begin).norm();
 
     head_length = std::min(head_length, length);
-    mbox::Vector3d line_end = end - direction * head_length;
+    Vector3d line_end = end - direction * head_length;
     double line_length = length - head_length;
 
-    mbox::Cylinder3d cylinder;
+    Cylinder3d cylinder;
     cylinder.pose.translation() = begin + direction * line_length / 2;
-    cylinder.pose.rotation() = mbox::rotation_from_normal(direction);
+    cylinder.pose.rotation() = rotation_from_normal(direction);
     cylinder.length = line_length;
     cylinder.radius = width / 2;
     queue_primitive(cylinder, color);
 
-    mbox::Sphere3d back_cap;
+    Sphere3d back_cap;
     back_cap.position = begin;
     back_cap.radius = width / 2;
     queue_primitive(back_cap, color);
 
-    mbox::Cone3d head;
+    Cone3d head;
     head.pose.translation() = begin + direction * line_length;
-    head.pose.rotation() = mbox::rotation_from_normal(direction);
+    head.pose.rotation() = rotation_from_normal(direction);
     head.radius = head_width / 2;
     head.length = head_length;
     queue_primitive(head, color);
 }
 
 void MarkerRenderer::queue_frame(
-        const mbox::Transform3d& pose,
+        const Transform3d& pose,
         double axes_length,
         double axes_width)
 {
-    mbox::Vector3d origin = pose.translation();
-    mbox::Vector3d end_x = origin + axes_length * pose.rotation().block<3, 1>(0, 0);
-    mbox::Vector3d end_y = origin + axes_length * pose.rotation().block<3, 1>(0, 1);
-    mbox::Vector3d end_z = origin + axes_length * pose.rotation().block<3, 1>(0, 2);
-    queue_line(origin, end_x, axes_width, mbox::ColorRGBd::Red());
-    queue_line(origin, end_y, axes_width, mbox::ColorRGBd::Green());
-    queue_line(origin, end_z, axes_width, mbox::ColorRGBd::Blue());
+    Vector3d origin = pose.translation();
+    Vector3d end_x = origin + axes_length * pose.rotation().block<3, 1>(0, 0);
+    Vector3d end_y = origin + axes_length * pose.rotation().block<3, 1>(0, 1);
+    Vector3d end_z = origin + axes_length * pose.rotation().block<3, 1>(0, 2);
+    queue_line(origin, end_x, axes_width, ColorRGBd::Red());
+    queue_line(origin, end_y, axes_width, ColorRGBd::Green());
+    queue_line(origin, end_z, axes_width, ColorRGBd::Blue());
 }
 
 void MarkerRenderer::queue_bounding_box(
-        const mbox::Transform3d& pose,
-        const mbox::BoundingBox3d& bounding_box,
-        const mbox::ColorRGBd& color)
+        const Transform3d& pose,
+        const BoundingBox3d& bounding_box,
+        const ColorRGBd& color)
 {
-    mbox::Box3d box;
+    Box3d box;
     box.pose.translation() = pose * bounding_box.centre();
     box.pose.rotation() = pose.rotation();
     box.size = bounding_box.size();
@@ -187,15 +187,15 @@ void MarkerRenderer::queue_bounding_box(
     queue_primitive(box, color);
 }
 
-void MarkerRenderer::queue_line(const mbox::Vector3d& begin, const mbox::Vector3d& end, double width, const mbox::ColorRGBd& color) {
-    mbox::Cylinder3d cylinder;
+void MarkerRenderer::queue_line(const Vector3d& begin, const Vector3d& end, double width, const ColorRGBd& color) {
+    Cylinder3d cylinder;
     cylinder.pose.translation() = (begin + end) / 2;
-    cylinder.pose.rotation() = mbox::rotation_from_normal((end - begin).normalized());
+    cylinder.pose.rotation() = rotation_from_normal((end - begin).normalized());
     cylinder.length = (end - begin).norm();
     cylinder.radius = width / 2;
     queue_primitive(cylinder, color);
 
-    mbox::Sphere3d cap;
+    Sphere3d cap;
     cap.position = begin;
     cap.radius = width / 2;
     queue_primitive(cap, color);
@@ -205,8 +205,8 @@ void MarkerRenderer::queue_line(const mbox::Vector3d& begin, const mbox::Vector3
 }
 
 void MarkerRenderer::render(
-    const mbox::Matrix4f& view,
-    const mbox::Matrix4f& projection)
+    const Matrix4f& view,
+    const Matrix4f& projection)
 {
     if (!init_done && !init_opengl()) {
         return;
@@ -218,8 +218,8 @@ void MarkerRenderer::render(
 
     // TODO: Use instanced rendering instead
 
-    mbox::Matrix4f mvp;
-    mbox::Matrix4f mv;
+    Matrix4f mvp;
+    Matrix4f mv;
     for (const auto& command: commands) {
         mvp = projection * view * command.model;
         mv = view * command.model;

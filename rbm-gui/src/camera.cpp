@@ -14,7 +14,7 @@ Camera::Camera():
 
 void Camera::update_projection(float aspect_ratio) {
     projection.setZero();
-    float half_width = clipping_near * std::tan(mbox::to_radians(fov_degrees) / 2);
+    float half_width = clipping_near * std::tan(to_radians(fov_degrees) / 2);
     float half_height = half_width / aspect_ratio;
     projection(0, 0) = clipping_near / half_width;
     projection(1, 1) = clipping_near / half_height;
@@ -23,11 +23,11 @@ void Camera::update_projection(float aspect_ratio) {
     projection(3, 2) = -1;
 }
 
-void Camera::update_view(const mbox::Transform3d& pose) {
-    mbox::Matrix4f to_screen = mbox::Matrix4f::Identity();
-    to_screen.block<3, 1>(0, 0) = -mbox::Vector3f::UnitZ();
-    to_screen.block<3, 1>(0, 1) = -mbox::Vector3f::UnitX();
-    to_screen.block<3, 1>(0, 2) = mbox::Vector3f::UnitY();
+void Camera::update_view(const Transform3d& pose) {
+    Matrix4f to_screen = Matrix4f::Identity();
+    to_screen.block<3, 1>(0, 0) = -Vector3f::UnitZ();
+    to_screen.block<3, 1>(0, 1) = -Vector3f::UnitX();
+    to_screen.block<3, 1>(0, 2) = Vector3f::UnitY();
     view = to_screen * pose.inverse().cast<float>().matrix();
 }
 

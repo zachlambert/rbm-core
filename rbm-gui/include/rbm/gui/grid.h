@@ -1,7 +1,7 @@
-#include "sviz/render/entity.h"
-#include "sviz/render/grid_renderer.h"
+#include "rbm/gui/entity.h"
+#include "rbm/gui/grid_renderer.h"
 
-namespace sviz {
+namespace rbm {
 
 class Grid: public Entity {
 public:
@@ -25,4 +25,4 @@ private:
     int grid;
 };
 
-} // namespace sviz
+} // namespace rbm

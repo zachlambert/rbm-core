@@ -41,19 +41,19 @@ void GridRenderer::configure_grid(int grid_index, double width, double line_widt
     grid.line_width = line_width;
     grid.vertices.clear();
 
-    const mbox::Vector4f line_color_major = mbox::Vector4f(0.8, 0.8, 0.8, 1);
-    const mbox::Vector4f line_color_minor = mbox::Vector4f(0.5, 0.5, 0.5, 1);
-    const mbox::Vector4f line_color_x = mbox::Vector4f(0.8, 0, 0, 1);
-    const mbox::Vector4f line_color_y = mbox::Vector4f(0, 0.8, 0, 1);
-    const mbox::Vector4f line_color_z = mbox::Vector4f(0, 0, 0.8, 1);
+    const Vector4f line_color_major = Vector4f(0.8, 0.8, 0.8, 1);
+    const Vector4f line_color_minor = Vector4f(0.5, 0.5, 0.5, 1);
+    const Vector4f line_color_x = Vector4f(0.8, 0, 0, 1);
+    const Vector4f line_color_y = Vector4f(0, 0.8, 0, 1);
+    const Vector4f line_color_z = Vector4f(0, 0, 0.8, 1);
 
-    auto create_line = [&](const mbox::Vector3f& a, const mbox::Vector3f& b, const mbox::Vector4f color) {
+    auto create_line = [&](const Vector3f& a, const Vector3f& b, const Vector4f color) {
         grid.vertices.push_back(Vertex(a, color));
         grid.vertices.push_back(Vertex(b, color));
     };
 
     // Vertical line at origin
-    create_line(mbox::Vector3f(0, 0, 0), mbox::Vector3f(0, 0, width), line_color_z);
+    create_line(Vector3f(0, 0, 0), Vector3f(0, 0, width), line_color_z);
 
     // Other lines
     int num_divisions = num_minor_divisions * num_major_divisions;
@@ -62,7 +62,7 @@ void GridRenderer::configure_grid(int grid_index, double width, double line_widt
     for (int i = -num_divisions/2; i <= num_divisions/2; i++) {
         bool is_major = i % num_minor_divisions == 0;
 
-        mbox::Vector4f line_color_i_x, line_color_i_y;
+        Vector4f line_color_i_x, line_color_i_y;
         if (i == 0) {
             line_color_i_x = line_color_x;
             line_color_i_y = line_color_y;
@@ -75,8 +75,8 @@ void GridRenderer::configure_grid(int grid_index, double width, double line_widt
         }
 
         float pos = i * width / num_divisions;
-        create_line(mbox::Vector3f(-width/2, pos, 0), mbox::Vector3f(width/2, pos, 0), line_color_i_x);
-        create_line(mbox::Vector3f(pos, -width/2, 0), mbox::Vector3f(pos, width/2, 0), line_color_i_y);
+        create_line(Vector3f(-width/2, pos, 0), Vector3f(width/2, pos, 0), line_color_i_x);
+        create_line(Vector3f(pos, -width/2, 0), Vector3f(pos, width/2, 0), line_color_i_y);
     }
 
     // Load buffer data
@@ -115,11 +115,11 @@ void GridRenderer::queue_grid(int grid_index)
 }
 
 void GridRenderer::render(
-    const mbox::Matrix4f& view,
-    const mbox::Matrix4f& projection)
+    const Matrix4f& view,
+    const Matrix4f& projection)
 {
     glUseProgram(program_id);
-    mbox::Matrix4f mvp = projection * view;
+    Matrix4f mvp = projection * view;
     glUniformMatrix4fv(mvp_loc, 1, GL_FALSE, mvp.data());
 
     for (const auto& grid: grids) {

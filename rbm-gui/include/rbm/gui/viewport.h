@@ -4,14 +4,14 @@
 #include <memory>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include <mbox/types/color.h>
-#include "sviz/gui/widget.h"
-#include "sviz/render/entity.h"
-#include "sviz/render/renderer.h"
-#include "sviz/render/camera_controller.h"
+#include <rbm/types/color.h>
+#include "rbm/gui/widget.h"
+#include "rbm/gui/entity.h"
+#include "rbm/gui/renderer.h"
+#include "rbm/gui/camera_controller.h"
 
 
-namespace sviz {
+namespace rbm {
 
 class Viewport: public Widget {
 public:
@@ -24,7 +24,7 @@ public:
 private:
     int width;
     int height;
-    mbox::ColorRGBd bg_color;
+    ColorRGBd bg_color;
 
     // Frame buffer data
     struct {
@@ -39,4 +39,4 @@ private:
     CameraController camera_controller;
 };
 
-} // namespace sviz
+} // namespace rbm

@@ -25,27 +25,27 @@ MeshRenderer::MeshRenderer()
     glBindBuffer(GL_ARRAY_BUFFER, static_VBO);
 
     glVertexAttribPointer(
-        0, 3, GL_FLOAT, GL_FALSE, sizeof(mbox::VisualMesh::Vertex),
-        (void*)offsetof(mbox::VisualMesh::Vertex, position)
+        0, 3, GL_FLOAT, GL_FALSE, sizeof(VisualMesh::Vertex),
+        (void*)offsetof(VisualMesh::Vertex, position)
     );
     glEnableVertexAttribArray(0);
 
     glVertexAttribPointer(
-        1, 3, GL_FLOAT, GL_FALSE, sizeof(mbox::VisualMesh::Vertex),
-        (void*)offsetof(mbox::VisualMesh::Vertex, normal)
+        1, 3, GL_FLOAT, GL_FALSE, sizeof(VisualMesh::Vertex),
+        (void*)offsetof(VisualMesh::Vertex, normal)
     );
     glEnableVertexAttribArray(1);
 
     glVertexAttribPointer(
-        2, 3, GL_FLOAT, GL_FALSE, sizeof(mbox::VisualMesh::Vertex),
-        (void*)offsetof(mbox::VisualMesh::Vertex, color)
+        2, 3, GL_FLOAT, GL_FALSE, sizeof(VisualMesh::Vertex),
+        (void*)offsetof(VisualMesh::Vertex, color)
     );
     glEnableVertexAttribArray(2);
-    static_assert(sizeof(mbox::ColorRGBf) == 3 * sizeof(float));
+    static_assert(sizeof(ColorRGBf) == 3 * sizeof(float));
 }
 
-int MeshRenderer::load_mesh(const mbox::VisualMesh& mesh) {
-    mbox::MeshRange mesh_range = insert_mesh(mesh, mesh_data);
+int MeshRenderer::load_mesh(const VisualMesh& mesh) {
+    MeshRange mesh_range = insert_mesh(mesh, mesh_data);
     mesh_ranges.emplace_back(mesh_range);
 
     // Rebind vertices and indices
@@ -56,7 +56,7 @@ int MeshRenderer::load_mesh(const mbox::VisualMesh& mesh) {
     glBindBuffer(GL_ARRAY_BUFFER, static_VBO);
     glBufferData(
         GL_ARRAY_BUFFER,
-        mesh_data.vertices.size() * sizeof(mbox::VisualMesh::Vertex),
+        mesh_data.vertices.size() * sizeof(VisualMesh::Vertex),
         &mesh_data.vertices[0],
         GL_STATIC_DRAW
     );
@@ -65,19 +65,19 @@ int MeshRenderer::load_mesh(const mbox::VisualMesh& mesh) {
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, static_EBO);
     glBufferData(
         GL_ELEMENT_ARRAY_BUFFER,
-        mesh_data.facets.size() * mbox::VisualMesh::VertexCount * sizeof(mbox::VisualMesh::IndexType),
+        mesh_data.facets.size() * VisualMesh::VertexCount * sizeof(VisualMesh::IndexType),
         &mesh_data.facets[0].indices[0],
         GL_STATIC_DRAW
     );
-    static_assert(mbox::VisualMesh::VertexCount == 3);
-    static_assert(sizeof(mbox::VisualMesh::Facet) == mbox::VisualMesh::VertexCount * sizeof(mbox::VisualMesh::IndexType));
+    static_assert(VisualMesh::VertexCount == 3);
+    static_assert(sizeof(VisualMesh::Facet) == VisualMesh::VertexCount * sizeof(VisualMesh::IndexType));
 
     return mesh_ranges.size() - 1;
 }
 
 bool MeshRenderer::queue_mesh(
     int mesh,
-    const mbox::Transform3d& pose,
+    const Transform3d& pose,
     bool wireframe)
 {
     if (mesh < 0 || mesh >= mesh_ranges.size()) return false;
@@ -90,11 +90,11 @@ bool MeshRenderer::queue_mesh(
 }
 
 void MeshRenderer::render(
-    const mbox::Matrix4f& view,
-    const mbox::Matrix4f& projection)
+    const Matrix4f& view,
+    const Matrix4f& projection)
 {
-    mbox::Matrix4f mvp;
-    mbox::Matrix4f m;
+    Matrix4f mvp;
+    Matrix4f m;
 
     // Visual meshes
 
@@ -107,7 +107,7 @@ void MeshRenderer::render(
         glUniformMatrix4fv(mvp_loc, 1, GL_FALSE, &mvp(0, 0));
         glUniformMatrix4fv(m_loc, 1, GL_FALSE, &m(0, 0));
 
-        const mbox::MeshRange& mesh_range = mesh_ranges[command.mesh_index];
+        const MeshRange& mesh_range = mesh_ranges[command.mesh_index];
 
         if (command.wireframe) {
             glPolygonMode(GL_FRONT, GL_LINE);
@@ -115,11 +115,11 @@ void MeshRenderer::render(
         }
         glDrawElements(
             GL_TRIANGLES,
-            mesh_range.facet_count * mbox::VisualMesh::VertexCount,
+            mesh_range.facet_count * VisualMesh::VertexCount,
             GL_UNSIGNED_SHORT,
-            (void*)(sizeof(mbox::VisualMesh::IndexType) * mesh_range.facets_offset * mbox::VisualMesh::VertexCount)
+            (void*)(sizeof(VisualMesh::IndexType) * mesh_range.facets_offset * VisualMesh::VertexCount)
         );
-        static_assert(std::is_same_v<unsigned short, mbox::VisualMesh::IndexType>);
+        static_assert(std::is_same_v<unsigned short, VisualMesh::IndexType>);
 
         if (command.wireframe) {
             glPolygonMode(GL_FRONT, GL_FILL);

@@ -106,4 +106,4 @@ private:
     std::unordered_map<std::string, std::shared_ptr<Widget>> widgets;
 };
 
-} // namespace sviz
+} // namespace rbm

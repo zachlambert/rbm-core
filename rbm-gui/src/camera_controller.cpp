@@ -9,7 +9,7 @@ namespace rbm {
 
 CameraController::CameraController() {}
 
-void CameraController::init(const mbox::EulerTransform3d& start_pose, Camera& camera)
+void CameraController::init(const EulerTransform3d& start_pose, Camera& camera)
 {
     pose = start_pose.toTransform();
     camera.update_view(pose);
@@ -38,7 +38,7 @@ void CameraController::update_pose(Camera& camera)
         }
     }
 
-    mbox::Vector2d pixel_coords;
+    Vector2d pixel_coords;
     {
         ImVec2 window_size = ImGui::GetWindowSize();
         ImVec2 window_pos = ImGui::GetWindowPos();
@@ -62,9 +62,9 @@ void CameraController::update_pose(Camera& camera)
         return;
     }
 
-    mbox::Vector3d dir_cs; // Direction cameraspace
+    Vector3d dir_cs; // Direction cameraspace
     {
-        double focal_length = 1 / tan(0.5 * mbox::to_radians(camera.fov_degrees));
+        double focal_length = 1 / tan(0.5 * to_radians(camera.fov_degrees));
         dir_cs.y() = -pixel_coords.x();
         dir_cs.z() = -pixel_coords.y();
         dir_cs.x() = focal_length;
@@ -77,8 +77,8 @@ void CameraController::update_pose(Camera& camera)
 
         // Project the ray from the camera onto the world
         // For now, just project onto plane at z = 0. Perhaps can project onto geometry later.
-        mbox::Vector3d pos_ws = pose.translation();
-        mbox::Vector3d dir_ws = pose.rotation() * dir_cs;
+        Vector3d pos_ws = pose.translation();
+        Vector3d dir_ws = pose.rotation() * dir_cs;
 
         double distance = (0 - pos_ws.z()) / dir_ws.z();
 
@@ -104,15 +104,15 @@ void CameraController::update_pose(Camera& camera)
     else if (state == State::ROTATE)
     {
         pose = prev_camera_pose;
-        mbox::EulerRotation3d euler(pose.rotation().eval());
+        EulerRotation3d euler(pose.rotation().eval());
 
         // Make sure roll is kept at zero
         euler.roll() = 0;
 
-        Eigen::AngleAxisd pitch_only = Eigen::AngleAxisd(euler.pitch(), mbox::Vector3d::UnitY());
+        Eigen::AngleAxisd pitch_only = Eigen::AngleAxisd(euler.pitch(), Vector3d::UnitY());
 
-        mbox::Vector3d from = pitch_only * click_pos_cs;
-        mbox::Vector3d to = pitch_only * dir_cs;
+        Vector3d from = pitch_only * click_pos_cs;
+        Vector3d to = pitch_only * dir_cs;
         // Solve:
         // Rz(yaw_change) * Ry(pitch_change) * to = from
         // (scale invariant)
@@ -137,7 +137,7 @@ void CameraController::update_pose(Camera& camera)
 
         // Let from' = Rz(-yaw_change) * from
         // Solve: Ry(pitch_change) * to = from'
-        from = Eigen::AngleAxisd(-yaw_change, mbox::Vector3d::UnitZ()) * from;
+        from = Eigen::AngleAxisd(-yaw_change, Vector3d::UnitZ()) * from;
         double pitch_change = (-atan2(from.z(), from.x())) - (-atan2(to.z(), to.x()));
         euler.pitch() += pitch_change;
 
@@ -172,7 +172,7 @@ void CameraController::update_pose(Camera& camera)
     camera.update_view(pose);
 }
 
-bool CameraController::is_clicked(mbox::Vector3d& click_pos)
+bool CameraController::is_clicked(Vector3d& click_pos)
 {
     if (state != State::INVALID && state != State::INACTIVE)
     {

@@ -2,7 +2,7 @@
 
 #include <string>
 
-namespace sviz {
+namespace rbm {
 
 class Widget {
 public:
@@ -11,4 +11,4 @@ public:
     virtual void render() {}
 };
 
-} // namespace sviz
+} // namespace rbm

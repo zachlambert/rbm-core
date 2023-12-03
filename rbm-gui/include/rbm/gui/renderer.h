@@ -1,18 +1,18 @@
 #pragma once
 
-#include <mbox/types/matrix.h>
 #include <memory>
 #include <type_traits>
 // Not required in this header, but required for any rendering code, so
 // conventient to leave here
 #include <GL/glew.h>
+#include <rbm/types/matrix.h>
 
 
-namespace sviz {
+namespace rbm {
 
 class Renderer {
 public:
-    virtual void render(const mbox::Matrix4f& view, const mbox::Matrix4f& projection) = 0;
+    virtual void render(const Matrix4f& view, const Matrix4f& projection) = 0;
 };
 
 class Renderers {
@@ -31,7 +31,7 @@ public:
         return renderer;
     }
 
-    void render(const mbox::Matrix4f& view, const mbox::Matrix4f& projection)
+    void render(const Matrix4f& view, const Matrix4f& projection)
     {
         for (auto& renderer: renderers) {
             renderer->render(view, projection);
@@ -42,4 +42,4 @@ private:
     std::vector<std::shared_ptr<Renderer>> renderers;
 };
 
-} // namespace sviz
+} // namespace rbm

@@ -1,17 +1,17 @@
 #pragma once
 
-#include "sviz/render/renderer.h"
+#include "rbm/gui/renderer.h"
 
 
-namespace sviz {
+namespace rbm {
 
 class GridRenderer: public Renderer {
 public:
     GridRenderer();
 
     void render(
-        const mbox::Matrix4f& view,
-        const mbox::Matrix4f& projection) override;
+        const Matrix4f& view,
+        const Matrix4f& projection) override;
 
     int create_grid();
     void configure_grid(int grid, double width, double line_width, int num_major_divisions, int num_minor_divisions);
@@ -19,10 +19,10 @@ public:
 
 private:
     struct Vertex {
-        mbox::Vector3f position;
-        mbox::Vector4f color;
+        Vector3f position;
+        Vector4f color;
         Vertex() {}
-        Vertex(const mbox::Vector3f& position, const mbox::Vector4f& color):
+        Vertex(const Vector3f& position, const Vector4f& color):
             position(position),
             color(color)
         {}
@@ -42,4 +42,4 @@ private:
     std::vector<Grid> grids;
 };
 
-} // namespace sviz
+} // namespace rbm
