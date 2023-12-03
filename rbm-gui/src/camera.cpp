@@ -1,0 +1,33 @@
+#include "sviz/render/camera.h"
+#include <imgui.h>
+#include <mbox/transform/radians.h>
+
+
+namespace sviz {
+
+Camera::Camera():
+    clipping_near(0.01),
+    clipping_far(100.0),
+    fov_degrees(70)
+{}
+
+void Camera::update_projection(float aspect_ratio) {
+    projection.setZero();
+    float half_width = clipping_near * std::tan(mbox::to_radians(fov_degrees) / 2);
+    float half_height = half_width / aspect_ratio;
+    projection(0, 0) = clipping_near / half_width;
+    projection(1, 1) = clipping_near / half_height;
+    projection(2, 2) = - (clipping_near + clipping_far) / (clipping_far - clipping_near);
+    projection(2, 3) = - 2 * clipping_near * clipping_far / (clipping_far - clipping_near);
+    projection(3, 2) = -1;
+}
+
+void Camera::update_view(const mbox::Transform3d& pose) {
+    mbox::Matrix4f to_screen = mbox::Matrix4f::Identity();
+    to_screen.block<3, 1>(0, 0) = -mbox::Vector3f::UnitZ();
+    to_screen.block<3, 1>(0, 1) = -mbox::Vector3f::UnitX();
+    to_screen.block<3, 1>(0, 2) = mbox::Vector3f::UnitY();
+    view = to_screen * pose.inverse().cast<float>().matrix();
+}
+
+} // namespace sviz
