@@ -45,7 +45,7 @@ target_include_directories(rbm-gui
         $<INSTALL_INTERFACE:include>
 )
 target_link_libraries(rbm-gui
-    PUBLIC rbm-cpp rbm-types rbm-transform rbm-geometry
+    PUBLIC rbm-cpp rbm-types rbm-transform rbm-geometry GL glfw GLEW ${CMAKE_DL_LIBS}
 )
 add_dependencies(rbm-gui rbm-gui-shaders)
 
