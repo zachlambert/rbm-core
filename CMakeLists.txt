@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.14)
-project(owl)
+project(mathbox)
 
 # Setup
 
@@ -22,12 +22,14 @@ if(BUILD_ADDITIONAL_TARGETS)
     # subdirectories will add their own tests
 endif()
 
-
 # Dependencies
 
 find_package(Eigen3 3.4 REQUIRED NO_MODULE)
 find_package(datapack REQUIRED)
 find_package(cpp-utils REQUIRED)
+if(${USE_SVIZ})
+    find_package(sviz REQUIRED)
+endif()
 
 # Library
 

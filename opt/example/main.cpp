@@ -5,6 +5,8 @@
 #include "mbox/opt/solve.h"
 #include <iostream>
 
+#include "sviz/gui/window.h"
+
 // TODO
 #if 0
 #include "gui/gui/window.h"
@@ -171,6 +173,7 @@ std::vector<std::function<double(double)>> polynomial_error_solution(const std::
 
 
 int main() {
+    sviz::Window window("Mathbox optimisation example");
     {
         mbox::Vector2d initial_x = mbox::Vector2d::Zero();
         mbox::Vector2d target = mbox::Vector2d(1, 2);
