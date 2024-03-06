@@ -52,4 +52,7 @@ add_dependencies(rbm-gui rbm-gui-shaders)
 if (${BUILD_EXAMPLES})
     add_executable(example_gui_window example/window.cpp)
     target_link_libraries(example_gui_window PRIVATE rbm-gui)
+
+    add_executable(example_gui_viewport example/viewport.cpp)
+    target_link_libraries(example_gui_viewport PRIVATE rbm-gui)
 endif()

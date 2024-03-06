@@ -119,7 +119,7 @@ void MeshRenderer::render(
             GL_UNSIGNED_SHORT,
             (void*)(sizeof(VisualMesh::IndexType) * mesh_range.facets_offset * VisualMesh::VertexCount)
         );
-        static_assert(std::is_same_v<unsigned short, VisualMesh::IndexType>);
+        static_assert(std::is_same_v<unsigned int, VisualMesh::IndexType>);
 
         if (command.wireframe) {
             glPolygonMode(GL_FRONT, GL_FILL);

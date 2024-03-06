@@ -3,9 +3,9 @@
 
 namespace rbm {
 
-class Grid: public Entity {
+class GridEntity: public Entity {
 public:
-    Grid():
+    GridEntity():
         grid(-1)
     {}
     bool init(Renderers& renderers) override

@@ -9,7 +9,7 @@ namespace rbm {
 
 typedef Mesh<
     make_vertex<double, 3, vertex_attributes::position>,
-    unsigned short,
+    unsigned int,
     3>
         CollisionMesh;
 

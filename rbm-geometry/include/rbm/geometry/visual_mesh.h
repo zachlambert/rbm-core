@@ -11,6 +11,6 @@ using VisualMeshVertex = make_vertex<float, 3,
     vertex_attributes::normal |
     vertex_attributes::color
 >;
-using VisualMesh = Mesh<VisualMeshVertex, unsigned short, 3>;
+using VisualMesh = Mesh<VisualMeshVertex, unsigned int, 3>;
 
 } // namespace rbm
